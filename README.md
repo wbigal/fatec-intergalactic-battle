@@ -9,6 +9,8 @@ Para executar o projeto no seu ambiente de desenvolvemento você precisará aten
 * Ter o RVM configurado e a versão 2.5.0 do Ruby já instalada
 * Ter o bando de dados Postgres instalado
 
+Será necessário ter o ambiente preparado para o Paperclip. Siga a instruções de pré-requisitos em https://github.com/thoughtbot/paperclip
+
 ### Configurar ambiente
 
 Para configurar seu ambiente de desenvolvimento execute as seguintes instruções:
