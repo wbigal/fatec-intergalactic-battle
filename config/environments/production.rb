@@ -111,9 +111,11 @@ Rails.application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
     bucket: ENV['S3_BUCKET_NAME'],
-    s3_protocol: :https
+    s3_protocol: :https,
+    s3_host_name: 's3-us-west-2.amazonaws.com',
+    url: ':s3_host_alias'
   }
 
   Paperclip::Attachment.default_options[:path] =
-    '/:class/:attachment/:id/:style/:file_name.:extension'
+    '/:class/:attachment/:id/:style.:extension'
 end

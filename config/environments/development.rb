@@ -62,5 +62,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Paperclip::Attachment.default_options[:url] =
-    '/system/:class/:attachment/:id/:style/:file_name.:extension'
+    '/system/:class/:attachment/:id/:style.:extension'
 end
