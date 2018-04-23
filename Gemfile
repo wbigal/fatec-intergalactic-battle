@@ -7,6 +7,8 @@ ruby '2.5.0'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Use postgresql as the database for Active Record
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -32,6 +34,8 @@ end
 group :development do
   # A static analysis security vulnerability scanner for RoR applications
   gem 'brakeman', require: false
+  # Loads environment variables from `.env`
+  gem 'dotenv-rails'
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
