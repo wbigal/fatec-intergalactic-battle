@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      scenery:
+        one: Cenário
+        other: Cenários
+    attributes:
+      scenery:
+        name: Nome
+        rows: Linhas
+        columns: Colunas
+        image: Imagem
+        created_at: Criado em
+        updated_at: Atualizado em

@@ -42,6 +42,7 @@ RailsAdmin.config do |config|
   config.model 'Scenery' do
     list do
       sort_by :name
+      field :name
       field :rows
       field :columns
       field :image
@@ -53,7 +54,6 @@ RailsAdmin.config do |config|
       field :rows
       field :columns
       field :image
-      field :password
     end
 
     show do
@@ -69,6 +69,7 @@ RailsAdmin.config do |config|
   config.model 'User' do
     list do
       sort_by :name
+      field :name
       field :email
       field :updated_at
     end
