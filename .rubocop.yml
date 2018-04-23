@@ -82,3 +82,7 @@ Metrics/BlockLength:
 Rails/Output:
   Exclude:
     - db/seeds.rb
+
+Metrics/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
