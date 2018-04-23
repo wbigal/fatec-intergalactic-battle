@@ -39,6 +39,33 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.model 'Scenery' do
+    list do
+      sort_by :name
+      field :rows
+      field :columns
+      field :image
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :rows
+      field :columns
+      field :image
+      field :password
+    end
+
+    show do
+      field :name
+      field :rows
+      field :columns
+      field :image
+      field :created_at
+      field :updated_at
+    end
+  end
+
   config.model 'User' do
     list do
       sort_by :name
