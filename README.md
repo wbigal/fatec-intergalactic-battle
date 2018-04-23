@@ -1,6 +1,7 @@
 # Engenharia de Software III - FATEC-SP
 
-[ ![Codeship Status for wbigal/fatec-intergalactic-battle](https://app.codeship.com/projects/8c64c340-2948-0136-2d1e-6abaf95401ed/status?branch=master)](https://app.codeship.com/projects/287279)
+Jogo: https://fatec-intergalactic-battle.herokuapp.com
+Backoffice: https://fatec-intergalactic-battle.herokuapp.com/admin
 
 ## Setup
 
