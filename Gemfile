@@ -59,6 +59,9 @@ group :test do
   gem 'shoulda-matchers', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # Code coverage for Ruby 1.9+ with a powerful configuration library and
+  #  automatic merging of coverage across test suites
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
