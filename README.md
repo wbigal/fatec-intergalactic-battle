@@ -1,24 +1,35 @@
-# README
+# Engenharia de Software III - FATEC-SP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+### Pré-requisitos
 
-* Ruby version
+Para executar o projeto no seu ambiente de desenvolvemento você precisará atender os seguintes requisitos:
 
-* System dependencies
+* Ter o RVM configurado e a versão 2.5.0 do Ruby já instalada
+* Ter o bando de dados Postgres instalado
 
-* Configuration
+### Configurar ambiente
 
-* Database creation
+Para configurar seu ambiente de desenvolvimento execute as seguintes instruções:
 
-* Database initialization
+```bash
+cp .env.sample .env
+rake db:setup
+```
 
-* How to run the test suite
+Edite o arquivo `.env` com os valores correspondentes ao seu ambiente de desenvolvimento.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contribuindo
 
-* Deployment instructions
+Utilize *FeatureBranch*. Crie um `branch` a partir do *branch* `master` para sua atividade, e ao final envie um `Pull Request` com as modificações.
 
-* ...
+### O que fazer para o código ser ceito
+
+* Siga os padões de implementação do Ruby e do Ruby on Rails
+* Utilize o Rspec para testar, o mínimo de cobertura é 97%
+* Sempre execute o rubocop. Se tiver problemas o build falha
+* Sempre execute o breakman. Se tiver problemas o build falha
+* Sempre faça testes de interface em resolução de celular
+* Se for criar uma relação entre duas tabelas, crie chave estrangeira
+* Utilize constraint no banco de dados, não deixe tudo para o Rails
