@@ -1,0 +1,84 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - db/seeds/*
+    - db/seeds/development/*
+    - bin/*
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+DotPosition:
+  EnforcedStyle: trailing
+
+Rails/ActionFilter:
+  EnforcedStyle: action
+  SupportedStyles:
+    - action
+    - filter
+  Include:
+    - app/controllers/**/*.rb
+
+Rails/Date:
+  EnforcedStyle: flexible
+  SupportedStyles:
+    - strict
+    - flexible
+
+Rails/FindBy:
+  Include:
+    - app/models/**/*.rb
+
+Rails/FindEach:
+  Include:
+    - app/models/**/*.rb
+
+Rails/HasAndBelongsToMany:
+  Include:
+    - app/models/**/*.rb
+
+Rails/Output:
+  Include:
+    - app/**/*.rb
+    - config/**/*.rb
+    - db/**/*.rb
+    - lib/**/*.rb
+
+Rails/ReadWriteAttribute:
+  Include:
+    - app/models/**/*.rb
+
+Rails/ScopeArgs:
+  Include:
+    - app/models/**/*.rb
+
+Rails/TimeZone:
+  EnforcedStyle: flexible
+  SupportedStyles:
+    - strict
+    - flexible
+
+Rails/Validation:
+  Include:
+    - app/models/**/*.rb
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - spec/**/*.rb
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - app/models/**/*.rb
+
+Metrics/BlockLength:
+  Enabled: false
+
+Rails/Output:
+  Exclude:
+    - db/seeds.rb
