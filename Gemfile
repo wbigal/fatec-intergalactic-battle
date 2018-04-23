@@ -55,6 +55,8 @@ group :test do
   # Can be used to ensure a clean state for testing.
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  # Collection of testing matchers extracted from Shoulda
+  gem 'shoulda-matchers', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
