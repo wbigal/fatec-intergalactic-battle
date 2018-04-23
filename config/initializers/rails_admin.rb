@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-  config.main_app_name = ["Batalha Intergalática", "BackOffice"]
+  config.main_app_name = ['Batalha Intergalática', 'BackOffice']
   ### Popular gems integration
 
   ## == Devise ==
@@ -28,7 +28,7 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
-    export
+    # export
     bulk_delete
     show
     edit
