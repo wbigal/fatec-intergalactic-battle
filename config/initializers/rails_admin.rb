@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  config.main_app_name = ["Batalha Intergalática", "BackOffice"]
   ### Popular gems integration
 
   ## == Devise ==
@@ -38,6 +39,8 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.included_models = [Scenery, User]
 
   config.model 'Scenery' do
     list do
