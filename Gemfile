@@ -78,6 +78,9 @@ end
 
 group :production do
   gem 'rails_12factor'
+  # The official AWS SDK for Ruby. Provides both resource oriented interfaces
+  # and API clients for AWS services.
+  gem 'aws-sdk', '~> 2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
