@@ -1,6 +1,9 @@
 require 'simplecov'
 
-SimpleCov.start
+SimpleCov.start do
+  add_filter 'config/initializers/rails_admin.rb'
+end
+
 SimpleCov.minimum_coverage 97
 
 RSpec.configure do |config|
