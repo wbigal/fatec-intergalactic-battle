@@ -46,7 +46,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # A Ruby static code analyzer, based on the community Ruby style guide.
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.55.0', require: false
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem 'spring'
