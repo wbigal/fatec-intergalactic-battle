@@ -1,0 +1,99 @@
+body, h1 {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-image: asset_url('background-default.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.btn {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 0 solid;
+  background-color: black;
+  color: yellow;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="password"], input[type="email"]{
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  border: 0 solid;
+  height: 25px;
+  width: 250px;
+}
+
+
+label{
+  margin-right: 15px;
+  color: yellow;
+  font-weight: bold;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-title{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 0 yellow, -2px 0 yellow, 0 2px yellow, 0 2px yellow;
+}
+
+.main-title h1{
+  font-size: 2.5rem;
+}
+
+.box {
+  display: flex;
+  height: 50vh;
+  width: 80%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.button-login{
+  align-items: center;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.form-container{
+  align-items: flex-end;
+  padding-bottom: 30px;
+  justify-content: center;
+}
+
+.field{
+  margin-bottom: 20px;
+}
+
+.form-login{
+  text-align: right;
+}
+
+.form-login fieldset{
+  padding: 20px 40px;
+  border-radius: 15px;
+  border: 1px black solid;
+}
+
+
+@media screen and (max-width: 900px) {
+  .form-container{
+    align-items: flex-start;
+    padding-bottom: 0;
+  }
+}
