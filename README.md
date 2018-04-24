@@ -1,5 +1,7 @@
 # Engenharia de Software III - FATEC-SP
 
+[![Build Status](https://semaphoreci.com/api/v1/wbigal/fatec-intergalactic-battle/branches/master/badge.svg)](https://semaphoreci.com/wbigal/fatec-intergalactic-battle)
+
 Jogo: https://fatec-intergalactic-battle.herokuapp.com
 Backoffice: https://fatec-intergalactic-battle.herokuapp.com/admin
 
