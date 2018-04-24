@@ -3,13 +3,6 @@ body, h1 {
 	padding: 0;
 }
 
-@font-face {
-  font-family: 'OpenSans-Bold';
-  src: asset_url('OpenSans-Bold.ttf') format('ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body{
 	font-family: 'OpenSans-Bold';
 	background-image: asset_url('background-default.jpg');
