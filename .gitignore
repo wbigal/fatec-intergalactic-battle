@@ -31,5 +31,6 @@
 
 /coverage/*
 .env
+/public/system
 
 .DS_Store
