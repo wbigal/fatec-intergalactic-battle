@@ -3,11 +3,15 @@ body, h1 {
   padding: 0;
 }
 
-body{
+main {
   background-image: asset_url('background-default.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
 }
 
-button {
+.btn {
   width: 100px;
   height: 30px;
   border-radius: 5px;
@@ -44,8 +48,11 @@ label{
   text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
   text-shadow: 2px 0 yellow, -2px 0 yellow, 0 2px yellow, 0 2px yellow;
+}
+
+.main-title h1{
+  font-size: 2.5rem;
 }
 
 .box {
@@ -81,4 +88,12 @@ label{
   padding: 20px 40px;
   border-radius: 15px;
   border: 1px black solid;
+}
+
+
+@media screen and (max-width: 900px) {
+  .form-container{
+    align-items: flex-start;
+    padding-bottom: 0;
+  }
 }
