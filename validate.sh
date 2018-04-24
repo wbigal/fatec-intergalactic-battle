@@ -1,2 +1,2 @@
 #!/bin/bash
-brakeman -z -q -o /dev/null && ./rubocop.sh && rspec
+bundle exec brakeman -z -q -o /dev/null && ./rubocop.sh && bundle exec rspec
