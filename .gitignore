@@ -34,3 +34,5 @@
 /public/system
 
 .DS_Store
+
+/data

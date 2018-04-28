@@ -1,31 +1,41 @@
+
 # Engenharia de Software III - FATEC-SP
 
 [![Build Status](https://semaphoreci.com/api/v1/wbigal/fatec-intergalactic-battle/branches/master/badge.svg)](https://semaphoreci.com/wbigal/fatec-intergalactic-battle)
 
 Jogo: https://fatec-intergalactic-battle.herokuapp.com
+
 Backoffice: https://fatec-intergalactic-battle.herokuapp.com/admin
 
 ## Setup
 
-### Pré-requisitos
+Tanto com Docker quanto sem, no final um usuário administrador será criando no ambiente de desenvolvimento:
 
-Para executar o projeto no seu ambiente de desenvolvemento você precisará atender os seguintes requisitos:
+* Email: admin@fatecib.com.br
+* Senha: 123@Mudar
 
-* Ter o RVM configurado e a versão 2.5.0 do Ruby já instalada
+A aplicação web subirá na porta `3000`, ficando então acessível através da url http://locahost:3000.
+
+### Com Docker
+
+Faça o setup do Docker: https://docs.docker.com/get-started/
+Para facilitar, utilize o compose: https://docs.docker.com/compose/gettingstarted/
+
+### Sem Docker
+
+Para executar o projeto no seu ambiente de desenvolvimento você precisará atender os seguintes requisitos:
+
+* Ter o RVM configurado e a versão 2.5.1 do Ruby já instalada
 * Ter o bando de dados Postgres instalado
+* Ter configurado o ImageMagic (https://www.imagemagick.org/script/download.php)
 
-Será necessário ter o ambiente preparado para o Paperclip. Siga a instruções de pré-requisitos em https://github.com/thoughtbot/paperclip
+#### Configurar ambiente
 
-### Configurar ambiente
+Primeiro crie o arquivo com as variáveis de ambiente: `cp .env.sample .env`
 
-Para configurar seu ambiente de desenvolvimento execute as seguintes instruções:
+Depois edit o arquivo `.env` com os dados do seu ambiente local.
 
-```bash
-cp .env.sample .env
-rake db:setup
-```
-
-Edite o arquivo `.env` com os valores correspondentes ao seu ambiente de desenvolvimento.
+Em seguida faça o setup do banco de dados: `rake db:setup`
 
 ## Contribuindo
 

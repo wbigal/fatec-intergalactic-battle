@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  web:
+    depends_on:
+      - postgres
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - RAILS_ENV=development
+      - DEVELOPMENT_DATABASE_URL='postgres://postgres:postgres@postgres:5432/fatec_intergalactic_battle_development'
+      - TEST_DATABASE_URL='postgres://postgres:postgres@postgres:5432/fatec_intergalactic_battle_test'
+    volumes:
+      - '.:/app'
+      - './public/system:/public/system'
+
+  postgres:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - './data:/var/lib/postgresql/data'
