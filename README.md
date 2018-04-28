@@ -19,6 +19,7 @@ A aplicação web subirá na porta `3000`, ficando então acessível através da
 ### Com Docker
 
 Faça o setup do Docker: https://docs.docker.com/get-started/
+
 Para facilitar, utilize o compose: https://docs.docker.com/compose/gettingstarted/
 
 ### Sem Docker
