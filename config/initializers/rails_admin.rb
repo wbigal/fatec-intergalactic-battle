@@ -40,9 +40,32 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [Scenery, User]
+  config.included_models = [PlayerAvatar, Scenery, User]
+
+  config.model 'PlayerAvatar' do
+    navigation_label 'Jogadores'
+    list do
+      sort_by :name
+      field :name
+      field :image
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :image
+    end
+
+    show do
+      field :name
+      field :image
+      field :created_at
+      field :updated_at
+    end
+  end
 
   config.model 'Scenery' do
+    navigation_label 'Jogabilidade'
     list do
       sort_by :name
       field :name
@@ -70,6 +93,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'User' do
+    navigation_label 'Administradores'
     list do
       sort_by :name
       field :name
