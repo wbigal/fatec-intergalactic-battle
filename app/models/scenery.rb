@@ -36,6 +36,7 @@ class Scenery < ApplicationRecord
                       all: '-strip -quality 80 -interlace Plane'
                     }
   validates_attachment :image,
+                       presence: true,
                        content_type: { content_type: %w[image/jpeg image/jpg] },
                        size: { less_than: 2.megabyte }
 end
