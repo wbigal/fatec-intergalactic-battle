@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      team:
+        one: Time
+        other: Times
+    attributes:
+      team:
+        name: Nome
+        created_at: Criado em
+        updated_at: Atualizado em

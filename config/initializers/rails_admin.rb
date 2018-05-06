@@ -27,12 +27,16 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ['Team']
+    end
     # export
     bulk_delete
     show
     edit
-    delete
+    delete do
+      except ['Team']
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
@@ -40,7 +44,7 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [Player, PlayerAvatar, Scenery, User]
+  config.included_models = [Player, PlayerAvatar, Scenery, Team, User]
 
   config.model 'Player' do
     navigation_label 'Jogadores'
@@ -131,6 +135,23 @@ RailsAdmin.config do |config|
       field :image
       field :created_at
       field :updated_at
+    end
+  end
+
+  config.model 'Team' do
+    navigation_label 'Jogabilidade'
+    list do
+      sort_by :name
+      field :name
+      field :updated_at
+    end
+
+    edit do
+      field :name
+    end
+
+    show do
+      field :name
     end
   end
 
