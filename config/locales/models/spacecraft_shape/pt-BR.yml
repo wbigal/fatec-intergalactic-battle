@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      spacecraft_shape:
+        one: Forma da Nave
+        other: Formas das Naves
+    attributes:
+      spacecraft_shape:
+        name: Nome
+        targets: Alvos
+        spacecraft_width: Largura da Nave
+        spacecraft_height: Altura da Nave
+        template: Template
+        created_at: Criado em
+        updated_at: Atualizado em

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_06_211120) do
+ActiveRecord::Schema.define(version: 2018_05_06_220334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,19 @@ ActiveRecord::Schema.define(version: 2018_05_06_211120) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spacecraft_shapes", force: :cascade do |t|
+    t.string "name", limit: 50, null: false
+    t.string "template_file_name"
+    t.string "template_content_type"
+    t.integer "template_file_size"
+    t.datetime "template_updated_at"
+    t.json "targets", null: false
+    t.integer "spacecraft_width", null: false
+    t.integer "spacecraft_height", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
