@@ -37,6 +37,8 @@ group :development, :test do
 end
 
 group :development do
+  # Annotate Rails classes with schema and routes info
+  gem 'annotate'
   # A static analysis security vulnerability scanner for RoR applications
   gem 'brakeman', require: false
   # Loads environment variables from `.env`

@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: sceneries
+#
+#  id                 :bigint(8)        not null, primary key
+#  name               :string(50)       not null
+#  rows               :integer          not null
+#  columns            :integer          not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Scenery, type: :model do
