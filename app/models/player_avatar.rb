@@ -19,13 +19,14 @@ class PlayerAvatar < ApplicationRecord
 
   has_attached_file :image,
                     styles: {
-                      thumb: '80x60#',
-                      large: '110x83#'
+                      thumb: '60x80#',
+                      large: '83x110#'
                     },
                     convert_options: {
                       all: '-strip -quality 80 -interlace Plane'
                     }
   validates_attachment :image,
+                       presence: true,
                        content_type: {
                          content_type: %w[
                            image/jpeg image/jpg image/gif image/png

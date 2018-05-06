@@ -93,7 +93,9 @@ RailsAdmin.config do |config|
 
     edit do
       field :name
-      field :image
+      field :image do
+        help 'Obrigatório. Image jpg, png ou gif com dimensão de 83x110px'
+      end
     end
 
     show do

@@ -32,7 +32,7 @@ RSpec.describe PlayerAvatar, type: :model do
   end
 
   describe '#image' do
-    it { is_expected.to respond_to(:image) }
+    it { is_expected.to validate_presence_of(:image) }
     it { is_expected.to validate_attachment_size(:image).less_than(2.megabyte) }
 
     it do
