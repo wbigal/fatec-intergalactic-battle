@@ -22,6 +22,10 @@ RSpec.describe PlayerAvatar, type: :model do
     expect(create(:player_avatar, image: image)).to be_valid
   end
 
+  describe '#players' do
+    it { is_expected.to have_many(:players) }
+  end
+
   describe '#name' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_most(50) }

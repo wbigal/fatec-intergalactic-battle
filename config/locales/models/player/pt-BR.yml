@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      player:
+        one: Jogador
+        other: Jogadores
+    attributes:
+      player:
+        nickname: Apelido
+        avatar: Avatar
+        email: E-mail
+        password: Senha
+        created_at: Criado em
+        updated_at: Atualizado em

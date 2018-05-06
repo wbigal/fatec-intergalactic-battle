@@ -40,7 +40,47 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [PlayerAvatar, Scenery, User]
+  config.included_models = [Player, PlayerAvatar, Scenery, User]
+
+  config.model 'Player' do
+    navigation_label 'Jogadores'
+    list do
+      sort_by :nickname
+      field :nickname
+      field :avatar do
+        pretty_value do
+          bindings[:view].tag(
+            :img,
+            src: bindings[:object].avatar.image.url(:thumb)
+          )
+        end
+      end
+      field :email
+      field :updated_at
+    end
+
+    edit do
+      field :nickname
+      field :avatar
+      field :email
+      field :password
+    end
+
+    show do
+      field :nickname
+      field :avatar do
+        pretty_value do
+          bindings[:view].tag(
+            :img,
+            src: bindings[:object].avatar.image.url(:thumb)
+          )
+        end
+      end
+      field :email
+      field :created_at
+      field :updated_at
+    end
+  end
 
   config.model 'PlayerAvatar' do
     navigation_label 'Jogadores'
