@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      player_avatar:
+        one: Avatar de Jogador
+        other: Avatares de Jogador
+    attributes:
+      player_avatar:
+        name: Nome
+        image: Imagem
+        created_at: Criado em
+        updated_at: Atualizado em
