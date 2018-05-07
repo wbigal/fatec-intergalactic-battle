@@ -17,7 +17,7 @@
 
 FactoryBot.define do
   factory :spacecraft_shape do
-    name 'Fake'
+    name
     spacecraft_width 50
     spacecraft_height 50
     targets [[0, 0], [0, 1], [0, 2]].to_json

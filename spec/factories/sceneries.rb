@@ -13,9 +13,9 @@
 
 FactoryBot.define do
   factory :scenery do
-    name  'Scenery'
+    name
     rows 10
     columns 10
-    background { association(:scenery_background) }
+    association(:background, factory: :scenery_background)
   end
 end

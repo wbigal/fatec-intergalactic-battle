@@ -74,6 +74,9 @@ end
 group :development, :test do
   # Factory Bot S2 Rails
   gem 'factory_bot_rails'
+  # A library for generating fake data such as names, addresses,
+  # and phone numbers.
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   # RSpec for Rails-3+
   gem 'rspec-rails', '~> 3.7'
 end

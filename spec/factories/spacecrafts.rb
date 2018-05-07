@@ -17,8 +17,8 @@
 FactoryBot.define do
   factory :spacecraft do
     team
-    shape { association(:spacecraft_shape) }
-    name 'Fake'
+    association(:shape, factory: :spacecraft_shape)
+    name
     image_file_name 'just-a-pic.png'
     image_content_type 'image/png'
     image_file_size 2

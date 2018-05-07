@@ -10,6 +10,6 @@
 
 FactoryBot.define do
   factory :team do
-    name 'Fake'
+    name
   end
 end

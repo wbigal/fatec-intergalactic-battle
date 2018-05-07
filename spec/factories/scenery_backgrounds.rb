@@ -14,7 +14,7 @@
 
 FactoryBot.define do
   factory :scenery_background do
-    name  'Fake'
+    name
     image_file_name 'just-a-pic.jpg'
     image_content_type 'image/jpeg'
     image_file_size 2
