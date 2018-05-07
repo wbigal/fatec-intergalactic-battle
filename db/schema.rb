@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_025804) do
+ActiveRecord::Schema.define(version: 2018_05_07_030800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,12 +70,10 @@ ActiveRecord::Schema.define(version: 2018_05_07_025804) do
     t.string "name", limit: 50, null: false
     t.integer "rows", null: false
     t.integer "columns", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "scenery_background_id"
+    t.index ["scenery_background_id"], name: "index_sceneries_on_scenery_background_id"
   end
 
   create_table "sceneries_spacecrafts", id: false, force: :cascade do |t|
@@ -150,6 +148,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_025804) do
   end
 
   add_foreign_key "players", "player_avatars"
+  add_foreign_key "sceneries", "scenery_backgrounds"
   add_foreign_key "sceneries_spacecrafts", "sceneries"
   add_foreign_key "sceneries_spacecrafts", "spacecrafts"
   add_foreign_key "spacecrafts", "spacecraft_shapes"

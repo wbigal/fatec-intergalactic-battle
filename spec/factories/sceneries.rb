@@ -2,16 +2,13 @@
 #
 # Table name: sceneries
 #
-#  id                 :bigint(8)        not null, primary key
-#  name               :string(50)       not null
-#  rows               :integer          not null
-#  columns            :integer          not null
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                    :bigint(8)        not null, primary key
+#  name                  :string(50)       not null
+#  rows                  :integer          not null
+#  columns               :integer          not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  scenery_background_id :bigint(8)
 #
 
 FactoryBot.define do
@@ -19,9 +16,6 @@ FactoryBot.define do
     name  'Scenery'
     rows 10
     columns 10
-    image_file_name 'just-a-pic.jpg'
-    image_content_type 'image/jpeg'
-    image_file_size 2
-    image_updated_at Time.new(2015, 8, 18).utc
+    background { association(:scenery_background) }
   end
 end

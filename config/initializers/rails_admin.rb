@@ -120,7 +120,14 @@ RailsAdmin.config do |config|
       field :name
       field :rows
       field :columns
-      field :image
+      field :background do
+        pretty_value do
+          bindings[:view].tag(
+            :img,
+            src: bindings[:object].background.image.url(:thumb)
+          )
+        end
+      end
       field :updated_at
     end
 
@@ -132,7 +139,7 @@ RailsAdmin.config do |config|
       field :columns, :enum do
         enum { 10..20 }
       end
-      field :image
+      field :background
       field :spacecrafts do
         help 'Obrigatório. Selecione pelo menos 3 naves de cada time. As naves'\
              ' de cada time devem conter as mesmas formas.'
@@ -143,7 +150,14 @@ RailsAdmin.config do |config|
       field :name
       field :rows
       field :columns
-      field :image
+      field :background do
+        pretty_value do
+          bindings[:view].tag(
+            :img,
+            src: bindings[:object].background.image.url(:thumb)
+          )
+        end
+      end
       field :spacecrafts
       field :created_at
       field :updated_at

@@ -13,6 +13,8 @@
 #
 
 class SceneryBackground < ApplicationRecord
+  has_many :sceneries, dependent: :restrict_with_error
+
   validates :name, presence: true, length: { maximum: 50 }
 
   has_attached_file :image,

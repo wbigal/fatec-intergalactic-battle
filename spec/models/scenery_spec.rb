@@ -2,16 +2,13 @@
 #
 # Table name: sceneries
 #
-#  id                 :bigint(8)        not null, primary key
-#  name               :string(50)       not null
-#  rows               :integer          not null
-#  columns            :integer          not null
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                    :bigint(8)        not null, primary key
+#  name                  :string(50)       not null
+#  rows                  :integer          not null
+#  columns               :integer          not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  scenery_background_id :bigint(8)
 #
 
 require 'rails_helper'
@@ -20,12 +17,15 @@ RSpec.describe Scenery, type: :model do
   include ActionDispatch::TestProcess
 
   it 'has a valid factory' do
-    image = fixture_file_upload('scenaries/images/background.jpg', 'image/jpeg')
-    expect(create(:scenery, image: image)).to be_valid
+    expect(create(:scenery)).to be_valid
   end
 
   describe '#spacecrafts' do
     it { is_expected.to have_and_belong_to_many(:spacecrafts) }
+  end
+
+  describe '#background' do
+    it { is_expected.to belong_to(:background) }
   end
 
   describe '#name' do
@@ -50,18 +50,6 @@ RSpec.describe Scenery, type: :model do
       is_expected.to validate_numericality_of(:columns).
         only_integer.is_greater_than_or_equal_to(10).
         is_less_than_or_equal_to(20)
-    end
-  end
-
-  describe '#image' do
-    it { is_expected.to validate_presence_of(:image) }
-    it { is_expected.to validate_attachment_size(:image).less_than(2.megabyte) }
-
-    it do
-      is_expected.to validate_attachment_content_type(:image).allowing(
-        'image/jpg',
-        'image/jpeg'
-      )
     end
   end
 end
