@@ -24,18 +24,18 @@ class SpacecraftShape < ApplicationRecord
   validates :spacecraft_width, presence: true, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 50,
-    less_than_or_equal_to: 532
+    less_than_or_equal_to: 320
   }
 
   validates :spacecraft_height, presence: true, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 50,
-    less_than_or_equal_to: 402
+    less_than_or_equal_to: 302
   }
 
   has_attached_file :template,
                     styles: {
-                      large: '532x402#'
+                      large: '320x302#'
                     },
                     convert_options: {
                       all: '-strip -quality 80 -interlace Plane'

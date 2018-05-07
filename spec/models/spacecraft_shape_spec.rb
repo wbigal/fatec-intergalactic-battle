@@ -46,7 +46,7 @@ RSpec.describe SpacecraftShape, type: :model do
 
     it do
       is_expected.to validate_numericality_of(:spacecraft_width).
-        only_integer.is_less_than_or_equal_to(532).
+        only_integer.is_less_than_or_equal_to(320).
         is_greater_than_or_equal_to(50)
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe SpacecraftShape, type: :model do
 
     it do
       is_expected.to validate_numericality_of(:spacecraft_height).
-        only_integer.is_less_than_or_equal_to(402).
+        only_integer.is_less_than_or_equal_to(302).
         is_greater_than_or_equal_to(50)
     end
   end

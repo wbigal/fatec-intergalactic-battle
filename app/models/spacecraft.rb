@@ -23,9 +23,6 @@ class Spacecraft < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   has_attached_file :image,
-                    styles: {
-                      large: '532x402#'
-                    },
                     convert_options: {
                       all: '-strip -quality 80 -interlace Plane'
                     }
