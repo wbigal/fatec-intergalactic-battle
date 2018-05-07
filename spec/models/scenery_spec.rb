@@ -34,7 +34,8 @@ RSpec.describe Scenery, type: :model do
 
     it do
       is_expected.to validate_numericality_of(:rows).
-        only_integer.is_greater_than_or_equal_to(10)
+        only_integer.is_greater_than_or_equal_to(10).
+        is_less_than_or_equal_to(20)
     end
   end
 
@@ -43,7 +44,8 @@ RSpec.describe Scenery, type: :model do
 
     it do
       is_expected.to validate_numericality_of(:columns).
-        only_integer.is_greater_than_or_equal_to(10)
+        only_integer.is_greater_than_or_equal_to(10).
+        is_less_than_or_equal_to(20)
     end
   end
 
