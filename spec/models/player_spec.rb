@@ -25,4 +25,13 @@ RSpec.describe Player, type: :model do
   it 'has a valid factory' do
     expect(create(:player)).to be_valid
   end
+
+  describe '#nickname' do
+    it { is_expected.to validate_presence_of(:nickname) }
+    it { is_expected.to validate_length_of(:nickname).is_at_most(20) }
+  end
+
+  describe '#avatar' do
+    it { is_expected.to belong_to(:avatar) }
+  end
 end
