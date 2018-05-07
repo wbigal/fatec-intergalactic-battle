@@ -29,6 +29,10 @@ RSpec.describe Player, type: :model do
   describe '#nickname' do
     it { is_expected.to validate_presence_of(:nickname) }
     it { is_expected.to validate_length_of(:nickname).is_at_most(20) }
+    it do
+      create(:player)
+      is_expected.to validate_uniqueness_of(:nickname).case_insensitive
+    end
   end
 
   describe '#avatar' do

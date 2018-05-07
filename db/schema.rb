@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_030800) do
+ActiveRecord::Schema.define(version: 2018_05_07_204939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_030800) do
     t.datetime "image_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_player_avatars_on_name", unique: true
   end
 
   create_table "players", force: :cascade do |t|
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_030800) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_players_on_email", unique: true
+    t.index ["nickname"], name: "index_players_on_nickname", unique: true
     t.index ["player_avatar_id"], name: "index_players_on_player_avatar_id"
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
   end
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_030800) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "scenery_background_id"
+    t.index ["name"], name: "index_sceneries_on_name", unique: true
     t.index ["scenery_background_id"], name: "index_sceneries_on_scenery_background_id"
   end
 
@@ -106,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_030800) do
     t.integer "spacecraft_height", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_spacecraft_shapes_on_name", unique: true
   end
 
   create_table "spacecrafts", force: :cascade do |t|
@@ -127,6 +131,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_030800) do
     t.string "name", limit: 50, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_teams_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

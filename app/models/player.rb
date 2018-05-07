@@ -25,7 +25,9 @@ class Player < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :nickname, presence: true,
+                       length: { maximum: 20 },
+                       uniqueness: { case_sensitive: false }
 
   belongs_to :avatar, class_name: 'PlayerAvatar',
                       foreign_key: 'player_avatar_id',

@@ -18,7 +18,9 @@ class Scenery < ApplicationRecord
 
   has_and_belongs_to_many :spacecrafts
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true,
+                   length: { maximum: 50 },
+                   uniqueness: { case_sensitive: false }
 
   validates :rows, presence: true, numericality: {
     only_integer: true,

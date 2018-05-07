@@ -18,7 +18,10 @@
 class SpacecraftShape < ApplicationRecord
   has_many :spacecrafts, dependent: :restrict_with_error
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true,
+                   length: { maximum: 50 },
+                   uniqueness: { case_sensitive: false }
+
   validates :targets, presence: true
 
   validates :spacecraft_width, presence: true, numericality: {
