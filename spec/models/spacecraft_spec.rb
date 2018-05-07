@@ -27,16 +27,20 @@ RSpec.describe Spacecraft, type: :model do
     expect(create(:spacecraft, image: image)).to be_valid
   end
 
-  describe '#name' do
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_length_of(:name).is_at_most(50) }
-  end
-
   describe '#team' do
     it { is_expected.to belong_to(:team) }
   end
 
   describe '#shape' do
     it { is_expected.to belong_to(:shape) }
+  end
+
+  describe '#sceneries' do
+    it { is_expected.to have_and_belong_to_many(:sceneries) }
+  end
+
+  describe '#name' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_length_of(:name).is_at_most(50) }
   end
 end

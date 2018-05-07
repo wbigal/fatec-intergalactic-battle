@@ -133,6 +133,9 @@ RailsAdmin.config do |config|
         enum { 10..20 }
       end
       field :image
+      field :spacecrafts do
+        help 'Obrigatório. Selecione pelo menos 3 naves de cada time. As naves de cada time devem conter as mesmas formas.'
+      end
     end
 
     show do
@@ -140,6 +143,7 @@ RailsAdmin.config do |config|
       field :rows
       field :columns
       field :image
+      field :spacecrafts
       field :created_at
       field :updated_at
     end

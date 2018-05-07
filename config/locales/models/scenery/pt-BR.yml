@@ -10,5 +10,6 @@ pt-BR:
         rows: Linhas
         columns: Colunas
         image: Imagem
+        spacecrafts: Naves
         created_at: Criado em
         updated_at: Atualizado em

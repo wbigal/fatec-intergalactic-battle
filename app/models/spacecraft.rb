@@ -20,6 +20,8 @@ class Spacecraft < ApplicationRecord
                      foreign_key: 'spacecraft_shape_id',
                      inverse_of: 'spacecrafts'
 
+  has_and_belongs_to_many :sceneries
+
   validates :name, presence: true, length: { maximum: 50 }
 
   has_attached_file :image,
