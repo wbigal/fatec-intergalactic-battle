@@ -16,19 +16,21 @@
 #
 
 class SpacecraftShape < ApplicationRecord
+  has_many :spacecrafts, dependent: :restrict_with_error
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :targets, presence: true
 
   validates :spacecraft_width, presence: true, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 50,
-    less_than_or_equal_to: 532,
+    less_than_or_equal_to: 532
   }
 
   validates :spacecraft_height, presence: true, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 50,
-    less_than_or_equal_to: 402,
+    less_than_or_equal_to: 402
   }
 
   has_attached_file :template,

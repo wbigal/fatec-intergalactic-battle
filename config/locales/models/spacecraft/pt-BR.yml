@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      spacecraft:
+        one: Nave
+        other: Naves
+    attributes:
+      spacecraft:
+        name: Nome
+        team: Time
+        shape: Forma
+        image: Imagem
+        created_at: Criado em
+        updated_at: Atualizado em

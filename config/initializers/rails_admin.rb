@@ -28,7 +28,7 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new do
-      except ['SpacecraftShape', 'Team']
+      except %w[SpacecraftShape Team]
     end
     # export
     bulk_delete
@@ -37,7 +37,7 @@ RailsAdmin.config do |config|
       except ['SpacecraftShape']
     end
     delete do
-      except ['SpacecraftShape', 'Team']
+      except %w[SpacecraftShape Team]
     end
     show_in_app
 
@@ -46,8 +46,8 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [Player, PlayerAvatar, Scenery, SpacecraftShape,
-                           Team, User]
+  config.included_models = [Player, PlayerAvatar, Scenery, Spacecraft,
+                            SpacecraftShape, Team, User]
 
   config.model 'Player' do
     navigation_label 'Jogadores'
@@ -135,6 +135,34 @@ RailsAdmin.config do |config|
       field :name
       field :rows
       field :columns
+      field :image
+      field :created_at
+      field :updated_at
+    end
+  end
+
+  config.model 'Spacecraft' do
+    navigation_label 'Jogabilidade'
+    list do
+      sort_by :name
+      field :name
+      field :team
+      field :shape
+      field :image
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :team
+      field :shape
+      field :image
+    end
+
+    show do
+      field :name
+      field :team
+      field :shape
       field :image
       field :created_at
       field :updated_at

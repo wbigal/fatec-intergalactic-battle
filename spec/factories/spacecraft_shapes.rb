@@ -20,7 +20,7 @@ FactoryBot.define do
     name 'Fake'
     spacecraft_width 50
     spacecraft_height 50
-    targets [[0,0], [0,1], [0,2]].to_json
+    targets [[0, 0], [0, 1], [0, 2]].to_json
     template_file_name 'just-a-pic.png'
     template_content_type 'image/png'
     template_file_size 2

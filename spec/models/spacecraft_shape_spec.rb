@@ -28,6 +28,10 @@ RSpec.describe SpacecraftShape, type: :model do
     expect(create(:spacecraft_shape, template: template)).to be_valid
   end
 
+  describe '#spacecrafts' do
+    it { is_expected.to have_many(:spacecrafts) }
+  end
+
   describe '#name' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_most(50) }
