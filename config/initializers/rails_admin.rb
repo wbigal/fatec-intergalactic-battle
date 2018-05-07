@@ -46,8 +46,8 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [Player, PlayerAvatar, Scenery, Spacecraft,
-                            SpacecraftShape, Team, User]
+  config.included_models = [Player, PlayerAvatar, Scenery, SceneryBackground,
+                            Spacecraft, SpacecraftShape, Team, User]
 
   config.model 'Player' do
     navigation_label 'Jogadores'
@@ -134,7 +134,8 @@ RailsAdmin.config do |config|
       end
       field :image
       field :spacecrafts do
-        help 'Obrigatório. Selecione pelo menos 3 naves de cada time. As naves de cada time devem conter as mesmas formas.'
+        help 'Obrigatório. Selecione pelo menos 3 naves de cada time. As naves'\
+             ' de cada time devem conter as mesmas formas.'
       end
     end
 
@@ -144,6 +145,28 @@ RailsAdmin.config do |config|
       field :columns
       field :image
       field :spacecrafts
+      field :created_at
+      field :updated_at
+    end
+  end
+
+  config.model 'SceneryBackground' do
+    navigation_label 'Jogabilidade'
+    list do
+      sort_by :name
+      field :name
+      field :image
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :image
+    end
+
+    show do
+      field :name
+      field :image
       field :created_at
       field :updated_at
     end

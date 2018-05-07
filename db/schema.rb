@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_021719) do
+ActiveRecord::Schema.define(version: 2018_05_07_025804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,17 @@ ActiveRecord::Schema.define(version: 2018_05_07_021719) do
     t.index ["scenery_id", "spacecraft_id"], name: "index_sceneries_spacecrafts_on_scenery_id_and_spacecraft_id", unique: true
     t.index ["scenery_id"], name: "index_sceneries_spacecrafts_on_scenery_id"
     t.index ["spacecraft_id"], name: "index_sceneries_spacecrafts_on_spacecraft_id"
+  end
+
+  create_table "scenery_backgrounds", force: :cascade do |t|
+    t.string "name", limit: 50, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_scenery_backgrounds_on_name", unique: true
   end
 
   create_table "spacecraft_shapes", force: :cascade do |t|
