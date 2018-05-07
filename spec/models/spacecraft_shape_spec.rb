@@ -21,7 +21,11 @@ RSpec.describe SpacecraftShape, type: :model do
   include ActionDispatch::TestProcess
 
   it 'has a valid factory' do
-    expect(create(:spacecraft_shape)).to be_valid
+    template = fixture_file_upload(
+      'spacecraft_shapes/templates/shape.png',
+      'image/png'
+    )
+    expect(create(:spacecraft_shape, template: template)).to be_valid
   end
 
   describe '#name' do
