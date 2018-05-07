@@ -43,4 +43,31 @@ RSpec.describe Spacecraft, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_most(50) }
   end
+
+  describe '#full_description' do
+    context 'when shape is blank' do
+      subject { build(:spacecraft, name: 'Spacecraft', shape: nil) }
+      it { expect(subject.full_description).to eq('Spacecraft') }
+    end
+
+    context 'when team is blank' do
+      subject { build(:spacecraft, name: 'Spacecraft', team: nil) }
+      it { expect(subject.full_description).to eq('Spacecraft') }
+    end
+
+    context 'when shape and team is present' do
+      let(:team) { build(:team, name: 'Team') }
+      let(:shape) do
+        build(:spacecraft_shape, spacecraft_width: 10, spacecraft_height: 20)
+      end
+
+      subject do
+        build(:spacecraft, name: 'Spacecraft', team: team, shape: shape)
+      end
+
+      it do
+        expect(subject.full_description).to eq('Team | Spacecraft - 10x20px')
+      end
+    end
+  end
 end

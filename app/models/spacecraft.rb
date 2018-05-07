@@ -32,4 +32,10 @@ class Spacecraft < ApplicationRecord
                        presence: true,
                        content_type: { content_type: %w[image/png] },
                        size: { less_than: 2.megabyte }
+
+  def full_description
+    return name if team.blank? || shape.blank?
+    "#{team.name} | #{name} - "\
+    "#{shape.spacecraft_width}x#{shape.spacecraft_height}px"
+  end
 end

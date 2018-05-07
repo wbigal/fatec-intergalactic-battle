@@ -188,6 +188,7 @@ RailsAdmin.config do |config|
 
   config.model 'Spacecraft' do
     navigation_label 'Jogabilidade'
+    object_label_method :full_description
     list do
       sort_by :name
       field :name
