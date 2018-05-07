@@ -126,8 +126,12 @@ RailsAdmin.config do |config|
 
     edit do
       field :name
-      field :rows
-      field :columns
+      field :rows, :enum do
+        enum { 10..20 }
+      end
+      field :columns, :enum do
+        enum { 10..20 }
+      end
       field :image
     end
 
