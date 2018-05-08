@@ -46,7 +46,8 @@ RSpec.describe SceneryBackground, type: :model do
     it do
       is_expected.to validate_attachment_content_type(:image).allowing(
         'image/jpg',
-        'image/jpeg'
+        'image/jpeg',
+        'image/png'
       )
     end
   end

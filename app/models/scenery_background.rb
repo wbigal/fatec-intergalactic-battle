@@ -33,6 +33,8 @@ class SceneryBackground < ApplicationRecord
                     }
   validates_attachment :image,
                        presence: true,
-                       content_type: { content_type: %w[image/jpeg image/jpg] },
+                       content_type: {
+                         content_type: %w[image/jpeg image/jpg image/png]
+                       },
                        size: { less_than: 2.megabyte }
 end
