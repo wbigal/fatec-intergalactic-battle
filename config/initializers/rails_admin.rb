@@ -140,6 +140,7 @@ RailsAdmin.config do |config|
         enum { 10..20 }
       end
       field :background
+      field :optional_backgrounds
       field :spacecrafts do
         help 'Obrigatório. Selecione pelo menos 3 naves de cada time. As naves'\
              ' de cada time devem conter as mesmas formas.'
@@ -158,6 +159,7 @@ RailsAdmin.config do |config|
           )
         end
       end
+      field :optional_backgrounds
       field :spacecrafts
       field :created_at
       field :updated_at

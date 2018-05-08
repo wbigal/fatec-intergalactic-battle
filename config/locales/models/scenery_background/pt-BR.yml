@@ -8,5 +8,6 @@ pt-BR:
       scenery_background:
         name: Nome
         image: Imagem
+        optional_sceneries: Cenários Opcionais
         created_at: Criado em
         updated_at: Atualizado em

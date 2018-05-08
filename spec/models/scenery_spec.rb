@@ -24,6 +24,10 @@ RSpec.describe Scenery, type: :model do
     it { is_expected.to have_and_belong_to_many(:spacecrafts) }
   end
 
+  describe '#optional_backgrounds' do
+    it { is_expected.to have_and_belong_to_many(:optional_backgrounds) }
+  end
+
   describe '#background' do
     it { is_expected.to belong_to(:background) }
   end

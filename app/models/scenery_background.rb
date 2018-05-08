@@ -15,6 +15,10 @@
 class SceneryBackground < ApplicationRecord
   has_many :sceneries, dependent: :restrict_with_error
 
+  has_and_belongs_to_many :optional_sceneries,
+                          class_name: 'Scenery',
+                          foreign_key: 'scenery_background_id'
+
   validates :name, presence: true,
                    length: { maximum: 50 },
                    uniqueness: { case_sensitive: false }

@@ -26,6 +26,10 @@ RSpec.describe SceneryBackground, type: :model do
     it { is_expected.to have_many(:sceneries) }
   end
 
+  describe '#optional_sceneries' do
+    it { is_expected.to have_and_belong_to_many(:optional_sceneries) }
+  end
+
   describe '#name' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_most(50) }

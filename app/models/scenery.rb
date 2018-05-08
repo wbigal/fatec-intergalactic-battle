@@ -23,6 +23,10 @@ class Scenery < ApplicationRecord
 
   has_and_belongs_to_many :spacecrafts
 
+  has_and_belongs_to_many :optional_backgrounds,
+                          class_name: 'SceneryBackground',
+                          foreign_key: 'scenery_id'
+
   validates :name, presence: true,
                    length: { maximum: 50 },
                    uniqueness: { case_sensitive: false }

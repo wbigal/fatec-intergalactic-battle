@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_204939) do
+ActiveRecord::Schema.define(version: 2018_05_08_034657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(version: 2018_05_07_204939) do
     t.bigint "scenery_background_id"
     t.index ["name"], name: "index_sceneries_on_name", unique: true
     t.index ["scenery_background_id"], name: "index_sceneries_on_scenery_background_id"
+  end
+
+  create_table "sceneries_scenery_backgrounds", id: false, force: :cascade do |t|
+    t.bigint "scenery_id"
+    t.bigint "scenery_background_id"
+    t.index ["scenery_background_id"], name: "index_sceneries_scenery_backgrounds_on_scenery_background_id"
+    t.index ["scenery_id", "scenery_background_id"], name: "ux_sceneries_scenery_backgrounds", unique: true
+    t.index ["scenery_id"], name: "index_sceneries_scenery_backgrounds_on_scenery_id"
   end
 
   create_table "sceneries_spacecrafts", id: false, force: :cascade do |t|
@@ -154,6 +162,8 @@ ActiveRecord::Schema.define(version: 2018_05_07_204939) do
 
   add_foreign_key "players", "player_avatars"
   add_foreign_key "sceneries", "scenery_backgrounds"
+  add_foreign_key "sceneries_scenery_backgrounds", "sceneries"
+  add_foreign_key "sceneries_scenery_backgrounds", "scenery_backgrounds"
   add_foreign_key "sceneries_spacecrafts", "sceneries"
   add_foreign_key "sceneries_spacecrafts", "spacecrafts"
   add_foreign_key "spacecrafts", "spacecraft_shapes"

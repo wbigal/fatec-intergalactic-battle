@@ -11,6 +11,8 @@ pt-BR:
         columns: Colunas
         image: Imagem
         spacecrafts: Naves
+        background: Plano de Fundo
+        optional_backgrounds: Planos de Fundo Opcionais
         created_at: Criado em
         updated_at: Atualizado em
     errors:
