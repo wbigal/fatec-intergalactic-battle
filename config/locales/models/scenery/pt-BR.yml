@@ -1,12 +1,23 @@
 pt-BR:
   activerecord:
     models:
-      scenery_background:
-        one: Plano de Fundo
-        other: Planos de Fundo
+      scenery:
+        one: Cenário
+        other: Cenários
     attributes:
-      scenery_background  :
+      scenery:
         name: Nome
+        rows: Linhas
+        columns: Colunas
         image: Imagem
+        spacecrafts: Naves
         created_at: Criado em
         updated_at: Atualizado em
+    errors:
+      models:
+        scenery:
+          attributes:
+            spacecrafts:
+              invalid_quantity_of_spacecrafts: selecionadas deve ter o total entre 6 e 12.
+              invalid_quantity_of_spacecrafts_per_team: selecionadas para cada time deve ter a mesma quantidade.
+              incompatible_shapes: selecionadas para cada time devem ter formas equivalentes.

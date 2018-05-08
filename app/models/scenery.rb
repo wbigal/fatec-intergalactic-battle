@@ -12,6 +12,11 @@
 #
 
 class Scenery < ApplicationRecord
+  MINIMUM_OF_SPACECRAFTS_PER_TEAM = 3
+  MINIMUM_OF_SPACECRAFTS = MINIMUM_OF_SPACECRAFTS_PER_TEAM * 2
+  MAXIMUM_OF_SPACECRAFTS_PER_TEAM = 6
+  MAXIMUM_OF_SPACECRAFTS = MAXIMUM_OF_SPACECRAFTS_PER_TEAM * 2
+
   belongs_to :background, class_name: 'SceneryBackground',
                           foreign_key: 'scenery_background_id',
                           inverse_of: 'sceneries'
@@ -33,4 +38,17 @@ class Scenery < ApplicationRecord
     greater_than_or_equal_to: 10,
     less_than_or_equal_to: 20
   }
+
+  validate :invalid_quantity_of_spacecrafts
+  validates_with Validators::Sceneries::IncompatibleShapes
+  validates_with Validators::Sceneries::InvalidQuantityOfSpacecraftsPerTeam
+
+  private
+
+  def invalid_quantity_of_spacecrafts
+    if spacecrafts.size < MINIMUM_OF_SPACECRAFTS ||
+       spacecrafts.size > MAXIMUM_OF_SPACECRAFTS
+      errors.add(:spacecrafts, :invalid_quantity_of_spacecrafts)
+    end
+  end
 end

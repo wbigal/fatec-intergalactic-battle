@@ -17,5 +17,13 @@ FactoryBot.define do
     rows 10
     columns 10
     association(:background, factory: :scenery_background)
+
+    trait :with_spacecrafts do
+      spacecrafts do
+        (1..6).map do
+          create(:spacecraft)
+        end
+      end
+    end
   end
 end

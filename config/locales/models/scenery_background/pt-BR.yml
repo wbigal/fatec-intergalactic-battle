@@ -1,15 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      scenery:
-        one: Cenário
-        other: Cenários
+      scenery_background:
+        one: Plano de Fundo
+        other: Planos de Fundo
     attributes:
-      scenery:
+      scenery_background:
         name: Nome
-        rows: Linhas
-        columns: Colunas
         image: Imagem
-        spacecrafts: Naves
         created_at: Criado em
         updated_at: Atualizado em
