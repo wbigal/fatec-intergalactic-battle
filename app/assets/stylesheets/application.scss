@@ -1,1 +1,8 @@
 @import "bootstrap";
+@import "base/colors";
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: $font-color;
+}
