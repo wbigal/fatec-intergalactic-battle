@@ -22,6 +22,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 # Flexible authentication solution for Rails with Warden.
 gem 'devise'
+# Decorators/View-Models for Rails Applications
+gem 'draper'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 # Easy file attachment management for ActiveRecord
