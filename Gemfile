@@ -31,6 +31,8 @@ gem 'paperclip', '~> 6.0.0'
 # RailsAdmin is a Rails engine that provides an easy-to-use interface for
 # managing your data
 gem 'rails_admin', '~> 1.3'
+# Brings back `assigns` and `assert_template` to your Rails tests
+gem 'rails-controller-testing'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
