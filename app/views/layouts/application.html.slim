@@ -1,0 +1,38 @@
+doctype html
+html[lang="pt-br"]
+  head
+    title
+      | FatecIntergalacticBattle
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    header
+      nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+        a.navbar-brand[href="/"]
+          | Batalha Intergalálica
+        button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"]
+          span.navbar-toggler-icon
+        #navbarCollapse.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link[href="#"]
+                | Home 
+                span.sr-only
+                  | (current)
+    main[role="main"]
+      = yield
+      footer.container
+        p.float-right
+          a[href="#"]
+            | Back to top
+        p
+          | © 2018 Company, Inc. · 
+          a[href="#"]
+            | Privacy
+          |  · 
+          a[href="#"]
+            | Terms

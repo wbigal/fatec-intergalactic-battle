@@ -1,0 +1,36 @@
+main.container
+  .main-title.box
+    h1
+      | Jogadores
+  .form-container.box
+    .form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          = f.label :nickname
+          br
+          = f.text_field :nickname, autofocus: true
+        .field
+          = f.label :avatar
+          br
+          = f.collection_select :player_avatar_id, @player_avatares, :id, :name
+        .field
+          = f.label :email
+          br
+          = f.email_field :email, autocomplete: "email"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+          br
+          = f.password_field :password, autocomplete: "off"
+        .field
+          = f.label :password_confirmation
+          br
+          = f.password_field :password_confirmation, autocomplete: "off"
+        .actions
+          = f.submit "Sign up"
+      = render "players/shared/links"

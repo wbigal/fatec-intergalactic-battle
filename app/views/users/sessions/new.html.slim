@@ -1,0 +1,17 @@
+main.container
+  .main-title.box
+    h1
+      | Administração
+  .form-container.box
+    .form-login
+      fieldset
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.label :email
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          .field
+            = f.label :password
+            = f.password_field :password, autocomplete: "off"
+          .send
+            = f.submit "Entrar", class: 'btn'
+= render "users/shared/links"
