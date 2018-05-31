@@ -21,8 +21,8 @@
 
 FactoryBot.define do
   factory :player do
-    nickname 'fake'
-    email 'fake-email@fake-email.com'
+    nickname
+    email
     password '123@mudar'
     avatar { association(:player_avatar) }
   end

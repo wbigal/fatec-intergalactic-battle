@@ -48,4 +48,11 @@ RSpec.describe Match, type: :model do
   describe '#started_at' do
     it { is_expected.to respond_to(:started_at) }
   end
+
+  describe '.awaiting_challenge' do
+    let!(:match_awaiting_challenge) { create(:match) }
+    let!(:match_in_game) { create(:match, :in_game) }
+
+    it { expect(Match.awaiting_challenge).to eq([match_awaiting_challenge]) }
+  end
 end

@@ -35,4 +35,6 @@ class Match < ApplicationRecord
                       optional: true
 
   belongs_to :scenery
+
+  scope :awaiting_challenge, -> { where(challenger_id: nil, started_at: nil) }
 end

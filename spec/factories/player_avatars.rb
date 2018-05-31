@@ -14,7 +14,7 @@
 
 FactoryBot.define do
   factory :player_avatar do
-    name  'Luke Skywalker'
+    name
     image_file_name 'luke-skywalker.jpg'
     image_content_type 'image/jpeg'
     image_file_size 2

@@ -20,5 +20,10 @@ FactoryBot.define do
     player_team { association(:team) }
     challenger_team { association(:team) }
     scenery { association(:scenery, :with_spacecrafts) }
+
+    trait :in_game do
+      challenger { association(:player) }
+      started_at Time.now.utc
+    end
   end
 end
