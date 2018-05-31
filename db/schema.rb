@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_08_034657) do
+ActiveRecord::Schema.define(version: 2018_05_31_180439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 2018_05_08_034657) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.integer "player_team_id", null: false
+    t.integer "challenger_id"
+    t.integer "challenger_team_id", null: false
+    t.bigint "scenery_id", null: false
+    t.integer "winner_id"
+    t.datetime "started_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_matches_on_player_id"
+    t.index ["scenery_id"], name: "index_matches_on_scenery_id"
   end
 
   create_table "player_avatars", force: :cascade do |t|
@@ -160,6 +174,12 @@ ActiveRecord::Schema.define(version: 2018_05_08_034657) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "matches", "players"
+  add_foreign_key "matches", "players", column: "challenger_id"
+  add_foreign_key "matches", "players", column: "winner_id"
+  add_foreign_key "matches", "sceneries"
+  add_foreign_key "matches", "teams", column: "challenger_team_id"
+  add_foreign_key "matches", "teams", column: "player_team_id"
   add_foreign_key "players", "player_avatars"
   add_foreign_key "sceneries", "scenery_backgrounds"
   add_foreign_key "sceneries_scenery_backgrounds", "sceneries"

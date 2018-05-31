@@ -23,4 +23,12 @@ RSpec.describe Team, type: :model do
       is_expected.to validate_uniqueness_of(:name).case_insensitive
     end
   end
+
+  describe '#matches' do
+    it { is_expected.to have_many(:matches) }
+  end
+
+  describe '#challenger_matches' do
+    it { is_expected.to have_many(:challenger_matches) }
+  end
 end

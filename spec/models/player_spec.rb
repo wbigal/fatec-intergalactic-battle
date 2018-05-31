@@ -38,4 +38,16 @@ RSpec.describe Player, type: :model do
   describe '#avatar' do
     it { is_expected.to belong_to(:avatar) }
   end
+
+  describe '#matches' do
+    it { is_expected.to have_many(:matches) }
+  end
+
+  describe '#challenger_matches' do
+    it { is_expected.to have_many(:challenger_matches) }
+  end
+
+  describe '#wins' do
+    it { is_expected.to have_many(:wins) }
+  end
 end

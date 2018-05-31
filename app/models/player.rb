@@ -32,4 +32,19 @@ class Player < ApplicationRecord
   belongs_to :avatar, class_name: 'PlayerAvatar',
                       foreign_key: 'player_avatar_id',
                       inverse_of: 'players'
+
+  has_many :matches, class_name: 'Match',
+                     foreign_key: 'player_id',
+                     inverse_of: 'player',
+                     dependent: :restrict_with_error
+
+  has_many :challenger_matches, class_name: 'Match',
+                                foreign_key: 'challenger_id',
+                                inverse_of: 'challenger',
+                                dependent: :restrict_with_error
+
+  has_many :wins, class_name: 'Match',
+                  foreign_key: 'winner_id',
+                  inverse_of: 'winner',
+                  dependent: :restrict_with_error
 end
