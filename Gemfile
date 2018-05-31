@@ -26,6 +26,10 @@ gem 'devise'
 gem 'draper'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+# Bootstrap 4 Ruby Gem for Rails / Sprockets and Compass.
+gem 'bootstrap', '~> 4.1.1'
+# A gem to automate using jQuery with Rails
+gem 'jquery-rails'
 # Easy file attachment management for ActiveRecord
 gem 'paperclip', '~> 6.0.0'
 # RailsAdmin is a Rails engine that provides an easy-to-use interface for
