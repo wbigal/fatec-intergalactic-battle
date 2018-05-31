@@ -1,13 +1,5 @@
 h1
   | Batalha Intergalálica
-.list
-  - @awaiting_challenge.each do |match|
-    = link_to '#' do
-      .item
-        = image_tag match.player_avatar_url
-        .content
-          |  Jogador: 
-          = match.player_nickname
-          br
-          |  Time: 
-          = match.player_team_name
+
+.container
+  = render 'matches'

@@ -1,0 +1,12 @@
+.row
+  - @awaiting_challenge.each do |match|
+    .col-lg-4
+      = link_to '#' do
+        = image_tag(match.player_avatar_url, class: 'float-left')
+      .content
+        = link_to '#' do
+          |  Jogador:
+          = match.player_nickname
+          br
+          |  Time:
+          = match.player_team_name
