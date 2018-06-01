@@ -27,4 +27,10 @@ RSpec.describe Home::AwaitingChallengeMatchDecorator do
       )
     end
   end
+
+  describe '#scenery_description' do
+    let(:scenery) { match.scenery }
+    let(:expected) { "#{scenery.name} - #{scenery.rows}x#{scenery.columns}" }
+    it { expect(subject.scenery_description).to eq(expected) }
+  end
 end

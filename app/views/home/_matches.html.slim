@@ -1,12 +1,20 @@
 .row
+  h2.col-lg-12
+    | Jogadores aguardando oponentes
   - @awaiting_challenge.each do |match|
     .col-lg-4
-      = link_to '#' do
-        = image_tag(match.player_avatar_url, class: 'float-left')
-      .content
+      .player-avatar.float-left.h-100.d-inline-block
         = link_to '#' do
-          |  Jogador:
-          = match.player_nickname
-          br
-          |  Time:
-          = match.player_team_name
+          = image_tag match.player_avatar_url, class: 'img-fluid'
+      .content
+        dl.row
+          dt.col-lg-4 Jogador
+          dd.col-lg-8
+            = match.player_nickname
+          dt.col-lg-4 Time:
+          dd.col-lg-8
+            = match.player_team_name
+          dt.col-lg-4 Cenário:
+          dd.col-lg-8
+            = match.scenery_description
+        = link_to 'Jogar', '#', class: 'btn btn-primary btn-sm'
