@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   root 'home#index'
+
+  namespace :players do
+    resources :home, path: 'my-page', only: [:index]
+  end
 end

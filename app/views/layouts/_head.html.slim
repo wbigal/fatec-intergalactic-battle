@@ -14,7 +14,7 @@ header
             = image_tag current_player.avatar.image.url(:thumb), class: 'img-fluid mr-3', width: '20px'
             = current_player.nickname
           .dropdown-menu.dropdown-menu-right aria-labelledby="navbarPlayerDropdown"
-            a.dropdown-item href="#"  Minha página
+            = link_to 'Minha página', players_home_index_path, class: 'dropdown-item'
             = link_to 'Editar meus dados', edit_player_registration_path, class: 'dropdown-item'
             .dropdown-divider
             = link_to 'Sair', destroy_player_session_path, class: 'dropdown-item', method: :delete
