@@ -9,9 +9,15 @@ header
         li.nav-item
           = link_to 'Home', root_path, class: 'nav-link'
       - if player_signed_in?
-        .player-menu
-          = image_tag current_player.avatar.image.url(:thumb), class: 'img-fluid mr-3', width: '20px'
-          = current_player.nickname
+        .nav-item.dropdown
+          a#navbarPlayerDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            = image_tag current_player.avatar.image.url(:thumb), class: 'img-fluid mr-3', width: '20px'
+            = current_player.nickname
+          .dropdown-menu.dropdown-menu-right aria-labelledby="navbarPlayerDropdown"
+            a.dropdown-item href="#"  Minha página
+            = link_to 'Editar meus dados', edit_player_registration_path, class: 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Sair', destroy_player_session_path, class: 'dropdown-item', method: :delete
       - else
         = link_to 'Entrar', player_session_path, class: 'btn btn-outline-success'
         | &nbsp;
