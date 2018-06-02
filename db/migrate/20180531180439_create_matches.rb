@@ -8,6 +8,8 @@ class CreateMatches < ActiveRecord::Migration[5.2]
       t.belongs_to :scenery, null: false, foreign_key: true
       t.integer :winner_id, null: true
       t.datetime :started_at, null: true
+      t.datetime :ended_at, null: true
+      t.integer :total_time_in_seconds, null: true
       t.timestamps
       t.foreign_key :players, column: :challenger_id
       t.foreign_key :teams, column: :player_team_id

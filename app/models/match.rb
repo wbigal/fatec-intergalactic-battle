@@ -2,16 +2,18 @@
 #
 # Table name: matches
 #
-#  id                 :bigint(8)        not null, primary key
-#  player_id          :bigint(8)        not null
-#  player_team_id     :integer          not null
-#  challenger_id      :integer
-#  challenger_team_id :integer          not null
-#  scenery_id         :bigint(8)        not null
-#  winner_id          :integer
-#  started_at         :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                    :bigint(8)        not null, primary key
+#  player_id             :bigint(8)        not null
+#  player_team_id        :integer          not null
+#  challenger_id         :integer
+#  challenger_team_id    :integer          not null
+#  scenery_id            :bigint(8)        not null
+#  winner_id             :integer
+#  started_at            :datetime
+#  ended_at              :datetime
+#  total_time_in_seconds :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 
 class Match < ApplicationRecord

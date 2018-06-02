@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2018_05_31_180439) do
     t.bigint "scenery_id", null: false
     t.integer "winner_id"
     t.datetime "started_at"
+    t.datetime "ended_at"
+    t.integer "total_time_in_seconds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_matches_on_player_id"
