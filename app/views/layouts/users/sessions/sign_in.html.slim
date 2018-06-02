@@ -1,0 +1,14 @@
+doctype html
+html[lang="pt-br"]
+  head
+    title
+      | Intergalactic Battle | Fatec | Admin
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+    = stylesheet_link_tag    'users/sessions/sign_in', media: 'all'
+    = javascript_include_tag 'users/sessions/sign_in'
+  body
+    main[role="main"]
+      = yield
