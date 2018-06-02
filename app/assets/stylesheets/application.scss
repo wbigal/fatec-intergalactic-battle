@@ -2,7 +2,9 @@
 @import "base/colors";
 
 body {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
   color: $font-color;
+}
+
+footer {
+  margin-top: 50px;
 }

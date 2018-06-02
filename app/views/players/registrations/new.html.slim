@@ -1,36 +1,32 @@
-main.container
-  .main-title.box
+.container
+  .row
     h1
       | Jogadores
-  .form-container.box
-    .form
+.container
+  .row
+    .form.col-lg-6
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
-        .field
+        .form-group
           = f.label :nickname
-          br
-          = f.text_field :nickname, autofocus: true
-        .field
+          = f.text_field :nickname, autofocus: true, class: 'form-control'
+        .form-group
           = f.label :avatar
-          br
-          = f.collection_select :player_avatar_id, @player_avatares, :id, :name
-        .field
+          = f.collection_select :player_avatar_id, @player_avatares, :id, :name, {}, class: 'form-control'
+        .form-group
           = f.label :email
-          br
-          = f.email_field :email, autocomplete: "email"
-        .field
+          = f.email_field :email, autocomplete: 'email', class: 'form-control'
+        .form-group
           = f.label :password
           - if @minimum_password_length
             em
               | (
               = @minimum_password_length
               |  characters minimum)
-          br
-          = f.password_field :password, autocomplete: "off"
-        .field
+          = f.password_field :password, autocomplete: 'off', class: 'form-control'
+        .form-group
           = f.label :password_confirmation
-          br
-          = f.password_field :password_confirmation, autocomplete: "off"
-        .actions
-          = f.submit "Sign up"
-      = render "players/shared/links"
+          = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+        = f.submit 'Sign up', class: 'btn btn-primary'
+
+      = render 'players/shared/links'

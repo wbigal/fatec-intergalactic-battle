@@ -1,42 +1,49 @@
-h2
-  | Edit 
-  = resource_name.to_s.humanize
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
-    i
-      | (leave blank if you don't want to change it)
-    br
-    = f.password_field :password, autocomplete: "off"
-    - if @minimum_password_length
-      br
-      em
-        = @minimum_password_length
-        |  characters minimum
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    i
-      | (we need your current password to confirm your changes)
-    br
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+.container
+  .row
+    h1
+      | Edit
+      | &nbsp;
+      = resource_name.to_s.humanize
+.container
+  .row
+    .form.col-lg-6
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :nickname
+          = f.text_field :nickname, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label :avatar
+          = f.collection_select :player_avatar_id, @player_avatares, :id, :name, {}, class: 'form-control'
+        .form-group
+          = f.label :email
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for:
+            = resource.unconfirmed_email
+        .form-group
+          = f.label :password
+          = f.password_field :password, autocomplete: "off", class: 'form-control'
+          small.form-text.text-muted
+            | Leave blank if you don't want to change it
+          - if @minimum_password_length
+            small.form-text.text-muted
+              = @minimum_password_length
+              |  characters minimum
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+        .form-group
+          = f.label :current_password
+          = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+          small.form-text.text-muted
+            | We need your current password to confirm your changes
+        = f.submit "Update", class: 'btn btn-primary'
+      hr
+      h2
+        | Cancel my account
+      p
+        | Unhappy?
+        = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'
+      = link_to "Back", :back
