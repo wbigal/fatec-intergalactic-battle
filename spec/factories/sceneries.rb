@@ -20,8 +20,12 @@ FactoryBot.define do
 
     trait :with_spacecrafts do
       spacecrafts do
-        (1..6).map do
-          create(:spacecraft)
+        team_one = create(:team)
+        team_two = create(:team)
+        shape = create(:spacecraft_shape)
+        (1..12).map do |i|
+          create(:spacecraft, shape: shape,
+                              team: i.even? ? team_one : team_two)
         end
       end
     end
