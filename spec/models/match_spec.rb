@@ -129,6 +129,29 @@ RSpec.describe Match, type: :model do
     end
   end
 
+  describe '#challenger_and_player_are_same_person' do
+    let(:player_one) { create(:player) }
+    let(:player_two) { create(:player) }
+
+    context 'when the player and challenger are diffenrents' do
+      let(:match) do
+        build(:match, :in_game, player: player_one,
+                                challenger: player_two)
+      end
+
+      it { expect(match.save).to be_truthy }
+    end
+
+    context 'when the player and challenger are same person' do
+      let(:match) do
+        build(:match, :in_game, player: player_one,
+                                challenger: player_one)
+      end
+
+      it { expect(match.save).to be_falsy }
+    end
+  end
+
   describe '.awaiting_challenge' do
     let!(:match_awaiting_challenge) { create(:match) }
     let!(:match_in_game) { create(:match, :in_game) }

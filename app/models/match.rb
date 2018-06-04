@@ -39,6 +39,7 @@ class Match < ApplicationRecord
   belongs_to :scenery
 
   validate :invalid_winner
+  validate :challenger_and_player_are_same_person
 
   scope :awaiting_challenge, -> { where(challenger_id: nil, started_at: nil) }
 
@@ -56,5 +57,10 @@ class Match < ApplicationRecord
     return if winner.blank?
     errors.add(:winner_id, :invalid_winner) \
     if player != winner && challenger != winner
+  end
+
+  def challenger_and_player_are_same_person
+    errors.add(:winner_id, :challenger_and_player_are_same_person) \
+    if player == challenger
   end
 end
