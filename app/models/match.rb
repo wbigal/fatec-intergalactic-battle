@@ -38,5 +38,23 @@ class Match < ApplicationRecord
 
   belongs_to :scenery
 
+  validate :invalid_winner
+
   scope :awaiting_challenge, -> { where(challenger_id: nil, started_at: nil) }
+
+  def awaiting_challenge?
+    challenger_id.blank? && started_at.blank?
+  end
+
+  def occurring?
+    !awaiting_challenge? && ended_at.blank?
+  end
+
+  private
+
+  def invalid_winner
+    return if winner.blank?
+    errors.add(:winner_id, :invalid_winner) \
+    if player != winner && challenger != winner
+  end
 end

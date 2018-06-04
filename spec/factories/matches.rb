@@ -27,5 +27,15 @@ FactoryBot.define do
       challenger { association(:player) }
       started_at Time.now.utc
     end
+
+    trait :awaiting_challenge do
+    end
+
+    trait :over do
+      challenger { association(:player) }
+      started_at Time.now.utc
+      ended_at Time.now.utc
+      winner { Player.first }
+    end
   end
 end
