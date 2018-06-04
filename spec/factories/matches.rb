@@ -35,7 +35,7 @@ FactoryBot.define do
       challenger { association(:player) }
       started_at Time.now.utc
       ended_at Time.now.utc
-      winner { Player.first }
+      winner { player }
     end
   end
 end
