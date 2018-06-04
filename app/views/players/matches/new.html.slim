@@ -1,0 +1,15 @@
+.container
+  .row
+    h1.col-lg-12
+      | Novo Jogo
+.container
+  .row
+    .form.col-lg-6
+      = form_for(@match, url: players_matches_path) do |f|
+        .form-group
+          = f.label :scenery
+          = f.collection_select :scenery_id, @sceneries, :id, :name, { include_blank: true }, class: 'form-control'
+        .form-group
+          = f.label :player_team
+          = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control'
+        = f.submit 'Criar Jogo', class: 'btn btn-primary'

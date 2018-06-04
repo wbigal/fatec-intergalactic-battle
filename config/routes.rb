@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   namespace :players do
     resources :home, path: 'my-page', only: [:index]
+    resources :matches, only: %i[new create] do
+      get :awaiting_challenge
+    end
   end
 end
