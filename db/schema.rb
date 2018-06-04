@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_180439) do
+ActiveRecord::Schema.define(version: 2018_06_04_224912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 2018_05_31_180439) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "game_boards", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "match_id", null: false
+    t.bigint "scenery_background_id", null: false
+    t.boolean "ready_to_play", default: false, null: false
+    t.integer "rows", null: false
+    t.integer "columns", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_game_boards_on_match_id"
+    t.index ["player_id", "match_id"], name: "index_game_boards_on_player_id_and_match_id", unique: true
+    t.index ["player_id"], name: "index_game_boards_on_player_id"
+    t.index ["scenery_background_id"], name: "index_game_boards_on_scenery_background_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -176,6 +191,9 @@ ActiveRecord::Schema.define(version: 2018_05_31_180439) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "game_boards", "matches"
+  add_foreign_key "game_boards", "players"
+  add_foreign_key "game_boards", "scenery_backgrounds"
   add_foreign_key "matches", "players"
   add_foreign_key "matches", "players", column: "challenger_id"
   add_foreign_key "matches", "players", column: "winner_id"
