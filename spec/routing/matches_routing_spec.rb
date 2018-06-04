@@ -17,4 +17,13 @@ RSpec.describe MatchesController, type: :routing do
       )
     end
   end
+
+  describe '#join' do
+    it do
+      expect(post: 'matches/1910/join').to route_to(
+        'matches#join',
+        match_id: '1910'
+      )
+    end
+  end
 end

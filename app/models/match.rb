@@ -51,6 +51,16 @@ class Match < ApplicationRecord
     !awaiting_challenge? && ended_at.blank?
   end
 
+  def join_challenger!(challenger)
+    if self.challenger.present?
+      errors.add(:challenger, :challenger_already_defined)
+      raise ActiveRecord::RecordInvalid, self
+    end
+
+    self.challenger = challenger
+    save!
+  end
+
   private
 
   def invalid_winner

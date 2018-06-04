@@ -93,6 +93,29 @@ RSpec.describe Match, type: :model do
     end
   end
 
+  describe '#join_challenger!' do
+    context 'when the player is awaiting for challenger' do
+      let(:match) { create(:match, :awaiting_challenge) }
+      it { expect(match.join_challenger!(current_player)).to be_truthy }
+    end
+
+    context 'when the match is in game' do
+      let(:challenger) { create(:player) }
+      let(:match) { create(:match, :in_game, challenger: challenger) }
+
+      it do
+        expect do
+          match.join_challenger!(current_player)
+        end.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+
+    context 'when the match is over' do
+      let(:match) { create(:match, :over) }
+      it { expect(match.occurring?).to be_falsy }
+    end
+  end
+
   describe '#invalid_winner' do
     let(:player_one) { create(:player) }
     let(:player_two) { create(:player) }

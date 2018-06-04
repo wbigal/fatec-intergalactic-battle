@@ -79,4 +79,43 @@ RSpec.describe MatchesController, :player_authenticated,
       it { expect(response).to redirect_to(new_match_path) }
     end
   end
+
+  describe 'POST join' do
+    context 'when match is awaiting for challenger' do
+      let(:match) { create(:match, :awaiting_challenge) }
+
+      it do
+        expect do
+          process :join, method: :post, params: { match_id: match.id }
+          match.reload
+        end.to change(match, :challenger).from(nil).to(current_player)
+      end
+
+      it do
+        process :join, method: :post, params: { match_id: match.id }
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'when match is in game' do
+      let(:match) { create(:match, :in_game) }
+
+      it do
+        expect do
+          process :join, method: :post, params: { match_id: match.id }
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context 'when the player and challenger are same person' do
+      let(:player) { current_player }
+      let(:match) { create(:match, :awaiting_challenge, player: player) }
+
+      it do
+        expect do
+          process :join, method: :post, params: { match_id: match.id }
+        end.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+  end
 end

@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   resources :matches, only: %i[new create] do
     get :awaiting_challenge
+    post :join
   end
 end

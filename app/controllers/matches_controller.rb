@@ -26,6 +26,12 @@ class MatchesController < ApplicationController
     redirect_to action: :new if @match.blank?
   end
 
+  def join
+    @match = Match.awaiting_challenge.find(params[:match_id])
+    @match.join_challenger!(current_player)
+    redirect_to :root
+  end
+
   private
 
   def match_params
