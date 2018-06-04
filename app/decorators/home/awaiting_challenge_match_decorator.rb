@@ -13,5 +13,9 @@ module Home
     def scenery_description
       "#{scenery.name} - #{scenery.rows}x#{scenery.columns}"
     end
+
+    def join_url
+      Rails.application.routes.url_helpers.match_join_path(object)
+    end
   end
 end

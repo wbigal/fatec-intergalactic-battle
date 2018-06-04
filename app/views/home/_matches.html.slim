@@ -17,4 +17,4 @@
           dt.col-lg-4 Cenário:
           dd.col-lg-8
             = match.scenery_description
-        = link_to 'Jogar', '#', class: 'btn btn-primary btn-sm'
+        = link_to 'Jogar', match.join_url, class: 'btn btn-primary btn-sm', method: :post

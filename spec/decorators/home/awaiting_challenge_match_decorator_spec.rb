@@ -28,6 +28,10 @@ RSpec.describe Home::AwaitingChallengeMatchDecorator do
     end
   end
 
+  describe '#join_url' do
+    it { expect(subject.join_url).to eq("/matches/#{match.id}/join") }
+  end
+
   describe '#scenery_description' do
     let(:scenery) { match.scenery }
     let(:expected) { "#{scenery.name} - #{scenery.rows}x#{scenery.columns}" }

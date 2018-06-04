@@ -12,6 +12,7 @@ class HomeController < ApplicationController
                                   includes(
                                     { player: :avatar }, :player_team, :scenery
                                   ).
+                                  where.not(player_id: current_player&.id).
                                   order(:created_at)
                           )
   end
