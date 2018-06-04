@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Players::MatchesController, :player_authenticated,
+RSpec.describe MatchesController, :player_authenticated,
                type: :controller do
-  it { is_expected.to be_kind_of(Players::BaseController) }
-
   let!(:teams) { Team.all }
   let!(:sceneries) { [create(:scenery, :with_spacecrafts)] }
 
@@ -36,7 +34,7 @@ RSpec.describe Players::MatchesController, :player_authenticated,
       it do
         process :create, method: :post, params: { match: match_params }
         expect(response).to redirect_to(
-          players_match_awaiting_challenge_path(Match.last)
+          match_awaiting_challenge_path(Match.last)
         )
       end
     end
@@ -78,7 +76,7 @@ RSpec.describe Players::MatchesController, :player_authenticated,
                                      params: { match_id: match.id }
       end
 
-      it { expect(response).to redirect_to(new_players_match_path) }
+      it { expect(response).to redirect_to(new_match_path) }
     end
   end
 end

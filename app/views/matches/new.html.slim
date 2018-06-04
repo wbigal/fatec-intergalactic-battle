@@ -5,7 +5,7 @@
 .container
   .row
     .form.col-lg-6
-      = form_for(@match, url: players_matches_path) do |f|
+      = form_for(@match, url: matches_path) do |f|
         .form-group
           = f.label :scenery
           = f.collection_select :scenery_id, @sceneries, :id, :name, { include_blank: true }, class: 'form-control'

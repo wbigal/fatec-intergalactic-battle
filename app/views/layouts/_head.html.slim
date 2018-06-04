@@ -17,7 +17,7 @@ header
             = link_to 'Minha página', players_home_index_path, class: 'dropdown-item'
             = link_to 'Editar meus dados', edit_player_registration_path, class: 'dropdown-item'
             .dropdown-divider
-            = link_to 'Novo Jogo', new_players_match_path, class: 'dropdown-item'
+            = link_to 'Novo Jogo', new_match_path, class: 'dropdown-item'
             .dropdown-divider
             = link_to 'Sair', destroy_player_session_path, class: 'dropdown-item', method: :delete
       - else
