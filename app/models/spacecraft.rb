@@ -22,6 +22,9 @@ class Spacecraft < ApplicationRecord
 
   has_and_belongs_to_many :sceneries
 
+  has_many :spacecraft_positions, class_name: 'GameBoards::SpacecraftPosition',
+                                  dependent: :restrict_with_error
+
   validates :name, presence: true,
                    length: { maximum: 50 },
                    uniqueness: { case_sensitive: false }

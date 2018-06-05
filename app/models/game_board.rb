@@ -18,6 +18,9 @@ class GameBoard < ApplicationRecord
   belongs_to :match
   belongs_to :scenery_background
 
+  has_many :spacecraft_positions, class_name: 'GameBoards::SpacecraftPosition',
+                                  dependent: :restrict_with_error
+
   before_validation :configure_rows_and_columns, on: :create
   before_validation :configure_scenery_background, on: :create
 

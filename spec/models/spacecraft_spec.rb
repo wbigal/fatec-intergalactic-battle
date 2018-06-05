@@ -39,6 +39,10 @@ RSpec.describe Spacecraft, type: :model do
     it { is_expected.to have_and_belong_to_many(:sceneries) }
   end
 
+  describe '#spacecraft_positions' do
+    it { is_expected.to have_many(:spacecraft_positions) }
+  end
+
   describe '#name' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_most(50) }

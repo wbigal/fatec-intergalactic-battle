@@ -28,6 +28,10 @@ RSpec.describe GameBoard, type: :model do
     it { is_expected.to belong_to(:match) }
   end
 
+  describe '#spacecraft_positions' do
+    it { is_expected.to have_many(:spacecraft_positions) }
+  end
+
   describe '#scenery_background' do
     it { is_expected.to belong_to(:scenery_background) }
   end
