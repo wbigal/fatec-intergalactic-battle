@@ -1,8 +1,17 @@
 @import "bootstrap";
 @import "base/colors";
 
+@font-face {
+  font-family: 'starjedi';
+  src: asset_url('Starjedi.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   color: $font-color;
+  font-family: 'starjedi';
+  letter-spacing: 1px;
 }
 
 footer {
