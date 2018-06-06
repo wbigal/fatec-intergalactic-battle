@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_05_010548) do
+ActiveRecord::Schema.define(version: 2018_06_06_034808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2018_06_05_010548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_board_id", "row", "column"], name: "ix_gb_spacecraft_positions_on_game_board_and_row_and_column", unique: true
-    t.index ["game_board_id", "spacecraft_id"], name: "ix_gb_spacecraft_positions_on_game_board_and_spacecraft", unique: true
     t.index ["game_board_id"], name: "index_game_boards_spacecraft_positions_on_game_board_id"
     t.index ["spacecraft_id"], name: "index_game_boards_spacecraft_positions_on_spacecraft_id"
   end
