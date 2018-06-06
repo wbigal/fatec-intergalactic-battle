@@ -22,29 +22,21 @@ module GameBoards
 
     validate :row_out_of_range
     validate :column_out_of_range
-
-    validates :row, presence: true, numericality: {
-      only_integer: true,
-      greater_than_or_equal_to: 10,
-      less_than_or_equal_to: 20
-    }
-
-    validates :column, presence: true, numericality: {
-      only_integer: true,
-      greater_than_or_equal_to: 10,
-      less_than_or_equal_to: 20
-    }
+    validates :row, presence: true, numericality: { only_integer: true }
+    validates :column, presence: true, numericality: { only_integer: true }
 
     private
 
     def row_out_of_range
       return if scenery.blank?
-      errors.add(:challenger, :row_out_of_range) if row > scenery.rows
+      errors.add(:row, :row_out_of_range) \
+      if row.negative? || row >= scenery.rows
     end
 
     def column_out_of_range
       return if scenery.blank?
-      errors.add(:challenger, :column_out_of_range) if column > scenery.columns
+      errors.add(:column, :column_out_of_range) \
+      if column.negative? || column >= scenery.columns
     end
   end
 end

@@ -17,7 +17,7 @@ FactoryBot.define do
           class: 'GameBoards::SpacecraftPosition' do
     game_board
     spacecraft
-    row 10
-    column 10
+    row 0
+    column 0
   end
 end

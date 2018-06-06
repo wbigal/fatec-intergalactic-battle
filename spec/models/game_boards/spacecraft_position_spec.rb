@@ -37,21 +37,11 @@ RSpec.describe GameBoards::SpacecraftPosition, type: :model do
 
   describe '#row' do
     it { is_expected.to validate_presence_of(:row) }
-
-    it do
-      is_expected.to validate_numericality_of(:row).
-        only_integer.is_greater_than_or_equal_to(10).
-        is_less_than_or_equal_to(20)
-    end
+    it { is_expected.to validate_numericality_of(:row).only_integer }
   end
 
   describe '#column' do
     it { is_expected.to validate_presence_of(:column) }
-
-    it do
-      is_expected.to validate_numericality_of(:column).
-        only_integer.is_greater_than_or_equal_to(10).
-        is_less_than_or_equal_to(20)
-    end
+    it { is_expected.to validate_numericality_of(:column).only_integer }
   end
 end
