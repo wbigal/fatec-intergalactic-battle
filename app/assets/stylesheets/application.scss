@@ -9,10 +9,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'STJEDISE';
+  src: asset_url('STJEDISE.TTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   color: $font-color;
-  font-family: 'starjedi';
+  font-family: 'STJEDISE';
   letter-spacing: 1px;
+}
+
+input[type="text"], input[type="email"]{
+	font-family: initial;
 }
 
 body{
@@ -36,4 +47,12 @@ footer {
 
 form{
 	margin: 0 auto;
+}
+
+.img-spacecraft{
+  width: 100%;
+}
+
+.img-scenery-background{
+	height: 100%;
 }

@@ -1,15 +1,29 @@
 .container
-  .row
-    h1.col-lg-12
-      | Novo Jogo
+	.row
+		h1.col-lg-12
+			| Novo Jogo
 .container
-  .row
-    .form.col-lg-6
-      = form_for(@match, url: matches_path) do |f|
-        .form-group
-          = f.label :scenery
-          = f.collection_select :scenery_id, @sceneries, :id, :name, { include_blank: true }, class: 'form-control'
-        .form-group
-          = f.label :player_team
-          = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control'
-        = f.submit 'Criar Jogo', class: 'btn btn-primary'
+	.row
+		.form.col-lg-6
+			= form_for(@match, url: matches_path) do |f|
+				.form-group
+					- @sceneries.each do |scenery|
+						.container
+							.row.align-items-center
+								.col-1
+									= f.radio_button :scenery_id, scenery.id
+								.col-4
+									= image_tag SceneryBackground.find(scenery.scenery_background_id).image.url(:thumb), class: 'img-scenery-background'
+								.col-7
+									.row	
+										= scenery.name
+										= scenery.rows
+										= scenery.columns
+									.row
+										- scenery.spacecrafts.each do |spacecraft|
+											.col-2
+												= image_tag spacecraft.image.url(:original), class: 'img-spacecraft'
+				.form-group
+					= f.label :player_team
+					= f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control'
+				= f.submit 'Criar Jogo', class: 'btn btn-primary'
