@@ -1,9 +1,8 @@
 .container
-  .row
-    h1.col-lg-12
+	.row.align-center.justify-content-center.text-center
+    h1.col-lg-12.high-text.text-center
       | Entrar
-.container
-  .row
+.container.d-flex.justify-content-center
     .form.col-lg-6
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-group

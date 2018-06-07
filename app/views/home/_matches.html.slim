@@ -1,5 +1,6 @@
 .row
   h2.col-lg-12
+  - unless @awaiting_challeng.nil?
     | Jogadores aguardando oponentes
   - @awaiting_challenge.each do |match|
     .col-lg-4
