@@ -1,58 +1,7 @@
 @import "bootstrap";
-@import "base/colors";
-@import "base/common";
+@import "home/index";
+@import "players/registrations/*";
+@import "base/*";
 
-@font-face {
-  font-family: 'starjedi';
-  src: asset_url('Starjedi.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: 'STJEDISE';
-  src: asset_url('STJEDISE.TTF') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
 
-body {
-  color: $font-color;
-  font-family: 'STJEDISE';
-  letter-spacing: 1px;
-}
-
-input[type="text"], input[type="email"]{
-	font-family: initial;
-}
-
-body{
-	height: 100vh;
-  background-image: asset_url('background-default.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
-}
-
-footer {
-  margin-top: 50px;
-  position: absolute;
-  bottom: 0;
-}
-
-#navbarPlayerDropdown {
-  color: $menu-item-font-color;
-}
-
-form{
-	margin: 0 auto;
-}
-
-.img-spacecraft{
-  width: 100%;
-}
-
-.img-scenery-background{
-	height: 100%;
-}

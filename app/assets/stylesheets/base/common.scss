@@ -1,0 +1,67 @@
+@import "colors";
+
+.high-text, %high-text{
+  color: black;
+  text-shadow: 1px 0 yellow, -1px 0 yellow, 0 1px yellow, 0 1px yellow;
+}
+
+.capsule{
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+@font-face {
+  font-family: 'starjedi';
+  src: asset_url('Starjedi.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'STJEDISE';
+  src: asset_url('STJEDISE.TTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  color: $font-color;
+  font-family: 'STJEDISE';
+  letter-spacing: 2px;
+}
+
+input[type="text"], input[type="email"], select{
+  font-family: initial;
+  color: initial;
+  text-shadow: initial;
+}
+
+body{
+  height: 100vh;
+  background-image: asset_url('background-default.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+footer {
+  margin-top: 50px;
+  position: absolute;
+  bottom: 0;
+}
+
+#navbarPlayerDropdown {
+  color: $menu-item-font-color;
+}
+
+form{
+  margin: 0 auto;
+}
+
+.scenery-info{
+  color: yellow;
+  font-size: 1.3rem;
+}

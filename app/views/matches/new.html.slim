@@ -1,29 +1,48 @@
 .container
 	.row
-		h1.col-lg-12
-			| Novo Jogo
+		h1.col-lg-12.high-text.text-center.mb-5
+			| novo Jogo
 .container
 	.row
-		.form.col-lg-6
+		.form.col-lg-10.align-center
+			button.btn.btn-primary data-target="#exampleModalCenter" data-toggle="modal" type="button" 
+			  | Launch demo modal
 			= form_for(@match, url: matches_path) do |f|
+				= f.submit 'Criar Jogo', class: 'btn btn-primary'
+			
+					/ = f.label :player_team
+					/ = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control col-1'
 				.form-group
 					- @sceneries.each do |scenery|
-						.container
-							.row.align-items-center
-								.col-1
-									= f.radio_button :scenery_id, scenery.id
-								.col-4
-									= image_tag SceneryBackground.find(scenery.scenery_background_id).image.url(:thumb), class: 'img-scenery-background'
-								.col-7
-									.row	
-										= scenery.name
-										= scenery.rows
-										= scenery.columns
-									.row
-										- scenery.spacecrafts.each do |spacecraft|
-											.col-2
-												= image_tag spacecraft.image.url(:original), class: 'img-spacecraft'
+						.container.capsule.row.align-items-center
+							.col-1
+								= f.radio_button :scenery_id, scenery.id
+							.col-3
+								= image_tag SceneryBackground.find(scenery.scenery_background_id).image.url(:thumb), class: 'img-fluid'
+							.col-8
+								.row
+									.col-12.scenery-info	
+										= "#{scenery.name} - #{scenery.rows} x #{scenery.columns}" 
+								hr
+								.row
+									- scenery.spacecrafts.each do |spacecraft|
+										.col-2
+											= image_tag spacecraft.image.url(:original), class: 'img-fluid'
+#exampleModalCenter.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-dialog-centered role="document" 
+    .modal-content
+      .modal-header
+        h5#exampleModalLongTitle.modal-title Modal title
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+      .modal-body
+        | \...
+      .modal-footer
+        button.btn.btn-secondary data-dismiss="modal" type="button"  Close
+        button.btn.btn-primary type="button"  Save changes
 				.form-group
-					= f.label :player_team
-					= f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control'
-				= f.submit 'Criar Jogo', class: 'btn btn-primary'
+.container
+  	Launch demo modal
+
+
+      
