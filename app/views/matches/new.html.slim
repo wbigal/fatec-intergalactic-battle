@@ -1,7 +1,9 @@
 .container
 	.row
-		h1.col-lg-12.high-text.text-center.mb-5
+		h1.col-lg-12.high-text.text-center
 			| novo Jogo
+		h2.col-lg-12.high-text.text-center.mb-5
+			| escolha um cenário
 .container
 	.row
 		.form.align-center
@@ -9,12 +11,11 @@
 				.form-group
 					- @sceneries.each do |scenery|
 						.row
-							.capsule.d-flex.align-items-center.col-lg-8.offset-lg-2
-								.col-1
-									= f.radio_button :scenery_id, scenery.id
+							.capsule.d-flex.align-items-center.col-lg-8.offset-lg-2.js-clickeble
+								= f.hidden_field :scenery_id, :value => scenery.id
 								.col-3
 									= image_tag SceneryBackground.find(scenery.scenery_background_id).image.url(:thumb), class: 'img-fluid'
-								.col-8
+								.col-9
 									.row
 										.col-12.scenery-info	
 											= "#{scenery.name} - #{scenery.rows} x #{scenery.columns}" 
@@ -24,7 +25,7 @@
 											.col-2
 												= image_tag spacecraft.image.url(:original), class: 'img-fluid'			
 
-				#exampleModalCenter.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+				#selectTeam.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
 				  .modal-dialog.modal-dialog-centered role="document" 
 				    .modal-content
 				      .modal-header
@@ -39,11 +40,6 @@
 				      / .modal-footer
 				      /   button.btn.btn-secondary data-dismiss="modal" type="button"  Close
 				      /   button.btn.btn-primary type="button"  Save changes
-.container
-	.row
-		.col-lg-8.offset-lg-2.d-flex.justify-content-end
-			button.btn.btn-primary data-target="#exampleModalCenter" data-toggle="modal" type="button" 
-			  | Criar Jogo
 
 
 

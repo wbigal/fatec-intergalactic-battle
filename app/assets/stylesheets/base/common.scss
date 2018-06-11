@@ -2,7 +2,7 @@
 
 .high-text, %high-text{
   color: black;
-  text-shadow: 1px 0 yellow, -1px 0 yellow, 0 1px yellow, 0 1px yellow;
+  text-shadow: 1px 0 yellow, -1px 0 yellow, 0 1px yellow, 0 -1px yellow;
 }
 
 .capsule{
@@ -43,6 +43,13 @@ body{
   background: #6d6f64;
 }
 
+.js-clickeble{
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: 2px 0 blue, -2px 0 blue, 0 2px 20px blue, 0 -2px blue;
+  }
+}
 
 #navbarPlayerDropdown {
   color: $menu-item-font-color;
