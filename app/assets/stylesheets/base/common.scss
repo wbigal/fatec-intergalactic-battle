@@ -40,18 +40,9 @@ input[type="text"], input[type="email"], select{
 
 body{
   height: 100vh;
-  background-image: asset_url('background-default.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
+  background: #6d6f64;
 }
 
-footer {
-  margin-top: 50px;
-  position: absolute;
-  bottom: 0;
-}
 
 #navbarPlayerDropdown {
   color: $menu-item-font-color;
