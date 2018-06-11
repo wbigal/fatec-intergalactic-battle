@@ -2,18 +2,21 @@
 	.row.align-center.justify-content-center.text-center
     h1.col-lg-12.high-text.text-center
       | Entrar
-.container.d-flex.justify-content-center
-    .form.col-lg-6
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .form-group
-          = f.label :email
-          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
-        .form-group
-          = f.label :password
-          = f.password_field :password, autocomplete: 'off', class: 'form-control'
-        - if devise_mapping.rememberable?
-          .form-check
-            = f.check_box :remember_me, class: 'form-check-input'
-            = f.label :remember_me
-        = f.submit 'Entrar', class: 'btn btn-primary'
-      = render 'players/shared/links'
+.container
+  .row
+    .d-flex.justify-content-center.capsule.col-lg-6.offset-lg-3
+      .form.col-lg-10
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+          .form-group
+            = f.label :password
+            = f.password_field :password, autocomplete: 'off', class: 'form-control'
+          - if devise_mapping.rememberable?
+            .form-group.form-check
+              = f.check_box :remember_me, class: 'form-check-input'
+              = f.label :remember_me      
+          .form-group.d-flex.justify-content-between
+            = f.submit 'Entrar', class: 'btn btn-primary'
+            = render 'players/shared/links'
