@@ -3,32 +3,30 @@
     h1.col-lg-12.high-text.col-md-auto
       | Cadastrar-se
 .container
-  .row.justify-content-md-center
-    .form.col-lg-6
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .form-group
-          = f.label :nickname
-          = f.text_field :nickname, autofocus: true, class: 'form-control high-text'
-        .form-group
-          = f.label :avatar
-          = f.collection_select :player_avatar_id, @player_avatares, :id, :name, {}, class: 'form-control'
-        .form-group
-          = f.label :email
-          = f.email_field :email, autocomplete: 'email', class: 'form-control'
-        .form-group
-          = f.label :password
-          - if @minimum_password_length
-            em
-              | (
-              = @minimum_password_length
-              |  characters minimum)
-          = f.password_field :password, autocomplete: 'off', class: 'form-control'
-        .form-group
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
-        = f.submit 'Criar Conta', class: 'btn btn-primary'
+  .row
+    .d-flex.justify-content-center.capsule.col-lg-6.offset-lg-3
+      .form.col-lg-10
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :nickname
+            = f.text_field :nickname, autofocus: true, class: 'form-control high-text'
+          .form-group
+            = f.label :avatar
+            = f.collection_select :player_avatar_id, @player_avatares, :id, :name, {}, class: 'form-control'
+          .form-group
+            = f.label :email
+            = f.email_field :email, autocomplete: 'email', class: 'form-control'
+          .form-group
+            = f.label :password
+            - if @minimum_password_length
+              em
+                | (
+                = @minimum_password_length
+                |  characters minimum)
+            = f.password_field :password, autocomplete: 'off', class: 'form-control'
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+          = f.submit 'Criar Conta', class: 'btn btn-primary'
 
-
-
-      

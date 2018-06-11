@@ -1,45 +1,29 @@
-.row
-  h2.col-lg-12
-  - unless @awaiting_challeng.nil?
-    | Jogadores aguardando oponentes
+.container-fluid
+  .container
+    .row
+      h2.col-lg-12
+      - unless @awaiting_challeng.nil?
+        | Jogadores aguardando oponentes
   - if player_signed_in?
-    .container.awaiting-challeng.w-50
+    .container
       - @awaiting_challenge.each do |match|
-          .col-lg-12.content.d-flex.capsule
-            .player-avatar
+        .row
+          .content.d-flex.capsule.col-lg-8.offset-lg-2
+            .player-avatar.col-lg-2
               = link_to '#' do
                 = image_tag match.player_avatar_url, class: 'img-fluid'
-            .container
-              .info-player
-                .d-flex
-                  dt.col-lg-4 Jogador
-                  dd.col-lg-8'
-                    = match.player_nickname
-                .d-flex
-                  dt.col-lg-4 Time:
-                  dd.col-lg-8'
-                    = match.player_team_name
-                .d-flex
-                  dt.col-lg-4 Cenário:
-                  dd.col-lg-8'
-                    = match.scenery_description
-              / = link_to 'Jogar', match.join_url, class: 'btn btn-primary btn-sm', method: :post
-  - else
-    - @awaiting_challenge.take(2).each do |match|
-      .col-lg-4
-        .player-avatar.float-left.h-100.d-inline-block
-          = link_to '#' do
-            = image_tag match.player_avatar_url, class: 'img-fluid'
-        .content
-          dl.row
-            dt.col-lg-4 Jogador
-            dd.col-lg-8
-              = match.player_nickname
-            dt.col-lg-4 Time:
-            dd.col-lg-8
-              = match.player_team_name
-            dt.col-lg-4 Cenário:
-            dd.col-lg-8
-              = match.scenery_description
-          = link_to 'Jogar', match.join_url, class: 'btn btn-primary btn-sm', method: :post
-   
+            .info-player.col-lg-8
+              .d-flex
+                dt.col-lg-4 Jogador
+                dd.col-lg-8'
+                  = match.player_nickname
+              .d-flex
+                dt.col-lg-4 Time:
+                dd.col-lg-8'
+                  = match.player_team_name
+              .d-flex
+                dt.col-lg-4 Cenário:
+                dd.col-lg-8'
+                  = match.scenery_description
+            .col-lg-2
+              = link_to 'Jogar', match.join_url, class: 'btn btn-primary btn-sm', method: :post
