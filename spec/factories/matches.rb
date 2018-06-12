@@ -28,6 +28,10 @@ FactoryBot.define do
       started_at Time.now.utc
     end
 
+    trait :setting_game_board do
+      challenger { association(:player) }
+    end
+
     trait :awaiting_challenge do
     end
 
