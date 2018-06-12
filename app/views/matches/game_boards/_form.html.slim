@@ -1,0 +1,7 @@
+- if @scenery_backgrounds.present?
+  hr
+  = form_for(@game_board, url: match_game_board_path(id: params[:id], match_id: params[:match_id]), remote: true) do |f|
+    .form-group
+      = f.label :scenery_background
+      = f.collection_select :scenery_background_id, @scenery_backgrounds, :id, :name, { include_blank: 'Background padrão do cenário' }, class: 'form-control'
+    = f.submit 'Atualizar', class: 'btn btn-primary'

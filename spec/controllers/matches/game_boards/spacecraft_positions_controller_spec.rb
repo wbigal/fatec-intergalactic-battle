@@ -21,6 +21,7 @@ RSpec.describe Matches::GameBoards::SpacecraftPositionsController,
 
       it { expect(response).to render_template('new') }
       it { expect(assigns(:spacecrafts)).to match_array(spacecrafts) }
+      it { expect(assigns(:match)).to eq(match) }
       it { expect(assigns(:game_board)).to eq(game_board) }
 
       it do
@@ -56,6 +57,7 @@ RSpec.describe Matches::GameBoards::SpacecraftPositionsController,
 
       it { expect(response).to render_template('new') }
       it { expect(assigns(:spacecrafts)).to match_array(spacecrafts) }
+      it { expect(assigns(:match)).to eq(match) }
       it { expect(assigns(:game_board)).to eq(game_board) }
 
       it do
