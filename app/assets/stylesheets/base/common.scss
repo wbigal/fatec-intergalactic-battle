@@ -5,7 +5,7 @@
   text-shadow: 1px 0 yellow, -1px 0 yellow, 0 1px yellow, 0 -1px yellow;
 }
 
-.capsule{
+.capsule, %capsule{
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
@@ -41,6 +41,9 @@ input[type="text"], input[type="email"], select{
 body{
   height: 100vh;
   background: #6d6f64;
+  background-image: asset_url('background-default.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .js-clickeble{
@@ -62,4 +65,20 @@ form{
 .scenery-info{
   color: yellow;
   font-size: 1.3rem;
+}
+
+.capsule-scroll{
+	@extend %capsule;
+	overflow: auto;
+	height: 60vh;
+	width: 80%;
+}
+
+.players-awaiting-home{
+	margin-top: 10%;
+
+	hr {
+		opacity: 0.3;
+		background-color: yellow;
+	}
 }
