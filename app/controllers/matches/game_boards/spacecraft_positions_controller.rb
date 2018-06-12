@@ -1,9 +1,7 @@
 module Matches
   module GameBoards
-    class SpacecraftPositionsController < ApplicationController
+    class SpacecraftPositionsController < BaseController
       before_action -> { redirect_to(:root) unless request.xhr? }
-      before_action :authenticate_player!
-      before_action :load_game_board
 
       def new
         @spacecraft_form = Matches::GameBoards::SpacecraftForm.new
@@ -37,6 +35,10 @@ module Matches
         load_form_data
       end
 
+      def game_board_id
+        params[:game_board_id]
+      end
+
       def spacecraft_params
         params.require(:matches_game_boards_spacecraft_form).permit(
           :spacecraft_id, :row, :column
@@ -46,13 +48,6 @@ module Matches
       def spacecraft_positions
         ::GameBoards::SpacecraftPosition.includes(:spacecraft).where(
           game_board_id: params[:game_board_id]
-        )
-      end
-
-      def load_game_board
-        @game_board = GameBoard.includes(:match).find_by!(
-          id: params[:game_board_id],
-          player: current_player
         )
       end
 
