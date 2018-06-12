@@ -9,11 +9,11 @@
   = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
     .form-group
       = f.label :spacecrafts
-      = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, class: 'form-control'
+      = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, {}, class: 'form-control'
     .form-group
       = f.label :row
-      = f.text_field :row
+      = f.text_field :row, class: 'form-control'
     .form-group
       = f.label :column
-      = f.text_field :column
+      = f.text_field :column, class: 'form-control'
     = f.submit 'Adicionar Nave', class: 'btn btn-primary'
