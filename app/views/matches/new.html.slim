@@ -1,17 +1,15 @@
 .container
 	.row
 		h1.col-lg-12.high-text.text-center
-			| novo Jogo
-		h2.col-lg-12.high-text.text-center
 			| escolha um cenário
-.container
+.container.capsule-scroll
 	.row
 		.form.align-center
 			= form_for(@match, url: matches_path) do |f|
 				.form-group
 					- @sceneries.each do |scenery|
 						.row
-							.capsule.d-flex.align-items-center.col-lg-8.offset-lg-2.js-clickeble
+							.capsule.d-flex.align-items-center.col-lg-10.offset-lg-1.js-clickeble.scenery
 								= f.hidden_field :scenery_id, :value => scenery.id
 								.col-3
 									= image_tag SceneryBackground.find(scenery.scenery_background_id).image.url(:thumb), class: 'img-fluid'
@@ -29,12 +27,12 @@
 				  .modal-dialog.modal-dialog-centered role="document" 
 				    .modal-content
 				      .modal-header
-				        h5#exampleModalLongTitle.modal-title Escolha um Time
+				        h5#exampleModalLongTitle.modal-title 
+				        	label Escolha um Time
 				        button.close aria-label="Close" data-dismiss="modal" type="button" 
 				          span aria-hidden="true"  &times;
 				      .modal-body
 				      	.form-group
-									= f.label :player_team
 									= f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control mb-3'
 									= f.submit 'Criar Jogo', class: 'btn btn-primary'			
 				      / .modal-footer
