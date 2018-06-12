@@ -18,5 +18,6 @@ module FatecIntergalacticBattle
     config.i18n.available_locales = ['pt-BR', :en]
 
     config.autoload_paths << Rails.root.join('app', 'services', '**', '*.rb')
+    config.autoload_paths << Rails.root.join('app', 'forms', '**', '*.rb')
   end
 end

@@ -1,0 +1,13 @@
+.container
+  .row
+    h1.col-lg-12
+      | Configuração do Tabuleiro
+.container
+  .row
+    .form.col-lg-6
+      #game-board-positions
+      #game-board-form
+        = render 'form'
+
+= content_for(:js) do
+  = javascript_include_tag 'matches/game_boards'

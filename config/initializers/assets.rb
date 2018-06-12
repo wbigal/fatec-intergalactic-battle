@@ -13,4 +13,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w[
   users/sessions/sign_in.coffee users/sessions/sign_in.scss
+  matches/game_boards.coffee
 ]
