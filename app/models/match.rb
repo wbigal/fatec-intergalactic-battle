@@ -38,6 +38,8 @@ class Match < ApplicationRecord
 
   belongs_to :scenery
 
+  has_many :game_boards, dependent: :restrict_with_error
+
   validate :invalid_winner
   validate :challenger_and_player_are_same_person
 

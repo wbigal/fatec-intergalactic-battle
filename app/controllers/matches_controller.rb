@@ -28,7 +28,7 @@ class MatchesController < ApplicationController
 
   def join
     @match = Match.awaiting_challenge.find(params[:match_id])
-    @match.join_challenger!(current_player)
+    Matches::Join.call(match: @match, challenger: current_player)
     redirect_to :root
   end
 

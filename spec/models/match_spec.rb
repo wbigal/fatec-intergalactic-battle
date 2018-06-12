@@ -43,6 +43,10 @@ RSpec.describe Match, type: :model do
     it { is_expected.to belong_to(:scenery) }
   end
 
+  describe '#game_boards' do
+    it { is_expected.to have_many(:game_boards) }
+  end
+
   describe '#winner' do
     it { is_expected.to belong_to(:winner) }
   end
