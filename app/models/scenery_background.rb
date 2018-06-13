@@ -38,4 +38,3 @@ class SceneryBackground < ApplicationRecord
                        },
                        size: { less_than: 2.megabyte }
 end
-

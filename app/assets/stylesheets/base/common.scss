@@ -59,6 +59,11 @@ h1, h2{
   }
 }
 
+.info-player{
+  dt{ color: white; }
+  dd { color: yellow; letter-spacing: 2px; }
+}
+
 #navbarPlayerDropdown {
   color: $menu-item-font-color;
 }
