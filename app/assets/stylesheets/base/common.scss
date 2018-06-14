@@ -40,15 +40,15 @@ input[type="text"], input[type="email"], select{
 }
 
 body{
-	height: 100vh;
-	background: no-repeat center center fixed;
+  height: 100vh;
+  background: no-repeat center center fixed;
   background-image: asset_url('bg-area.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 h1, h2{
-	margin: 1.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .js-clickeble{
@@ -73,8 +73,8 @@ form{
 }
 
 label, em, .data{
-	color: yellow;
-	text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 1px black;
+  color: yellow;
+  text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 1px black;
 }
 
 .scenery-info{
@@ -83,13 +83,13 @@ label, em, .data{
 }
 
 .capsule-scroll{
-	@extend %capsule;
-	overflow: auto;
-	height: 70vh;
-	width: 100%;
-	overflow-x: hidden;
-	background-color: rgba(0, 0, 0, 0.2);
-	box-shadow: none;
+  @extend %capsule;
+  overflow: auto;
+  height: 70vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 body::-webkit-scrollbar {
@@ -108,36 +108,36 @@ body::-webkit-scrollbar-thumb {
 //background-color: rgba(52, 58, 64, 0.2);
 
 header .navbar{
-	background-color: rgba(52, 58, 64, 0.4) !important;
+  background-color: rgba(52, 58, 64, 0.4) !important;
 }
 
 .players-awaiting-home{
-	margin-top: 15%;
+  margin-top: 15%;
 
-	.capsule{
-		width: 50%;
-	}
+  .capsule{
+    width: 50%;
+  }
 
-	hr {
-		opacity: 0.3;
-		background-color: yellow;
-	}
+  hr {
+    opacity: 0.3;
+    background-color: yellow;
+  }
 }
 
 .scenery hr{
-	background: yellow;
-	opacity: 0.2;
+  background: yellow;
+  opacity: 0.2;
 }
 
 .player-statistic{
-	margin: 0 auto;
+  margin: 0 auto;
 
-	label { color: white; font-size: 0.8rem; margin-right: 15px;}
-	.field { display: flex; align-items: baseline; }
+  label { color: white; font-size: 0.8rem; margin-right: 15px;}
+  .field { display: flex; align-items: baseline; }
 }
 
 .modal-content{
-	background: no-repeat center center fixed;
+  background: no-repeat center center fixed;
   background-image: asset_url('bg-storm.jpg');
   background-repeat: no-repeat;
   box-shadow: 1px 0 white, -1px 0 white, 0 1px 25px white, 0 -1px white;
@@ -145,18 +145,18 @@ header .navbar{
 }
 
 .modal-backdrop{
-	opacity: 0.8;
+  opacity: 0.8;
 }
 
-.home-container {	flex-wrap: nowrap; }
+.home-container { flex-wrap: nowrap; }
 
 @media (max-width: 992px){
-	.players-awaiting-home .capsule{ width: 100%; }
-	h1 { font-size: 2rem; }
-	.home-container {	flex-wrap: wrap-reverse; }
+  .players-awaiting-home .capsule{ width: 100%; }
+  h1 { font-size: 2rem; }
+  .home-container { flex-wrap: wrap-reverse; }
 }
 
 @media (max-width: 576px){
-	.navbar-brand{ font-size: 0.8rem; }
-	.capsule { width: 90%; margin: 0 auto; }
+  .navbar-brand{ font-size: 0.8rem; }
+  .capsule { width: 90%; margin: 0 auto; }
 }

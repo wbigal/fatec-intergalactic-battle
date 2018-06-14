@@ -1,9 +1,4 @@
 .container-fluid
-  .container
-    / .row
-    /   h2.col-lg-12
-    /   - unless @awaiting_challeng.nil?
-    /     | Jogadores aguardando oponentes
   - if player_signed_in?
     .container
       - @awaiting_challenge.each do |match|

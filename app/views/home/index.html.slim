@@ -1,40 +1,40 @@
 .d-flex.home-container
-	- if player_signed_in?
-		.col-lg-8
-			.container-fluid
-			  .row
-			    h1.col-lg-12.text-center.high-text
-			    	p jogadores
-			.container-fluid
-				= render 'matches'
-		.col-lg-4
-			.container-fluid
-				.row
-					h1.col-lg-12.text-center.high-text
-						p informações 
-			.container-fluid
-		 		.row
-		 			.capsule.w-100.player-statistic
-		 				.field
-		 					label	Apelido: 
-		 					.data  Chico
-						.field
-		 					label	Vitórias: 
-		 					.data  5
-						.field
-		 					label	Derrotas: 
-		 					.data  3
-						.field
-		 					label	Partida mais longa: 
-		 					.data  25:20 min
-						.field
-		 					label	Partida mais rapida: 
-		 					.data  05:27 min
-	- else
-		.col-lg-12
-			.container-fluid
-			  .row
-			    h1.col-lg-12.text-center.high-text
-			    	p batalha intergaláctica  
-			.container-fluid
-				= render 'matches'
+  - if player_signed_in?
+    .col-lg-8
+      .container-fluid
+        .row
+          h1.col-lg-12.text-center.high-text
+            p jogadores
+      .container-fluid
+        = render 'matches'
+    .col-lg-4
+      .container-fluid
+        .row
+          h1.col-lg-12.text-center.high-text
+            p informações 
+      .container-fluid
+        .row
+          .capsule.w-100.player-statistic
+            .field
+              label Apelido: 
+              .data  Chico
+            .field
+              label Vitórias: 
+              .data  5
+            .field
+              label Derrotas: 
+              .data  3
+            .field
+              label Partida mais longa: 
+              .data  25:20 min
+            .field
+              label Partida mais rapida: 
+              .data  05:27 min
+  - else
+    .col-lg-12
+      .container-fluid
+        .row
+          h1.col-lg-12.text-center.high-text
+            p batalha intergaláctica  
+      .container-fluid
+        = render 'matches'
