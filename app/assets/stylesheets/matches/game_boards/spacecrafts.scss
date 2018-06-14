@@ -1,3 +1,16 @@
 // Place all the styles related to the matches/game_boards/spacecrafts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table{
+  //background-image: url('/system/spacecrafts/images/2/original.png?1528253807');
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  position: relative;
+
+  td {
+    border: 1px solid black; 
+    height: 50px;
+    width: 50px;
+  }
+}

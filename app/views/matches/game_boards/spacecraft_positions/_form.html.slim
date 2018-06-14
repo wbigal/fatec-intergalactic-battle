@@ -5,6 +5,7 @@
     = image_tag positions.first.spacecraft.image.url
     hr
 
+
 - if @spacecrafts.present?
   = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
     .form-group
@@ -17,3 +18,5 @@
       = f.label :column
       = f.text_field :column, class: 'form-control'
     = f.submit 'Adicionar Nave', class: 'btn btn-primary'
+
+    

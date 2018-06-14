@@ -2,3 +2,4 @@
 //= require popper
 //= require bootstrap
 //= require rails-ujs
+//= require matches/game_boards/spacecrafts

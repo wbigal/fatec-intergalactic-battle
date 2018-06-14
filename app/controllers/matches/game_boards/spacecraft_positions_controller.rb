@@ -6,14 +6,14 @@ module Matches
       def new
         @spacecraft_form = Matches::GameBoards::SpacecraftForm.new
         load_form_data
-        render :new, layout: false
+        render :new
       end
 
       def create
         @spacecraft_form = Matches::GameBoards::SpacecraftForm.new(
           spacecraft_params
         )
-
+      
         if @spacecraft_form.valid?
           create_spacecraft_positions
           render :create, status: :created
@@ -64,6 +64,20 @@ module Matches
 
       def load_spacecraft_positions
         @spacecraft_positions = spacecraft_positions.group_by(&:spacecraft_id)
+
+        space = []
+        geralPos = []
+        images = []
+
+        @spacecraft_positions.each_pair do |spacecraft_id, positions|
+          space.push(spacecraft_id)
+          geralPos.push(positions.pluck(:row, :column).first)
+          images.push(positions.first.spacecraft.image.url)
+        end
+
+        gon.spacecraft = space
+        gon.positions = geralPos
+        gon.url = images
       end
     end
   end
