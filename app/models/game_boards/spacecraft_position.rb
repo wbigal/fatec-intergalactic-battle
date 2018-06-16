@@ -19,6 +19,10 @@ module GameBoards
     belongs_to :game_board
     belongs_to :spacecraft
 
+    has_one :dropped_bomb, foreign_key: 'game_boards_spacecraft_position_id',
+                           inverse_of: 'spacecraft_position',
+                           dependent: :restrict_with_error
+
     delegate :match, to: :game_board, allow_nil: true
     delegate :scenery, to: :match, allow_nil: true
   end

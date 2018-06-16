@@ -29,6 +29,10 @@ RSpec.describe GameBoards::SpacecraftPosition, type: :model do
     it { is_expected.to belong_to(:spacecraft) }
   end
 
+  describe '#dropped_bomb' do
+    it { is_expected.to have_one(:dropped_bomb) }
+  end
+
   describe '#match' do
     it { is_expected.to respond_to(:match) }
   end
