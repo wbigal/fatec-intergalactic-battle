@@ -1,22 +1,28 @@
-- @spacecraft_positions.each_pair do |spacecraft_id, positions|
-  div
-    = "Spacecraft #{spacecraft_id}, positions #{positions.pluck(:row, :column)}"
-    br
-    = image_tag positions.first.spacecraft.image.url
-    hr
+/ - @spacecraft_positions.each_pair do |spacecraft_id, positions|
+/   div
+/     = "Spacecraft #{spacecraft_id}, positions #{positions.pluck(:row, :column)}"
+/     br
+/     = image_tag positions.first.spacecraft.image.url
+/     hr
 
 
 - if @spacecrafts.present?
-  = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
-    .form-group
-      = f.label :spacecrafts
-      = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, {}, class: 'form-control'
-    .form-group
-      = f.label :row
-      = f.text_field :row, class: 'form-control'
-    .form-group
-      = f.label :column
-      = f.text_field :column, class: 'form-control'
-    = f.submit 'Adicionar Nave', class: 'btn btn-primary'
+  - @spacecrafts.each do |spacecraft|
+    .col-6
+      = radio_button spacecraft, :spacecraft_id, spacecraft.id 
+      = spacecraft.name
+      = image_tag spacecraft.image.url, class: 'img-fluid'
+/   = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
+/     .form-group
+/       / = f.collection_radio_buttons :spacecraft_id, @spacecrafts, :id, :name
+/       / = f.label :spacecrafts
+/       / = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, {}, class: 'form-control'
+/     .form-group
+/       = f.label :row
+/       = f.text_field :row, class: 'form-control'
+/     .form-group
+/       = f.label :column
+/       = f.text_field :column, class: 'form-control'
+/     = f.submit 'Adicionar Nave', id: 'btn-set-space', class: 'btn btn-primary'
 
-    
+/ /     

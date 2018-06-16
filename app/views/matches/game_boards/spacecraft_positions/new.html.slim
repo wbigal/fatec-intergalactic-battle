@@ -1,8 +1,11 @@
-#spacecraft-position-form
-  = render 'form'
+.d-flex
+  .col-6
+    #spacecraft-position-form
+      = render 'form'
 
-table
-  - for i in 1..10
-    tr
-      - for j in 1..10
-        td id="#{i}-#{j}"
+  .col-6
+    table
+      - for i in 1..10
+        tr
+          - for j in 1..10
+            td id="#{i}-#{j}"

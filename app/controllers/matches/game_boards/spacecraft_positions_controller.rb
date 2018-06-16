@@ -1,7 +1,7 @@
 module Matches
   module GameBoards
     class SpacecraftPositionsController < BaseController
-      before_action -> { redirect_to(:root) unless request.xhr? }
+      #before_action -> { redirect_to(:root) unless request.xhr? }
 
       def new
         @spacecraft_form = Matches::GameBoards::SpacecraftForm.new
@@ -17,6 +17,7 @@ module Matches
         if @spacecraft_form.valid?
           create_spacecraft_positions
           render :create, status: :created
+          #render json: { success: true }
         else
           load_form_data
           render :create, status: :unprocessable_entity
@@ -78,6 +79,13 @@ module Matches
         gon.spacecraft = space
         gon.positions = geralPos
         gon.url = images
+
+        puts '-------------'
+        puts space
+
+        @spacecraft = space
+        @positions = geralPos
+        @url = images
       end
     end
   end

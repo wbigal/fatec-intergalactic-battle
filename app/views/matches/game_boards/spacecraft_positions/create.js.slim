@@ -1,2 +1,50 @@
 | $("#spacecraft-position-form").html("#{escape_javascript(render(partial: 'form'))}");
 
+  var sizeCell = 50;
+
+  var background = '';
+  var position = '';
+
+  var spacecraft = (#{@spacecraft});
+  var positions = (#{@positions});
+  var urls = "#{@url}";
+
+
+  function formatUrl(url){
+    return url.replace(']', '').replace('[','').replace('&quot;','').replace('&quot;','').replace(' ','')
+  }
+
+  var insertBackground = function(url_image){
+    if (background != '') 
+      background += ','
+
+    return background += 'url(' + url_image + ')'
+  }
+
+  var insertPosition = function(row, column){
+    let positionY = sizeCell * (row - 1)
+    let positionX = sizeCell * (column - 1)
+    
+    if (position != '')
+      position += ','
+
+    return position += positionX + 'px ' + positionY + 'px' 
+  }
+
+  var setPosition = function(url_image, row, column){
+    table = $('table')
+    table.css('background-image', insertBackground(url_image))
+    table.css('background-position', insertPosition(row, column))
+  }
+
+  var limit = spacecraft.length
+
+  for (var i = 0; i < limit; i++ ){
+    var spaceId = spacecraft[i]
+    var pos = positions[i]
+
+    var url = formatUrl(urls.split(',')[i])
+
+    setPosition(url, pos[0], pos[1])
+  }
+
