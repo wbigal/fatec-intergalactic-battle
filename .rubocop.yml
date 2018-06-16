@@ -5,6 +5,7 @@ AllCops:
     - db/seeds/*
     - db/seeds/development/*
     - bin/*
+    - vendor/**/*
 Rails:
   Enabled: true
 
