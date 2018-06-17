@@ -1,9 +1,23 @@
 module Matches
   class GameBoardsController < GameBoards::BaseController
     before_action -> { redirect_to(:root) unless request.xhr? }, only: [:update]
-    before_action :load_scenery_backgrounds
+    before_action :load_game_board, except: %i[show]
+    before_action :load_scenery_backgrounds, except: %i[show]
 
-    def edit; end
+    def show
+      game_board = @match.game_boards.find_by!(id: game_board_id,
+                                               player: current_player)
+
+      @game_board = Matches::GameBoardDecorator.decorate(game_board)
+
+      @dropped_bombs_on_me = Matches::DroppedBombDecorator.decorate_collection(
+        game_board.dropped_bombs
+      )
+    end
+
+    def edit
+      redirect_to root_path unless @match.setting_game_board?
+    end
 
     def update
       if @game_board.update(scenery_background_params)
@@ -12,6 +26,11 @@ module Matches
         render :update, locals: { success: false },
                         status: :unprocessable_entity
       end
+    end
+
+    def ready
+      ::GameBoards::ReadyToPlay.call(@game_board)
+      redirect_to match_game_board_path(id: @game_board)
     end
 
     private

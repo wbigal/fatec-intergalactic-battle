@@ -23,13 +23,18 @@ class MatchesController < ApplicationController
       player: current_player
     )
 
-    redirect_to action: :new if @match.blank?
+    if @match.blank?
+      redirect_to action: :new
+    elsif !@match.awaiting_challenge?
+      redirect_to game_board_setup_url(current_player)
+    end
   end
 
   def join
     @match = Match.awaiting_challenge.find(params[:match_id])
     Matches::Join.call(match: @match, challenger: current_player)
-    redirect_to :root
+    notify_player_after_join
+    redirect_to game_board_setup_url(current_player)
   end
 
   private
@@ -61,5 +66,19 @@ class MatchesController < ApplicationController
   def selected_challenger_team
     return nil if match_params[:player_team_id].blank?
     Team.where.not(id: match_params[:player_team_id]).first
+  end
+
+  def game_board_setup_url(player)
+    edit_match_game_board_path(id: @match.game_boards.find_by(player: player))
+  end
+
+  def notify_player_after_join
+    ActionCable.server.broadcast(
+      "matches_awaiting_challenge_match_#{params[:match_id]}",
+      json: Hash[
+        message: 'Parece que o desafio foi aceito',
+        redirect_to: game_board_setup_url(@match.player)
+      ]
+    )
   end
 end

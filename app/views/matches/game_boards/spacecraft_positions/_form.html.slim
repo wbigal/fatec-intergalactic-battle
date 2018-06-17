@@ -7,21 +7,6 @@
   - @spacecrafts.each do |spacecraft|
     .col-12.spacecraft-for-position
       = image_tag spacecraft.image.url, id: spacecraft.id, class: 'img-fluid'
-    /   = radio_button spacecraft, :spacecraft_id, spacecraft.id 
-    /   = spacecraft.name
-    /   = spacecraft.id
+- else
+  = link_to 'Jogar!', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch
 
-/   = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
-/     .form-group
-/       / = f.collection_radio_buttons :spacecraft_id, @spacecrafts, :id, :name
-/       / = f.label :spacecrafts
-/       / = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, {}, class: 'form-control'
-/     .form-group
-/       = f.label :row
-/       = f.text_field :row, class: 'form-control'
-/     .form-group
-/       = f.label :column
-/       = f.text_field :column, class: 'form-control'
-/     = f.submit 'Adicionar Nave', id: 'btn-set-space', class: 'btn btn-primary'
-
-/ /     

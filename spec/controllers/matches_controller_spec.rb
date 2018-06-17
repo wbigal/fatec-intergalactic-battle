@@ -93,7 +93,11 @@ RSpec.describe MatchesController, :player_authenticated,
 
       it do
         process :join, method: :post, params: { match_id: match.id }
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(
+          edit_match_game_board_path(
+            id: match.game_boards.find_by(player: current_player)
+          )
+        )
       end
     end
 

@@ -4,7 +4,7 @@
       | Configuração do Tabuleiro
 .container
   .row
-    .form.col-lg-6
+    #game-board.form.col-lg-6*{data: {'match-id': params[:match_id], 'game-board-id': params[:id]}}
       #game-board-positions
       #game-board-form
         = render 'form'

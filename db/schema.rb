@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_034808) do
+ActiveRecord::Schema.define(version: 2018_06_17_024343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(version: 2018_06_06_034808) do
     t.index ["scenery_background_id"], name: "index_game_boards_on_scenery_background_id"
   end
 
+  create_table "game_boards_dropped_bombs", force: :cascade do |t|
+    t.bigint "game_board_id", null: false
+    t.bigint "game_boards_spacecraft_position_id"
+    t.integer "row", null: false
+    t.integer "column", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_board_id", "game_boards_spacecraft_position_id"], name: "uix_gb_dropped_bombs_on_gb_spacecraft_position_id", unique: true
+    t.index ["game_board_id", "row", "column"], name: "ix_gb_dropped_bombs_on_game_board_and_row_and_column", unique: true
+    t.index ["game_board_id"], name: "index_game_boards_dropped_bombs_on_game_board_id"
+    t.index ["game_boards_spacecraft_position_id"], name: "ix_gb_dropped_bombs_on_gb_spacecraft_position_id"
+  end
+
   create_table "game_boards_spacecraft_positions", force: :cascade do |t|
     t.bigint "game_board_id", null: false
     t.bigint "spacecraft_id", null: false
@@ -76,6 +89,7 @@ ActiveRecord::Schema.define(version: 2018_06_06_034808) do
     t.integer "total_time_in_seconds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", limit: 50, default: "awaiting_challenge", null: false
     t.index ["player_id"], name: "index_matches_on_player_id"
     t.index ["scenery_id"], name: "index_matches_on_scenery_id"
   end
@@ -207,6 +221,8 @@ ActiveRecord::Schema.define(version: 2018_06_06_034808) do
   add_foreign_key "game_boards", "matches"
   add_foreign_key "game_boards", "players"
   add_foreign_key "game_boards", "scenery_backgrounds"
+  add_foreign_key "game_boards_dropped_bombs", "game_boards"
+  add_foreign_key "game_boards_dropped_bombs", "game_boards_spacecraft_positions"
   add_foreign_key "game_boards_spacecraft_positions", "game_boards"
   add_foreign_key "game_boards_spacecraft_positions", "spacecrafts"
   add_foreign_key "matches", "players"

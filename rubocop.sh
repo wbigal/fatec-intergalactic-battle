@@ -2,7 +2,7 @@
 set -e
 
 ALLOWED_WARNINGS=0
-warnings=`bundle exec rubocop --format simple |grep "offense[s]\? detected" |cut -d " " -f4`
+warnings=`bundle exec rubocop --config .rubocop.yml --format simple |grep "offense[s]\? detected" |cut -d " " -f4`
 
 if [ $warnings == "no" ]
 then

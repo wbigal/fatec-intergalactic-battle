@@ -1,0 +1,18 @@
+h2.col-lg-12
+  | Suas jogadas
+- @dropped_bombs_by_me.each do |dropped_bomb|
+  div.col-lg-12
+    = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
+    hr
+
+strong
+  = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
+
+= form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
+  .form-group
+    = f.label :row
+    = f.text_field :row, class: 'form-control'
+  .form-group
+    = f.label :column
+    = f.text_field :column, class: 'form-control'
+  = f.submit 'Lançar Bomba', class: 'btn btn-primary'
