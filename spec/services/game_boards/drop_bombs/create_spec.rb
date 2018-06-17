@@ -25,6 +25,10 @@ RSpec.describe GameBoards::DropBombs::Create, type: :service do
                                                column: column)
     end
 
+    before do
+      create(:game_boards_dropped_bomb, game_board: game_board)
+    end
+
     context 'when the bomb is dropped on target' do
       it do
         expect do
@@ -34,7 +38,7 @@ RSpec.describe GameBoards::DropBombs::Create, type: :service do
             row: row,
             column: column
           )
-        end.to change(GameBoards::DroppedBomb, :count).from(0).to(1)
+        end.to change(GameBoards::DroppedBomb, :count).from(1).to(2)
       end
 
       describe 'spacecraft_position targeted' do
@@ -64,7 +68,7 @@ RSpec.describe GameBoards::DropBombs::Create, type: :service do
             row: wrong_row,
             column: wrong_column
           )
-        end.to change(GameBoards::DroppedBomb, :count).from(0).to(1)
+        end.to change(GameBoards::DroppedBomb, :count).from(1).to(2)
       end
 
       describe 'spacecraft_position targeted' do

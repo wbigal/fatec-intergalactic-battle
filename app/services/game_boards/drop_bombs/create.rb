@@ -1,5 +1,7 @@
 module GameBoards
   module DropBombs
+    class MatchIsNotOnGame < StandardError; end
+    class NotTurnOfPlayer < StandardError; end
     class Create < ServiceBase
       attr_reader :player
       attr_reader :match
@@ -14,12 +16,20 @@ module GameBoards
       end
 
       def call
+        raise MatchIsNotOnGame, 'Match is not on game.' unless match.playing?
+        raise NotTurnOfPlayer, 'It is not the turn of this player' \
+        unless can_player_drop_bomb?
+
         GameBoards::DroppedBomb.transaction do
           create_dropped_bomb
         end
       end
 
       private
+
+      def can_player_drop_bomb?
+        ::Matches::NextPlayer.call(@match) == @player
+      end
 
       def create_dropped_bomb
         GameBoards::DroppedBomb.create!(

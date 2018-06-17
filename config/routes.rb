@@ -19,6 +19,7 @@ Rails.application.routes.draw do
                                                    'spacecraft_positions'
       resources :drop_bombs, only: %i[new create],
                              controller: 'matches/game_boards/drop_bombs'
+      patch :ready
     end
     get :awaiting_challenge
     post :join

@@ -5,6 +5,9 @@ h2.col-lg-12
     = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
     hr
 
+strong
+  = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
+
 = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
   .form-group
     = f.label :row
