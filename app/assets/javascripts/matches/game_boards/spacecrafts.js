@@ -1,11 +1,15 @@
 $(document).ready(function(){
 
+setTimeout(function()
+{  
   var sizeCell = 50
-  var adjust = 8
+  var adjust = 63
   var oldElem;
   var elem;
 
-  var imgDraggable = $('.spacecraft-for-position').find('img')
+  
+  var imgDraggable = $('.spacecraft-for-position').find('img') 
+
   for(var i = 0; i < imgDraggable.length; i++){
     $( imgDraggable[i] ).draggable({
       cursorAt: { left: 0, top: 0 },
@@ -44,7 +48,7 @@ $(document).ready(function(){
     var idCell = '#' + dataRow + '-' + dataColumn
 
     var topCell = $(idCell).offset().top - sizeCell - adjust
-    var leftCell = $(idCell).offset().left
+    var leftCell = $(idCell).offset().left - 87
 
     $(elem).css({left: leftCell, top: topCell})
   }
@@ -59,7 +63,7 @@ $(document).ready(function(){
   var createPosition = function(spacecraft, row, column){
     $.ajax({
       type: 'POST',
-      url: '/matches/2/game_boards/3/spacecraft_positions',
+      url: "/matches/4/game_boards/7/spacecraft_positions",
       data: JSON.stringify({matches_game_boards_spacecraft_form: {spacecraft_id: spacecraft, row: row, column: column}}),
       success: function(data) { 'success' },
       error: function(data) { alert('Posição invalida') },
@@ -69,5 +73,5 @@ $(document).ready(function(){
     });
   }
 
-  getImages();
+  getImages();}, 1000)
 })

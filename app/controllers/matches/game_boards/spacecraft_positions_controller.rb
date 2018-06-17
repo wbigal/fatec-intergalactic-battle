@@ -1,12 +1,12 @@
 module Matches
   module GameBoards
     class SpacecraftPositionsController < BaseController
-      #before_action -> { redirect_to(:root) unless request.xhr? }
+      before_action -> { redirect_to(:root) unless request.xhr? }
 
       def new
         @spacecraft_form = Matches::GameBoards::SpacecraftForm.new
         load_form_data
-        render :new
+        render :new, layout: false
       end
 
       def create
