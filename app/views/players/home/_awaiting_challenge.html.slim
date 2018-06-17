@@ -1,0 +1,17 @@
+- if @awaiting_challenge.present?
+  .row
+    h2.col-lg-12
+      | Meus jogos aguardando oponente
+    - @awaiting_challenge.each do |match|
+      .col-lg-4
+        .col-lg-12
+          dl.row
+            dt.col-lg-4 Time:
+            dd.col-lg-8
+              = match.player_team_name
+            dt.col-lg-4 Cenário:
+            dd.col-lg-8
+              = match.scenery_description
+          .col-lg-12.text-center
+            = link_to 'Voltar ao Jogo', match.match_url, class: 'btn btn-primary btn-sm'
+  hr
