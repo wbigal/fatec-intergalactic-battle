@@ -97,6 +97,8 @@ group :production do
   # The official AWS SDK for Ruby. Provides both resource oriented interfaces
   # and API clients for AWS services.
   gem 'aws-sdk-s3'
+  # A Ruby client library for Redis
+  gem 'redis', '~> 3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
