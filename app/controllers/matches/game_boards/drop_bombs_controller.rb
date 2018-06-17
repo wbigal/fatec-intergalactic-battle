@@ -3,6 +3,7 @@ module Matches
     class DropBombsController < BaseController
       before_action -> { redirect_to(:root) unless request.xhr? }
       before_action :load_dropped_bombs_by_me
+      before_action :load_dropped_bombs_on_me
 
       def new
         @drop_bomb_form = Matches::GameBoards::DropBombForm.new
@@ -33,6 +34,13 @@ module Matches
         @dropped_bombs_by_me =
           Matches::DroppedBombDecorator.decorate_collection(
             other_game_board.dropped_bombs
+          )
+      end
+
+      def load_dropped_bombs_on_me
+        @dropped_bombs_on_me =
+          Matches::DroppedBombDecorator.decorate_collection(
+            @game_board.dropped_bombs
           )
       end
 

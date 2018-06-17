@@ -9,10 +9,6 @@ module Matches
                                                player: current_player)
 
       @game_board = Matches::GameBoardDecorator.decorate(game_board)
-
-      @dropped_bombs_on_me = Matches::DroppedBombDecorator.decorate_collection(
-        game_board.dropped_bombs
-      )
     end
 
     def edit
