@@ -23,5 +23,9 @@ module GameBoards
 
     delegate :match, to: :game_board, allow_nil: true
     delegate :scenery, to: :match, allow_nil: true
+
+    def on_target?
+      spacecraft_position.present?
+    end
   end
 end

@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   end
 
   resources :matches, only: %i[new create] do
-    resources :game_boards, only: %i[edit update],
+    resources :game_boards, only: %i[show edit update],
                             controller: 'matches/game_boards' do
       resources :spacecraft_positions, only: %i[new create],
                                        controller: 'matches/game_boards/'\
                                                    'spacecraft_positions'
+      resources :drop_bombs, only: %i[new create],
+                             controller: 'matches/game_boards/drop_bombs'
     end
     get :awaiting_challenge
     post :join

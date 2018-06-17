@@ -1,7 +1,19 @@
 module Matches
   class GameBoardsController < GameBoards::BaseController
     before_action -> { redirect_to(:root) unless request.xhr? }, only: [:update]
-    before_action :load_scenery_backgrounds
+    before_action :load_game_board, except: %i[show]
+    before_action :load_scenery_backgrounds, except: %i[show]
+
+    def show
+      game_board = @match.game_boards.find_by!(id: game_board_id,
+                                               player: current_player)
+
+      @game_board = Matches::GameBoardDecorator.decorate(game_board)
+
+      @dropped_bombs_on_me = Matches::DroppedBombDecorator.decorate_collection(
+        game_board.dropped_bombs
+      )
+    end
 
     def edit; end
 
