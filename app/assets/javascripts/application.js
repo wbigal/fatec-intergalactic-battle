@@ -3,3 +3,4 @@
 //= require bootstrap
 //= require rails-ujs
 //= require matches/game_boards/spacecrafts
+//= require jquery-ui.min

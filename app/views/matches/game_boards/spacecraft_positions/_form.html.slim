@@ -1,19 +1,16 @@
 .spacecraft-collection
   - @spacecraft_positions.each_pair do |spacecraft_id, positions|
     div.spacecraft
-      = "Spacecraft #{spacecraft_id}, positions #{positions.pluck(:row, :column)}"
-      = @match.id
-      / br
       = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: positions.pluck(:row).first, column: positions.pluck(:column).first }
-      / hr
-
 
 - if @spacecrafts.present?
   - @spacecrafts.each do |spacecraft|
-    .col-6
-      = radio_button spacecraft, :spacecraft_id, spacecraft.id 
-      = spacecraft.name
-      = image_tag spacecraft.image.url, class: 'img-fluid'
+    .col-12.spacecraft-for-position
+      = image_tag spacecraft.image.url, id: spacecraft.id, class: 'img-fluid'
+    /   = radio_button spacecraft, :spacecraft_id, spacecraft.id 
+    /   = spacecraft.name
+    /   = spacecraft.id
+
 /   = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
 /     .form-group
 /       / = f.collection_radio_buttons :spacecraft_id, @spacecrafts, :id, :name
