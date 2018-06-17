@@ -49,12 +49,13 @@ module Matches
       end
 
       def create_dropped_bombed
-        ::GameBoards::DropBombs::Create.call(
+        dropped_bomb = ::GameBoards::DropBombs::Create.call(
           player: current_player,
           match: @match,
           row: @drop_bomb_form.row,
           column: @drop_bomb_form.column
         )
+        update_other_game_board(dropped_bomb.game_board)
       end
 
       def game_board_id
@@ -64,6 +65,15 @@ module Matches
       def drop_bomb_params
         params.require(:matches_game_boards_drop_bomb_form).permit(
           :row, :column
+        )
+      end
+
+      def update_other_game_board(other_game_board)
+        ActionCable.server.broadcast(
+          "matches_playing_#{params[:match_id]}_#{other_game_board.id}",
+          render_url: new_match_game_board_drop_bomb_path(
+            game_board_id: other_game_board
+          )
         )
       end
     end
