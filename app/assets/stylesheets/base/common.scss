@@ -2,7 +2,7 @@
 
 .high-text, %high-text{
   color: black;
-  text-shadow: 1px 0 yellow, -1px 0 yellow, 0 1px yellow, 0 -1px yellow;
+  text-shadow: 1px 0 $text-common-color, -1px 0 $text-common-color, 0 1px $text-common-color, 0 -1px $text-common-color;
 }
 
 .capsule, %capsule{
@@ -61,7 +61,7 @@ h1, h2{
 
 .info-player{
   dt{ color: white; }
-  dd { color: yellow; letter-spacing: 2px; }
+  dd { color: $text-common-color; letter-spacing: 2px; }
 }
 
 #navbarPlayerDropdown {
@@ -73,12 +73,12 @@ form{
 }
 
 label, em, .data{
-  color: yellow;
+  color: $text-common-color;
   text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 1px black;
 }
 
 .scenery-info{
-  color: yellow;
+  color: $text-common-color;
   font-size: 1.3rem;
 }
 
@@ -101,11 +101,9 @@ body::-webkit-scrollbar-track {
 }
  
 body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+  background-color: $background-scrollbar;
+  outline: 1px solid $outline-scrollbar;
 }
-
-//background-color: rgba(52, 58, 64, 0.2);
 
 header .navbar{
   background-color: rgba(52, 58, 64, 0.4) !important;
@@ -120,12 +118,12 @@ header .navbar{
 
   hr {
     opacity: 0.3;
-    background-color: yellow;
+    background-color: $text-common-color;
   }
 }
 
 .scenery hr{
-  background: yellow;
+  background: $text-common-color;
   opacity: 0.2;
 }
 

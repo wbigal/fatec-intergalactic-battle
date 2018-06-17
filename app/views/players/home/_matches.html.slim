@@ -10,15 +10,15 @@
             .info-player.col-lg-8
               .d-flex
                 dt.col-lg-4 Jogador
-                dd.col-lg-8'
+                dd.col-lg-8
                   = match.player_nickname
               .d-flex
                 dt.col-lg-4 Time:
-                dd.col-lg-8'
+                dd.col-lg-8
                   = match.player_team_name
               .d-flex
                 dt.col-lg-4 Cenário:
-                dd.col-lg-8'
+                dd.col-lg-8
                   = match.scenery_description
             .col-lg-2
               = link_to 'Jogar', match.join_url, class: 'btn btn-primary btn-sm', method: :post
