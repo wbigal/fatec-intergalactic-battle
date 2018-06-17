@@ -55,7 +55,12 @@ module Matches
           row: @drop_bomb_form.row,
           column: @drop_bomb_form.column
         )
+        define_winner
         update_other_game_board(dropped_bomb.game_board)
+      end
+
+      def define_winner
+        ::Matches::SomeoneWin.call(@match)
       end
 
       def game_board_id

@@ -85,6 +85,12 @@ class Match < ApplicationRecord
     save!
   end
 
+  def winner!(player)
+    self.winner = player
+    done
+    save!
+  end
+
   private
 
   def invalid_winner

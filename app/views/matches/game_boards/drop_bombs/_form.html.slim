@@ -11,14 +11,24 @@ h2.col-lg-12
     = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
     hr
 
-strong
-  = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
+- if @match.playing?
+  strong
+    = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
 
-= form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
-  .form-group
-    = f.label :row
-    = f.text_field :row, class: 'form-control'
-  .form-group
-    = f.label :column
-    = f.text_field :column, class: 'form-control'
-  = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+  = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
+    .form-group
+      = f.label :row
+      = f.text_field :row, class: 'form-control'
+    .form-group
+      = f.label :column
+      = f.text_field :column, class: 'form-control'
+    = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+
+- if @match.setting_game_board?
+  strong Aguardando configuração dos campos de batalha
+
+- if @match.game_over?
+  - if @match.winner == current_player
+    strong Você ganhou!
+  - elsif @match.winner != current_player
+    strong Você perdeu!

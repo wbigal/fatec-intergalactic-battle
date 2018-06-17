@@ -26,6 +26,7 @@ module Matches
 
     def ready
       ::GameBoards::ReadyToPlay.call(@game_board)
+      update_other_game_board
       redirect_to match_game_board_path(id: @game_board)
     end
 
@@ -43,6 +44,21 @@ module Matches
       background_id = spacecraft_params[:scenery_background_id].presence ||
                       @match.scenery.background.id
       Hash[scenery_background_id: background_id]
+    end
+
+    def update_other_game_board
+      ActionCable.server.broadcast(
+        "matches_playing_#{params[:match_id]}_#{other_game_board.id}",
+        render_url: new_match_game_board_drop_bomb_path(
+          game_board_id: other_game_board
+        )
+      )
+    end
+
+    def other_game_board
+      @other_game_board ||= GameBoard.where(match: @match).
+                            where.not(id: @game_board).
+                            first
     end
   end
 end
