@@ -1,14 +1,5 @@
 @import "bootstrap";
-@import "base/colors";
+@import "base/*";
 
-body {
-  color: $font-color;
-}
 
-footer {
-  margin-top: 50px;
-}
 
-#navbarPlayerDropdown {
-  color: $menu-item-font-color;
-}

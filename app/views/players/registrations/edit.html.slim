@@ -1,10 +1,10 @@
 .container
   .row
-    h1.col-lg-12
+    h1.col-lg-12.high-text.text-center
       | Editar Meus Dados
 .container
   .row
-    .form.col-lg-6
+    .form.col-lg-6.capsule.offset-lg-3
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = devise_error_messages!
         .form-group
@@ -39,7 +39,7 @@
             | We need your current password to confirm your changes
         = f.submit 'Atualizar', class: 'btn btn-primary'
       hr
-      h2
+      h2.high-text
         | Cancel my account
       p
         | Unhappy?
