@@ -1,18 +1,26 @@
-h2.col-lg-12
-  | Suas jogadas
-- @dropped_bombs_by_me.each do |dropped_bomb|
-  div.col-lg-12
-    = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
-    hr
-
+/ h2.col-lg-12
+/   | Suas jogadas
 strong
   = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
 
-= form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
-  .form-group
-    = f.label :row
-    = f.text_field :row, class: 'form-control'
-  .form-group
-    = f.label :column
-    = f.text_field :column, class: 'form-control'
-  = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+#my-plays
+  - @dropped_bombs_by_me.each do |dropped_bomb|
+    div.col-lg-12
+      //= "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
+      .check-my-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+        - if dropped_bomb.on_target?
+          | O
+        - else
+          | X
+
+
+
+/ = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
+/   .form-group
+/     = f.label :row
+/     = f.text_field :row, class: 'form-control'
+/   .form-group
+/     = f.label :column
+/     = f.text_field :column, class: 'form-control'
+/   = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+/   

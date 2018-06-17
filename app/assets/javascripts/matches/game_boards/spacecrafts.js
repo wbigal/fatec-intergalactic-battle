@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 setTimeout(function()
 {  
-  var sizeCell = 50
-  var adjust = 63
+  var sizeCell = 0
+  var adjust = 0
   var oldElem;
   var elem;
 
@@ -48,9 +48,9 @@ setTimeout(function()
     var idCell = '#' + dataRow + '-' + dataColumn
 
     var topCell = $(idCell).offset().top - sizeCell - adjust
-    var leftCell = $(idCell).offset().left - 87
+    var leftCell = $(idCell).offset().left - 0
 
-    $(elem).css({left: leftCell, top: topCell})
+    $(elem).offset({left: leftCell, top: topCell})
   }
 
   var getImages = function(){
@@ -63,7 +63,7 @@ setTimeout(function()
   var createPosition = function(spacecraft, row, column){
     $.ajax({
       type: 'POST',
-      url: "/matches/4/game_boards/7/spacecraft_positions",
+      url: "/matches/6/game_boards/11/spacecraft_positions",
       data: JSON.stringify({matches_game_boards_spacecraft_form: {spacecraft_id: spacecraft, row: row, column: column}}),
       success: function(data) { 'success' },
       error: function(data) { alert('Posição invalida') },

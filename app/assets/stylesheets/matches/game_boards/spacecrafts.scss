@@ -15,7 +15,12 @@ table{
 }
 
 img{
-  z-index: 9999;
+  z-index: 99;
+}
+
+.check-challenger-plays, 
+.check-my-plays{
+  z-index: 999;
 }
 
 .spacecraft-for-position img{

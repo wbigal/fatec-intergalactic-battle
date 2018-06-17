@@ -6,20 +6,47 @@
   .row
     div.col-lg-12
       = image_tag @game_board.background_url, size: '150x150'
-    h2.col-lg-12
+
+    h2.col-lg-6
       | Sua configuração
-    - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
-      div.col-lg-12
-        = "Spacecraft #{spacecraft_id}, positions #{positions.map { |position| [position.row, position.column] }}"
-        br
-        = image_tag positions.first.image_url, size: '50x50'
-        hr
-    h2.col-lg-12
-      | Jogadas do outro
-    - @dropped_bombs_on_me.each do |dropped_bomb|
-      div.col-lg-12
-        = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
-        hr
+      .spacecraft-distribution
+        table
+          - for i in 0..9
+            tr
+              - for j in 0..9
+                td id="#{i}-#{j}"
+        - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
+          / = "id #{spacecraft_id}"
+          / = "row #{positions.first.row}"
+          / = "column #{positions.first.column}"
+          = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.first.row, column: positions.first.column}
+      / - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
+      /   div.spacecraft
+      /     = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: positions.pluck(:row).first, column: positions.pluck(:column).first 
+
+    h2.col-lg-6
+      | tabuleiro do inimigo
+      #challenger-table
+        table
+          - for i in 0..9
+            tr
+              - for j in 0..9
+                td id="#{i}-#{j}"
+
+    / h2.col-lg-12
+    /   | Jogadas do outro
+    #challenger-plays
+      - @dropped_bombs_on_me.each do |dropped_bomb|
+        div.col-lg-12
+          / = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
+          .check-challenger-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+            - if dropped_bomb.on_target?
+              | O
+            - else
+              = image_tag asset_url('ex1.png')
+
     #game-board-drop-bombs.form.col-lg-6*{data: {'match-id': params[:match_id], 'game-board-id': params[:id]}}
+
+
 = content_for(:js) do
   = javascript_include_tag 'matches/game_boards/drop_bombs'
