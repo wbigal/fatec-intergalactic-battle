@@ -40,6 +40,8 @@ gem 'rails-controller-testing'
 # Slim is a template language whose goal is reduce the syntax to the essential
 # parts without becoming cryptic.
 gem 'slim-rails'
+# StateMachines Active Record Integration
+gem 'state_machines-activerecord'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
@@ -97,6 +99,8 @@ group :production do
   # The official AWS SDK for Ruby. Provides both resource oriented interfaces
   # and API clients for AWS services.
   gem 'aws-sdk-s3'
+  # A Ruby client library for Redis
+  gem 'redis', '~> 3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

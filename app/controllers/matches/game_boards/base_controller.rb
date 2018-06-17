@@ -8,7 +8,11 @@ module Matches
       private
 
       def game_board_id
-        params[:id]
+        if %w[show edit update].include?(action_name)
+          params[:id]
+        else
+          params[:game_board_id]
+        end
       end
 
       def match_id

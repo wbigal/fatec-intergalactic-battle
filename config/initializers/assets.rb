@@ -12,6 +12,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 Rails.application.config.assets.precompile += %w[
+  cable.js
   users/sessions/sign_in.coffee users/sessions/sign_in.scss
   matches/game_boards.coffee
+  matches/game_boards/drop_bombs.coffee
+  channels/matches/awaiting_challenge.coffee
 ]

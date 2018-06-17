@@ -4,5 +4,9 @@
       | Novo Jogo
 .container
   .row
-    p
-      | Você ainda não tem um oponente. Por favor, aguarde alguns instantes...
+    #match-details*{ data: { 'match-id': params[:match_id] } }
+      p
+        | Você ainda não tem um oponente. Por favor, aguarde alguns instantes...
+
+= content_for(:js) do
+  = javascript_include_tag 'cable', 'channels/matches/awaiting_challenge'

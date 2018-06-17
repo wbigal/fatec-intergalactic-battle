@@ -17,3 +17,5 @@
       = f.label :column
       = f.text_field :column, class: 'form-control'
     = f.submit 'Adicionar Nave', class: 'btn btn-primary'
+- else
+  = link_to 'Jogar!', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch

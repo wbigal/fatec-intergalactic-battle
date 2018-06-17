@@ -3,8 +3,29 @@ require 'rails_helper'
 RSpec.describe Matches::GameBoardsController, :player_authenticated,
                type: :controller do
   let(:match) { create(:match, :setting_game_board) }
-  let!(:game_board) do
+
+  let(:game_board) do
     create(:game_board, match: match, player: current_player)
+  end
+
+  let!(:dropped_bomb) do
+    create(:game_boards_dropped_bomb, game_board: game_board)
+  end
+
+  describe 'GET show' do
+    before do
+      process :show, method: :get, params: {
+        id: game_board.id,
+        match_id: match.id
+      }
+    end
+
+    it { expect(response).to render_template('show') }
+    it { expect(assigns(:game_board)).to eq(game_board) }
+    it { expect(assigns(:game_board)).to be_decorated }
+    it { expect(assigns(:dropped_bombs_on_me)).to eq([dropped_bomb]) }
+    it { expect(assigns(:dropped_bombs_on_me)).to be_decorated }
+    it { expect(assigns(:match)).to eq(match) }
   end
 
   describe 'GET edit' do

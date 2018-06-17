@@ -14,6 +14,7 @@
 #  total_time_in_seconds :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  status                :string(50)       not null
 #
 
 require 'rails_helper'

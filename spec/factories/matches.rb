@@ -14,6 +14,7 @@
 #  total_time_in_seconds :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  status                :string(50)       not null
 #
 
 FactoryBot.define do
@@ -26,13 +27,16 @@ FactoryBot.define do
     trait :in_game do
       challenger { association(:player) }
       started_at Time.now.utc
+      status 'playing'
     end
 
     trait :setting_game_board do
       challenger { association(:player) }
+      status 'setting_game_board'
     end
 
     trait :awaiting_challenge do
+      status 'awaiting_challenge'
     end
 
     trait :over do
@@ -40,6 +44,7 @@ FactoryBot.define do
       started_at Time.now.utc
       ended_at Time.now.utc
       winner { player }
+      status 'game_over'
     end
   end
 end

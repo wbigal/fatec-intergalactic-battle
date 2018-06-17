@@ -21,6 +21,9 @@ class GameBoard < ApplicationRecord
   has_many :spacecraft_positions, class_name: 'GameBoards::SpacecraftPosition',
                                   dependent: :restrict_with_error
 
+  has_many :dropped_bombs, class_name: 'GameBoards::DroppedBomb',
+                           dependent: :restrict_with_error
+
   before_validation :configure_rows_and_columns, on: :create
   before_validation :configure_scenery_background, on: :create
 
