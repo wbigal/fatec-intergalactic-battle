@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 table{
-  //background-image: url('/system/spacecrafts/images/2/original.png?1528253807');
   margin: 0 auto;
   background-repeat: no-repeat;
   position: relative;
@@ -13,4 +12,8 @@ table{
     height: 50px;
     width: 50px;
   }
+}
+
+.spacecraft img{
+  z-index: 9999;
 }

@@ -1,11 +1,11 @@
 .d-flex
-  .col-6
+  .col-2
     #spacecraft-position-form
       = render 'form'
 
-  .col-6
+  .col-10
     table
-      - for i in 1..10
+      - for i in 0..9
         tr
-          - for j in 1..10
+          - for j in 0..9
             td id="#{i}-#{j}"

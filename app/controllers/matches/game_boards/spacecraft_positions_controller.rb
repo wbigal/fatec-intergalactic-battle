@@ -65,27 +65,6 @@ module Matches
 
       def load_spacecraft_positions
         @spacecraft_positions = spacecraft_positions.group_by(&:spacecraft_id)
-
-        space = []
-        geralPos = []
-        images = []
-
-        @spacecraft_positions.each_pair do |spacecraft_id, positions|
-          space.push(spacecraft_id)
-          geralPos.push(positions.pluck(:row, :column).first)
-          images.push(positions.first.spacecraft.image.url)
-        end
-
-        gon.spacecraft = space
-        gon.positions = geralPos
-        gon.url = images
-
-        puts '-------------'
-        puts space
-
-        @spacecraft = space
-        @positions = geralPos
-        @url = images
       end
     end
   end

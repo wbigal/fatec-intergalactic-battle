@@ -1,4 +1,30 @@
 $(document).ready(function(){
+
+  var sizeCell = 50
+  var adjust = 8
+
+  var setPosition = function(parent, elem){
+    $(parent).css({position: 'relative'})
+    $(elem).css({position: 'absolute'})
+
+    var dataRow = parseInt($(elem).attr('data-row'))
+    var dataColumn = parseInt($(elem).attr('data-column'))
+
+    var idCell = '#' + dataRow + '-' + dataColumn
+
+    var topCell = $(idCell).offset().top - sizeCell - adjust
+    var leftCell = $(idCell).offset().left
+
+    $(elem).css({left: leftCell, top: topCell})
+  }
+
+  var getImages = function(){
+    var spacecrafts = $('.spacecraft-collection').find('img')
+    for(var i = 0; i < spacecrafts.length; i++){
+      setPosition($('body'), spacecrafts[i])
+    }
+  }
+
   $('td').click(function(event){
     let spacecraft = $('input:checked').val()
     if(spacecraft){
@@ -6,58 +32,15 @@ $(document).ready(function(){
   
       $.ajax({
         type: 'POST',
-        url: '/matches/25/game_boards/22/spacecraft_positions',
+        url: '/matches/2/game_boards/3/spacecraft_positions',
         data: JSON.stringify({matches_game_boards_spacecraft_form: {spacecraft_id: spacecraft, row: id[0], column: id[1]}}),
-        success: function(data) {  },
+        success: function(data) { },
+        complete: function(data) { getImages() },
         contentType: "application/json",
         dataType: 'script'
       });
     }
   });
 
-  // var setPos = function(){
-  //   alert('setPos');
-  //   var sizeCell = 50;
-
-  //   var background = '';
-  //   var position = '';
-
-  //   var insertBackground = function(url){
-  //     if (background != '') 
-  //       background += ','
-
-  //     return background += 'url(' + url + ')'
-  //   }
-
-  //   var insertPosition = function(row, column){
-  //     let positionY = sizeCell * (row - 1)
-  //     let positionX = sizeCell * (column - 1)
-      
-  //     if (position != '')
-  //       position += ','
-
-  //     return position += positionX + 'px ' + positionY + 'px' 
-  //   }
-
-  //   var setPosition = function(url_image, row, column){
-  //     table = $('table')
-  //     table.css('background-image', insertBackground(url_image))
-  //     table.css('background-position', insertPosition(row, column))
-  //   }
-
-  //   var limit = gon.spacecraft.length
-
-  //   console.log(gon.spacecraft)
-
-  //   for (var i = 0; i < limit; i++ ){
-
-  //     var spaceId = gon.spacecraft[i]
-  //     var positions = gon.positions[i]
-  //     var url = gon.url[i]
-
-  //     alert(spaceId)
-  //     setPosition(url, positions[0], positions[1])
-  //   }
-
-  // };
+  getImages();
 })

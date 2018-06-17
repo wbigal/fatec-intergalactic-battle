@@ -1,9 +1,11 @@
-/ - @spacecraft_positions.each_pair do |spacecraft_id, positions|
-/   div
-/     = "Spacecraft #{spacecraft_id}, positions #{positions.pluck(:row, :column)}"
-/     br
-/     = image_tag positions.first.spacecraft.image.url
-/     hr
+.spacecraft-collection
+  - @spacecraft_positions.each_pair do |spacecraft_id, positions|
+    div.spacecraft
+      = "Spacecraft #{spacecraft_id}, positions #{positions.pluck(:row, :column)}"
+      = @match.id
+      / br
+      = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: positions.pluck(:row).first, column: positions.pluck(:column).first }
+      / hr
 
 
 - if @spacecrafts.present?

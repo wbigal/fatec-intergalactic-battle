@@ -26,7 +26,7 @@ SpacecraftShape.create_with(
     Rails.root.join('db', 'seeds', 'spacecraft_shapes', 'modelo-2x2.png')
   ),
   targets: [
-    [0,0],[0,2],
+    [0,0],[0,1],
     [1,0],[1,1]
   ].to_json,
   spacecraft_width: 210,
