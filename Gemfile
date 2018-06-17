@@ -40,6 +40,8 @@ gem 'rails-controller-testing'
 # Slim is a template language whose goal is reduce the syntax to the essential
 # parts without becoming cryptic.
 gem 'slim-rails'
+# StateMachines Active Record Integration
+gem 'state_machines-activerecord'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
