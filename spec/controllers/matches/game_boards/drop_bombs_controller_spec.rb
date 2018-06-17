@@ -12,9 +12,13 @@ RSpec.describe Matches::GameBoards::DropBombsController,
     create(:game_board, match: match, player: match.challenger)
   end
 
-  before do
-    create(:game_boards_dropped_bomb, game_board: other_game_board)
+  let!(:dropped_bomb_on_me) do
     create(:game_boards_dropped_bomb, game_board: game_board)
+  end
+
+  before do
+    create(:game_boards_dropped_bomb, game_board: other_game_board,
+                                      created_at: 1.minute.ago)
   end
 
   describe 'GET new' do
@@ -30,6 +34,8 @@ RSpec.describe Matches::GameBoards::DropBombsController,
       it { expect(assigns(:match)).to eq(match) }
       it { expect(assigns(:game_board)).to eq(game_board) }
       it { expect(assigns(:dropped_bombs_by_me)).to be_decorated }
+      it { expect(assigns(:dropped_bombs_on_me)).to eq([dropped_bomb_on_me]) }
+      it { expect(assigns(:dropped_bombs_on_me)).to be_decorated }
 
       it do
         expect(assigns(:drop_bomb_form)).to be_an_instance_of(
@@ -75,6 +81,8 @@ RSpec.describe Matches::GameBoards::DropBombsController,
 
         it { expect(assigns(:dropped_bombs_by_me)).to be_decorated }
         it { expect(assigns(:dropped_bombs_by_me).count).to eq(2) }
+        it { expect(assigns(:dropped_bombs_on_me)).to eq([dropped_bomb_on_me]) }
+        it { expect(assigns(:dropped_bombs_on_me)).to be_decorated }
       end
     end
 
@@ -102,6 +110,8 @@ RSpec.describe Matches::GameBoards::DropBombsController,
 
         it { expect(assigns(:dropped_bombs_by_me)).to be_decorated }
         it { expect(assigns(:dropped_bombs_by_me).count).to eq(1) }
+        it { expect(assigns(:dropped_bombs_on_me)).to eq([dropped_bomb_on_me]) }
+        it { expect(assigns(:dropped_bombs_on_me)).to be_decorated }
       end
     end
 

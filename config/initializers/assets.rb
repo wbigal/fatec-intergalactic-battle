@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w[
   matches/game_boards.coffee
   matches/game_boards/drop_bombs.coffee
   channels/matches/awaiting_challenge.coffee
+  channels/matches/playing.coffee
 ]

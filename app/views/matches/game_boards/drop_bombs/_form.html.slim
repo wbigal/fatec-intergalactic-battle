@@ -1,4 +1,10 @@
 h2.col-lg-12
+  | Jogadas do outro
+- @dropped_bombs_on_me.each do |dropped_bomb|
+  div.col-lg-12
+    = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
+    hr
+h2.col-lg-12
   | Suas jogadas
 - @dropped_bombs_by_me.each do |dropped_bomb|
   div.col-lg-12
