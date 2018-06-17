@@ -14,6 +14,7 @@
 #  total_time_in_seconds :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  status                :string(50)       not null
 #
 
 class Match < ApplicationRecord
@@ -45,6 +46,26 @@ class Match < ApplicationRecord
 
   scope :awaiting_challenge, -> { where(challenger_id: nil, started_at: nil) }
 
+  state_machine :status, initial: :awaiting_challenge do
+    event :join do
+      transition [:awaiting_challenge] => :setting_game_board
+    end
+
+    event :play do
+      transition [:setting_game_board] => :playing
+    end
+
+    event :done do
+      transition [:playing] => :game_over
+    end
+
+    event :cancel do
+      transition [:awaiting_challenge] => :canceled
+      transition [:setting_game_board] => :canceled
+      transition [:playing] => :canceled
+    end
+  end
+
   def awaiting_challenge?
     challenger_id.blank? && started_at.blank?
   end
@@ -60,6 +81,7 @@ class Match < ApplicationRecord
     end
 
     self.challenger = challenger
+    join
     save!
   end
 

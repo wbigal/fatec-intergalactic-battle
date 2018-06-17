@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_16_151520) do
+ActiveRecord::Schema.define(version: 2018_06_17_024343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2018_06_16_151520) do
     t.integer "total_time_in_seconds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", limit: 50, default: "awaiting_challenge", null: false
     t.index ["player_id"], name: "index_matches_on_player_id"
     t.index ["scenery_id"], name: "index_matches_on_scenery_id"
   end

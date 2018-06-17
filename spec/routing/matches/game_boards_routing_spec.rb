@@ -24,4 +24,12 @@ RSpec.describe Matches::GameBoardsController, type: :routing do
       )
     end
   end
+
+  describe '#ready' do
+    it do
+      expect(patch: '/matches/1/game_boards/2/ready').to route_to(
+        'matches/game_boards#ready', match_id: '1', game_board_id: '2'
+      )
+    end
+  end
 end

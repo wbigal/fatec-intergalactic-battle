@@ -47,4 +47,6 @@ class Player < ApplicationRecord
                   foreign_key: 'winner_id',
                   inverse_of: 'winner',
                   dependent: :restrict_with_error
+
+  has_many :game_boards, inverse_of: 'player', dependent: :restrict_with_error
 end

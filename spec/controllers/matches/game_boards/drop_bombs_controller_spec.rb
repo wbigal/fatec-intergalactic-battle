@@ -14,6 +14,7 @@ RSpec.describe Matches::GameBoards::DropBombsController,
 
   before do
     create(:game_boards_dropped_bomb, game_board: other_game_board)
+    create(:game_boards_dropped_bomb, game_board: game_board)
   end
 
   describe 'GET new' do

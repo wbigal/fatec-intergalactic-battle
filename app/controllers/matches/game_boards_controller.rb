@@ -15,7 +15,9 @@ module Matches
       )
     end
 
-    def edit; end
+    def edit
+      redirect_to root_path unless @match.setting_game_board?
+    end
 
     def update
       if @game_board.update(scenery_background_params)
@@ -24,6 +26,11 @@ module Matches
         render :update, locals: { success: false },
                         status: :unprocessable_entity
       end
+    end
+
+    def ready
+      ::GameBoards::ReadyToPlay.call(@game_board)
+      redirect_to match_game_board_path(id: @game_board)
     end
 
     private

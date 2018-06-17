@@ -6,6 +6,7 @@ module Matches
 
       def new
         @drop_bomb_form = Matches::GameBoards::DropBombForm.new
+        @my_turn = my_turn?
         render :new, layout: false
       end
 
@@ -23,6 +24,10 @@ module Matches
       end
 
       private
+
+      def my_turn?
+        ::Matches::NextPlayer.call(@match) == current_player
+      end
 
       def load_dropped_bombs_by_me
         @dropped_bombs_by_me =

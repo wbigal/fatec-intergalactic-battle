@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe GameBoards::SpacecraftPositions::Create, type: :service do
   describe '#call' do
-    let(:game_board) { create(:game_board) }
+    let(:match) { create(:match, :setting_game_board) }
+    let(:game_board) { create(:game_board, match: match) }
 
     let(:spacecraft_shape) do
       create(:spacecraft_shape, targets: [[0, 0], [0, 1], [0, 2]].to_json)
