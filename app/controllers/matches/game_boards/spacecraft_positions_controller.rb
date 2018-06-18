@@ -17,7 +17,6 @@ module Matches
         if @spacecraft_form.valid?
           create_spacecraft_positions
           render :create, status: :created
-          #render json: { success: true }
         else
           load_form_data
           render :create, status: :unprocessable_entity

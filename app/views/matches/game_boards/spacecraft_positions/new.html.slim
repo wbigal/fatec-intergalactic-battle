@@ -1,11 +1,9 @@
 .d-flex
-  .col-2
-    #spacecraft-position-form
-      = render 'form'
-
+  #spacecraft-position-form.col-2*{data: {'match-id': params[:match_id], 'game-board-id': params[:game_board_id] }}
+    = render 'form'
   .col-10
     table
-      - for i in 0..9
+      - for i in 0...@game_board.rows
         tr
-          - for j in 0..9
+          - for j in 0...@game_board.columns
             td id="#{i}-#{j}"

@@ -90,6 +90,9 @@ setTimeout(function()
     $(challengerPlays[i]).offset(offsetCell)
   }
 
-  ;}, 200)
+  $('.background').css('background-image', 'url(' + $('.background').attr('data-url') + ')')
+
+
+  ;}, 1000)
 })
 
