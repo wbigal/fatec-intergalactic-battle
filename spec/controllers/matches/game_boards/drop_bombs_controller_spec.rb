@@ -18,10 +18,7 @@ RSpec.describe Matches::GameBoards::DropBombsController,
 
   before do
     create(:game_boards_dropped_bomb, game_board: other_game_board,
-<<<<<<< HEAD
-=======
                                       created_at: 1.minute.ago)
->>>>>>> style
   end
 
   describe 'GET new' do
