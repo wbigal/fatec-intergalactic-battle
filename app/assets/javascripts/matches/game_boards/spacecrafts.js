@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-setTimeout(function()
-{  
+setTimeout(function(){  
   var sizeCell = 0
   var adjust = 0
   var oldElem;
@@ -9,7 +8,7 @@ setTimeout(function()
 
   var match = $('#spacecraft-position-form').attr('data-match-id')
   var gameBoard = $('#spacecraft-position-form').attr('data-game-board-id')
-  
+
   var imgDraggable = $('.spacecraft-for-position').find('img') 
 
   for(var i = 0; i < imgDraggable.length; i++){
@@ -49,7 +48,10 @@ setTimeout(function()
 
     var idCell = '#' + dataRow + '-' + dataColumn
 
-    $(elem).offset($(idCell).offset())
+    var topCell = $(idCell).offset().top - sizeCell
+    var leftCell = $(idCell).offset().left - sizeCell
+
+    $(elem).offset({left: leftCell, top: topCell})
   }
 
   var getImages = function(){
@@ -72,5 +74,7 @@ setTimeout(function()
     });
   }
 
-  getImages();}, 200)
+  getImages();
+  
+  }, 200)
 })

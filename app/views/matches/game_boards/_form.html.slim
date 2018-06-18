@@ -1,3 +1,5 @@
+
+= @scenery_backgrounds.count
 - if @scenery_backgrounds.present?
   hr
   = form_for(@game_board, url: match_game_board_path(id: params[:id], match_id: params[:match_id]), remote: true) do |f|

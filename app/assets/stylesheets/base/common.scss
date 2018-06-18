@@ -134,7 +134,7 @@ header .navbar{
   .field { display: flex; align-items: baseline; }
 }
 
-.modal-content{
+#selectTeam .modal-content{
   background: no-repeat center center fixed;
   background-image: asset_url('bg-storm.jpg');
   background-repeat: no-repeat;
@@ -144,6 +144,14 @@ header .navbar{
 
 .modal-backdrop{
   opacity: 0.8;
+}
+
+#awaitingChallenger .modal-content{
+  background: no-repeat center center fixed;
+  background-image: asset_url('bg-wars.jpg');
+  background-repeat: no-repeat;
+  box-shadow: 1px 0 white, -1px 0 white, 0 1px 25px white, 0 -1px white;
+  height: 240px;  
 }
 
 .home-container { flex-wrap: nowrap; }

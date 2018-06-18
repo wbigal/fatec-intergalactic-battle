@@ -6,6 +6,9 @@
 - if @spacecrafts.present?
   - @spacecrafts.each do |spacecraft|
     .col-12.spacecraft-for-position
-      = image_tag spacecraft.image.url, id: spacecraft.id, class: 'img-fluid'
+      .row.high-text
+        = spacecraft.name
+      .row
+        = image_tag spacecraft.image.url, id: spacecraft.id, class: 'img-fluid'
 - else
-  = link_to 'Jogar!', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch
+  = link_to 'jogar', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch

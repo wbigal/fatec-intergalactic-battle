@@ -1,12 +1,12 @@
 .background*{data: {'url': @game_board.background_url }}
   .container
     .row
-      h1.col-lg-12
+      h1.col-lg-12.high-text.text-center
         | A Batalha
   .container
     .row
-      h2.col-lg-6
-        | Sua configuração
+      h2.col-lg-6.high-text
+        | sua configuração
         .spacecraft-distribution
           table
             - for i in 0...@game_board.object.rows
@@ -16,8 +16,8 @@
           - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
             = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.first.row, column: positions.first.column}
 
-      h2.col-lg-6
-        | tabuleiro do inimigo
+      h2.col-lg-6.high-text.mb-5
+        | tabuleiro do oponente
         #challenger-table
           table
             - for i in 0...@game_board.object.rows

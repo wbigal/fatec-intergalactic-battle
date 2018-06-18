@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-setTimeout(function()
-{  
+setTimeout(function(){  
   var sizeCell = 50
   var adjust = 0
   var oldElem;
@@ -92,7 +91,7 @@ setTimeout(function()
 
   $('.background').css('background-image', 'url(' + $('.background').attr('data-url') + ')')
 
-
-  ;}, 1000)
+  ;},
+  500)
 })
 

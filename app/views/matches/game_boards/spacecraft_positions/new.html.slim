@@ -1,7 +1,7 @@
 .d-flex
-  #spacecraft-position-form.col-2*{data: {'match-id': params[:match_id], 'game-board-id': params[:game_board_id] }}
+  #spacecraft-position-form.col-3*{data: {'match-id': params[:match_id], 'game-board-id': params[:game_board_id] }}
     = render 'form'
-  .col-10
+  .col-9
     table
       - for i in 0...@game_board.rows
         tr
