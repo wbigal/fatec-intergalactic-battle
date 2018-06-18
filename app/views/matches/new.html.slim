@@ -1,15 +1,44 @@
 .container
   .row
-    h1.col-lg-12
-      | Novo Jogo
-.container
+    h1.col-lg-12.high-text.text-center
+      | escolha um cenário
+.container.capsule-scroll
   .row
-    .form.col-lg-6
+    .form.align-center
       = form_for(@match, url: matches_path) do |f|
         .form-group
-          = f.label :scenery
-          = f.collection_select :scenery_id, @sceneries, :id, :name, { include_blank: true }, class: 'form-control'
-        .form-group
-          = f.label :player_team
-          = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control'
-        = f.submit 'Criar Jogo', class: 'btn btn-primary'
+          - @sceneries.each do |scenery|
+            .row
+              .capsule.d-flex.align-items-center.col-lg-10.offset-lg-1.js-clickeble.scenery
+                = f.hidden_field :scenery_id, :value => scenery.id
+                .col-3
+                  = image_tag SceneryBackground.find(scenery.scenery_background_id).image.url(:thumb), class: 'img-fluid'
+                .col-9
+                  .row
+                    .col-12.scenery-info  
+                      = "#{scenery.name} - #{scenery.rows} x #{scenery.columns}" 
+                  hr
+                  .row
+                    - scenery.spacecrafts.each do |spacecraft|
+                      .col-2
+                        = image_tag spacecraft.image.url(:original), class: 'img-fluid'     
+
+        #selectTeam.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+          .modal-dialog.modal-dialog-centered role="document" 
+            .modal-content
+              .modal-header
+                h5#exampleModalLongTitle.modal-title 
+                  label Escolha um Time
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  &times;
+              .modal-body
+                .form-group
+                  = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control mb-3'
+                  = f.submit 'Criar Jogo', class: 'btn btn-primary'     
+              / .modal-footer
+              /   button.btn.btn-secondary data-dismiss="modal" type="button"  Close
+              /   button.btn.btn-primary type="button"  Save changes
+
+
+
+      

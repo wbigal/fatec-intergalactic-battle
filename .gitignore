@@ -36,3 +36,5 @@
 .DS_Store
 
 /data
+
+/config/application.yml

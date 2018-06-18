@@ -2,17 +2,9 @@
 @import "base/colors";
 @import "matches/game_boards/*";
 @import "jquery-ui.min";
-
-body {
-  color: $font-color;
-}
-
-footer {
-  margin-top: 50px;
-}
+@import "base/*";
 
 #navbarPlayerDropdown {
   color: $menu-item-font-color;
 }
-
 
