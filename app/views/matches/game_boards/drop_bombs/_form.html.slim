@@ -1,8 +1,37 @@
-/ h2.col-lg-12
-/   | Suas jogadas
-strong
-  = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
+/ <<<<<<< HEAD
+/ / h2.col-lg-12
+/ /   | Suas jogadas
+/ strong
+/   = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
 
+
+
+
+
+/ / = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
+/ /   .form-group
+/ /     = f.label :row
+/ /     = f.text_field :row, class: 'form-control'
+/ /   .form-group
+/ /     = f.label :column
+/ /     = f.text_field :column, class: 'form-control'
+/ /   = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+/ /   
+/ =======
+/ h2.col-lg-12
+/   | Jogadas do outro
+#challenger-plays
+  - @dropped_bombs_on_me.each do |dropped_bomb|
+    div.col-lg-12
+      / = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
+      .check-challenger-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+        - if dropped_bomb.on_target?
+          | O
+        - else
+          = image_tag asset_url('ex1.png')
+
+
+    
 #my-plays
   - @dropped_bombs_by_me.each do |dropped_bomb|
     div.col-lg-12
@@ -15,12 +44,26 @@ strong
 
 
 
-/ = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
-/   .form-group
-/     = f.label :row
-/     = f.text_field :row, class: 'form-control'
-/   .form-group
-/     = f.label :column
-/     = f.text_field :column, class: 'form-control'
-/   = f.submit 'Lançar Bomba', class: 'btn btn-primary'
-/   
+
+- if @match.playing?
+  strong
+    = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
+
+  = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
+    .form-group
+      = f.label :row
+      = f.text_field :row, class: 'form-control'
+    .form-group
+      = f.label :column
+      = f.text_field :column, class: 'form-control'
+    = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+
+- if @match.setting_game_board?
+  strong Aguardando configuração dos campos de batalha
+
+- if @match.game_over?
+  - if @match.winner == current_player
+    strong Você ganhou!
+  - elsif @match.winner != current_player
+    strong Você perdeu!
+>>>>>>> upstream/create-match-model

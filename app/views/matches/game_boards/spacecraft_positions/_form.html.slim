@@ -4,9 +4,25 @@
       = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: positions.pluck(:row).first, column: positions.pluck(:column).first }
 
 - if @spacecrafts.present?
+/ <<<<<<< HEAD
   - @spacecrafts.each do |spacecraft|
     .col-12.spacecraft-for-position
       = image_tag spacecraft.image.url, id: spacecraft.id, class: 'img-fluid'
 - else
   = link_to 'Jogar!', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch
 
+/ =======
+/   = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
+/     .form-group
+/       = f.label :spacecrafts
+/       = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, {}, class: 'form-control'
+/     .form-group
+/       = f.label :row
+/       = f.text_field :row, class: 'form-control'
+/     .form-group
+/       = f.label :column
+/       = f.text_field :column, class: 'form-control'
+/     = f.submit 'Adicionar Nave', class: 'btn btn-primary'
+/ - else
+/   = link_to 'Jogar!', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch
+/ >>>>>>> upstream/create-match-model

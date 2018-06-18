@@ -7,36 +7,7 @@ setTimeout(function()
   var oldElem;
   var elem;
 
-  
   var imgDraggable = $('.spacecraft-distribution').find('img') 
-
-  // for(var i = 0; i < imgDraggable.length; i++){
-  //   $( imgDraggable[i] ).draggable({
-  //     cursorAt: { left: 0, top: 0 },
-  //     revert: true,
-  //     revertDuration: 1,
-  //     stop: function( event, ui ) { 
-  //       if(elem){ 
-  //         createPosition(event.target.id, 
-  //                        $(elem).attr('id').split('-')[0], 
-  //                        $(elem).attr('id').split('-')[1])
-  //       } 
-  //     },
-  //     drag: function( event, ui ) {
-  //       $("td").mousemove( function(e) {
-  //         client_x = e.pageX;
-  //         client_y = e.pageY;
-  //         elem = document.elementFromPoint(client_x, client_y - $(window).scrollTop())
-  //         if(elem != oldElem){
-  //           $(oldElem).css({background: ''})  
-  //           $(elem).css({background: 'gray'})
-  //         }
-
-  //         oldElem = elem
-  //       });
-  //     }      
-  //   });
-  // }
 
   var setPosition = function(parent, elem){
     $(parent).css({position: 'relative'})
@@ -119,6 +90,6 @@ setTimeout(function()
     $(challengerPlays[i]).offset(offsetCell)
   }
 
-  ;}, 1000)
+  ;}, 200)
 })
 
