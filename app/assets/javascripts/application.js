@@ -5,4 +5,5 @@
 //= require jquery-ui.min
 //= require matches/game_boards/show
 //= require matches/game_boards/awaiting_challenger 
+//= require matches/game_boards/edit
 //= require matches/new

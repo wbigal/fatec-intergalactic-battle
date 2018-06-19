@@ -1,9 +1,10 @@
-.background*{data: {'url': @game_board.background_url }}
+.background*{data: {'url': @game_board.object.scenery_background.image.url }}
   .container
     .row
       h1.col-lg-12.high-text.text-center
         | A Batalha
-  .container
+  #game-board-drop-bombs*{data: {'match-id': params[:match_id], 'game-board-id': params[:id]}}
+  .board-game.capsule
     .row
       h2.col-lg-6.high-text
         | sua configuração
@@ -14,7 +15,7 @@
                 - for j in 0...@game_board.object.columns
                   td id="#{i}-#{j}"
           - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
-            = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.first.row, column: positions.first.column}
+            = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.last.row, column: positions.last.column}
 
       h2.col-lg-6.high-text.mb-5
         | tabuleiro do oponente
@@ -24,19 +25,6 @@
               tr
                 - for j in 0...@game_board.object.columns
                   td id="#{i}-#{j}"
-
-      / #challenger-plays
-      /   - if @dropped_bombs_on_me
-      /     - @dropped_bombs_on_me.each do |dropped_bomb|
-      /       div.col-lg-12
-      /         .check-challenger-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
-      /           - if dropped_bomb.on_target?
-      /             | o
-      /           - else
-      /             = image_tag asset_url('ex1.png')
-
-      #game-board-drop-bombs.form.col-lg-6*{data: {'match-id': params[:match_id], 'game-board-id': params[:id]}}
-
 
   = content_for(:js) do
     = javascript_include_tag 'cable', 'channels/matches/playing', 'matches/game_boards/drop_bombs'

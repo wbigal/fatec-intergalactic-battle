@@ -1,9 +1,23 @@
-
-= @scenery_backgrounds.count
 - if @scenery_backgrounds.present?
-  hr
-  = form_for(@game_board, url: match_game_board_path(id: params[:id], match_id: params[:match_id]), remote: true) do |f|
-    .form-group
-      = f.label :scenery_background
-      = f.collection_select :scenery_background_id, @scenery_backgrounds, :id, :name, { include_blank: 'Background padrão do cenário' }, class: 'form-control'
-    = f.submit 'Atualizar', class: 'btn btn-primary'
+  .container.capsule.mt-3
+    .row.justify-content-around.high-text
+      p altere o background
+    .row.justify-content-around
+      - @scenery_backgrounds.each do |background|
+        .background-image.js-clickeble*{data: {background_id: background.id}}
+          = image_tag background.image.url(:thumb)
+
+#selectBackground.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-dialog-centered role="document" 
+    .modal-content
+      .modal-header
+        h5#exampleModalLongTitle.modal-title 
+          label usar este background no jogo
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+      .modal-body.high-text
+        .image
+        .form
+          = form_for(@game_board, url: match_game_board_path(id: params[:id], match_id: params[:match_id]), remote: true) do |f|
+            = f.hidden_field :scenery_background_id          
+            = f.submit 'Atualizar', class: 'btn btn-primary'      

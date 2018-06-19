@@ -9,6 +9,12 @@ $(document).ready ->
   elem = undefined
   imgDraggable = $('.spacecraft-distribution').find('img')
 
+  findWinner = ->
+    if($('#drop-bomb-form strong').text() == 'voce ganhou')
+      $('#winner').modal();
+    else if($('#drop-bomb-form strong').text() == 'voce perdeu')
+      $('#lose').modal();
+
   setPosition = (parent, elem) ->
     dataRow = parseInt($(elem).attr('data-row'))
     dataColumn = parseInt($(elem).attr('data-column'))
@@ -45,10 +51,11 @@ $(document).ready ->
       contentType: 'application/json'
       dataType: 'script'
     return
-    
+
   setChecks = ->
-    myPlays = $('#my-plays').find('.check-my-plays')
-    console.log(myPlays.length)
+    console.log 1
+    myPlays = $('#my-plays').find('img')
+
     i = 0
     while i < myPlays.length
       droppedRow = $(myPlays[i]).attr('data-dropped-row')
@@ -58,8 +65,8 @@ $(document).ready ->
       $(myPlays[i]).offset offsetCell
       i++
 
-    challengerPlays = $('#challenger-plays').find('.check-challenger-plays')
-    console.log(challengerPlays.length)
+    challengerPlays = $('#challenger-plays').find('img')
+
     i = 0
     while i < challengerPlays.length
       droppedRow = $(challengerPlays[i]).attr('data-dropped-row')
@@ -80,9 +87,10 @@ $(document).ready ->
         column: column)
       success: (data) ->
         setChecks()
+        findWinner()
         return
       error: (data) ->
-        Alert('Vez do outro jogador')
+        alert 'Invalido'
         return
       complete: (data) ->
         console.log('complete')

@@ -8,7 +8,7 @@ table{
   position: relative;
 
   td {
-    border: 1px solid black; 
+    border: 1px solid yellow; 
     height: 50px;
     width: 50px;
     cursor: pointer;
@@ -19,11 +19,37 @@ img{
   z-index: 99;
 }
 
-.check-challenger-plays, 
-.check-my-plays{
+#my-plays img, 
+#challenger-plays img{
   z-index: 999;
 }
 
 .spacecraft-for-position img{
   margin-bottom: 30px;
+}
+
+#my-plays, #challenger-plays{
+  height: 5px;
+}
+
+#drop-bomb-form{
+  text-align: center;
+
+  strong{
+    background: blue;
+    color: yellow;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+.board-game{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.background{
+  background-repeat: no-repeat;
+  background-size: cover;
 }

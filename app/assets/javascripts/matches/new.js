@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $('.capsule').click(function(event){
-    $(event.target).find('input[type=radio]').prop('checked', true);
+    let sceneryId = $(this).find("#match_scenery_id").val()
+    $('#selectTeam').find('#match_scenery_id').val(sceneryId)
     $('#selectTeam').modal();
   })
 });

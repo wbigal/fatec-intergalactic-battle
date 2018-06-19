@@ -27,6 +27,28 @@ $(document).ready ->
       console.log(spacecrafts[i])
       i++
     return
+    
+  createPosition = (spacecraft, row, column) ->
+    $.ajax
+      type: 'POST'
+      url: '/matches/' + match_id + '/game_boards/' + game_board_id + '/spacecraft_positions',
+      data: JSON.stringify(matches_game_boards_spacecraft_form:
+        spacecraft_id: spacecraft
+        row: row
+        column: column)
+      success: (data) ->
+        getImages()
+        setDraggable()
+        return
+      error: (data) ->
+        alert 'Posição invalida'
+        return
+      complete: (data) ->
+        console.log('complete')
+        return
+      contentType: 'application/json'
+      dataType: 'script'
+    return
 
   setDraggable = ->
     oldElem = undefined
@@ -57,26 +79,6 @@ $(document).ready ->
           return
       i++
 
-  createPosition = (spacecraft, row, column) ->
-    $.ajax
-      type: 'POST'
-      url: '/matches/' + match_id + '/game_boards/' + game_board_id + '/spacecraft_positions',
-      data: JSON.stringify(matches_game_boards_spacecraft_form:
-        spacecraft_id: spacecraft
-        row: row
-        column: column)
-      success: (data) ->
-        console.log('success')
-        return
-      error: (data) ->
-        alert 'Posição invalida'
-        return
-      complete: (data) ->
-        console.log('complete')
-        return
-      contentType: 'application/json'
-      dataType: 'script'
-    return
 
 
   $('#game-board-positions').load "/matches/#{match_id}/game_boards/#{game_board_id}/spacecraft_positions/new", ->
