@@ -68,14 +68,14 @@ $('.battle-field').ready ->
 
       challengerPlays = $('#challenger-plays').find('img')
 
-    i = 0
-    while i < challengerPlays.length
-      droppedRow = $(challengerPlays[i]).attr('data-dropped-row')
-      droppedColumn = $(challengerPlays[i]).attr('data-dropped-column')
-      idCell = '#' + droppedRow + '-' + droppedColumn
-      offsetCell = $('.spacecraft-distribution').find(idCell).offset()
-      $(challengerPlays[i]).offset offsetCell
-      i++
+      i = 0
+      while i < challengerPlays.length
+        droppedRow = $(challengerPlays[i]).attr('data-dropped-row')
+        droppedColumn = $(challengerPlays[i]).attr('data-dropped-column')
+        idCell = '#' + droppedRow + '-' + droppedColumn
+        offsetCell = $('.spacecraft-distribution').find(idCell).offset()
+        $(challengerPlays[i]).offset offsetCell
+        i++
 
   $('td').click (event) ->
     row = event.target.id.split('-')[0]
