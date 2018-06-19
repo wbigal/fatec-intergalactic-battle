@@ -1,4 +1,6 @@
-$(document).ready ->
+delay = (ms, func) -> setTimeout func, ms
+
+$('.battle-field').ready ->
   game_board_element = $('#game-board-drop-bombs');
   match_id = game_board_element.data 'match-id'
   game_board_id = game_board_element.data 'game-board-id'
@@ -16,12 +18,13 @@ $(document).ready ->
       $('#lose').modal();
 
   setPosition = (parent, elem) ->
-    dataRow = parseInt($(elem).attr('data-row'))
-    dataColumn = parseInt($(elem).attr('data-column'))
-    idCell = '#' + dataRow + '-' + dataColumn
-    offsetCell = $(idCell).offset()
-    $(elem).offset offsetCell
-    return
+    delay 1000, ->
+      dataRow = parseInt($(elem).attr('data-row'))
+      dataColumn = parseInt($(elem).attr('data-column'))
+      idCell = '#' + dataRow + '-' + dataColumn
+      offsetCell = $(idCell).offset()
+      $(elem).offset offsetCell
+      return
 
   getImages = ->
     spacecrafts = $('.spacecraft-distribution').find('img')
@@ -51,18 +54,19 @@ $(document).ready ->
     return
 
   setChecks = ->
-    myPlays = $('#my-plays').find('img')
+    delay 1000, ->
+      myPlays = $('#my-plays').find('img')
 
-    i = 0
-    while i < myPlays.length
-      droppedRow = $(myPlays[i]).attr('data-dropped-row')
-      droppedColumn = $(myPlays[i]).attr('data-dropped-column')
-      idCell = '#' + droppedRow + '-' + droppedColumn
-      offsetCell = $('#challenger-table').find(idCell).offset()
-      $(myPlays[i]).offset offsetCell
-      i++
+      i = 0
+      while i < myPlays.length
+        droppedRow = $(myPlays[i]).attr('data-dropped-row')
+        droppedColumn = $(myPlays[i]).attr('data-dropped-column')
+        idCell = '#' + droppedRow + '-' + droppedColumn
+        offsetCell = $('#challenger-table').find(idCell).offset()
+        $(myPlays[i]).offset offsetCell
+        i++
 
-    challengerPlays = $('#challenger-plays').find('img')
+      challengerPlays = $('#challenger-plays').find('img')
 
     i = 0
     while i < challengerPlays.length
