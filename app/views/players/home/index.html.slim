@@ -1,12 +1,14 @@
-.container
-  .row
-    h1.col-lg-12
-      | Minha Página
-.container
-  .row
-    .col-lg-12
-      = render 'on_game_matches'
-    .col-lg-12
-      = render 'awaiting_challenge'
-    .col-lg-12
-      = render 'last_matches'
+.d-flex.home-container
+  .col-lg-12
+    .container-fluid
+      .row
+        h1.col-lg-12.text-center.high-text
+          | minha página
+    .container.capsule-scroll
+      .row
+        .col-lg-12
+          = render 'on_game_matches'
+        .col-lg-12
+          = render 'awaiting_challenge'
+        .col-lg-12
+          = render 'last_matches'
