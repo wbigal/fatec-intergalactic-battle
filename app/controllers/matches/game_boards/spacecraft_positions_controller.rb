@@ -23,6 +23,14 @@ module Matches
         end
       end
 
+      def destroy
+        ::GameBoards::SpacecraftPositions::Destroy.call(
+          game_board: @game_board,
+          row: params[:row],
+          column: params[:column]
+        )
+      end
+
       private
 
       def create_spacecraft_positions

@@ -1,0 +1,21 @@
+- if @on_game_matches.present?
+  .row
+    h2.col-lg-12
+      | Meus jogos em andamento
+    - @on_game_matches.each do |match|
+      .col-lg-4
+        .col-lg-4.float-left.d-inline-block
+          .player-avatar
+            = image_tag match.player_avatar_url, class: 'img-fluid'
+          .player-nickname.text-center
+            = match.player_nickname
+        .col-lg-2.d-inline-block.text-center
+          | X
+        .col-lg-4.d-inline-block
+          .player-avatar
+            = image_tag match.challenger_avatar_url, class: 'img-fluid'
+          .player-nickname.text-center
+            = match.challenger_nickname
+        .col-lg-10.text-center
+          = link_to match.action, match.match_url, class: 'btn btn-primary btn-sm'
+  hr

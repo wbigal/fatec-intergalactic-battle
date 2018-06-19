@@ -4,13 +4,9 @@
       | Minha Página
 .container
   .row
-    .col-lg-8
-      h2
-        | Meus Últimos Jogos
-      h2
-        | Jogadores Aguardando Oponentes
-    .col-lg-4
-      h2
-        | Meu Jogo Atual
-      h2
-        | Minha Estatística
+    .col-lg-12
+      = render 'on_game_matches'
+    .col-lg-12
+      = render 'awaiting_challenge'
+    .col-lg-12
+      = render 'last_matches'
