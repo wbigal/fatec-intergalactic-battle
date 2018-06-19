@@ -1,0 +1,178 @@
+@import "colors";
+
+.high-text, %high-text{
+  color: black;
+  text-shadow: 1px 0 $text-common-color, -1px 0 $text-common-color, 0 1px $text-common-color, 0 -1px $text-common-color;
+}
+
+.capsule, %capsule{
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 0 white, -1px 0 white, 0 1px 5px white, 0 -1px white;
+}
+
+@font-face {
+  font-family: 'starjedi';
+  src: asset_url('Starjedi.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'STJEDISE';
+  src: asset_url('STJEDISE.TTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  color: $font-color;
+  font-family: 'STJEDISE';
+  letter-spacing: 2px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+input[type="text"], input[type="email"], select{
+  font-family: initial;
+  color: initial;
+  text-shadow: initial;
+}
+
+body{
+  height: 100vh;
+  background: no-repeat center center fixed;
+  background-image: asset_url('bg-area.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1, h2{
+  margin: 1.5rem 0;
+}
+
+.js-clickeble{
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: 2px 0 blue, -2px 0 blue, 0 2px 20px blue, 0 -2px blue;
+  }
+}
+
+.info-player{
+  dt{ color: white; }
+  dd { color: $text-common-color; letter-spacing: 2px; }
+}
+
+#navbarPlayerDropdown {
+  color: $menu-item-font-color;
+}
+
+form{
+  margin: 0 auto;
+}
+
+label, em, .data{
+  color: $text-common-color;
+  text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 1px black;
+}
+
+.scenery-info{
+  color: $text-common-color;
+  font-size: 1.3rem;
+}
+
+.capsule-scroll{
+  @extend %capsule;
+  overflow: auto;
+  height: 70vh;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+}
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: $background-scrollbar;
+  outline: 1px solid $outline-scrollbar;
+}
+
+header .navbar{
+  background-color: rgba(52, 58, 64, 0.4) !important;
+}
+
+.players-awaiting-home{
+  margin-top: 15%;
+
+  .capsule{
+    width: 50%;
+  }
+
+  hr {
+    opacity: 0.3;
+    background-color: $text-common-color;
+  }
+}
+
+.scenery hr{
+  background: $text-common-color;
+  opacity: 0.2;
+}
+
+.player-statistic{
+  margin: 0 auto;
+
+  label { color: white; font-size: 0.8rem; margin-right: 15px;}
+  .field { display: flex; align-items: baseline; }
+}
+
+#selectTeam .modal-content{
+  background: no-repeat center center fixed;
+  background-image: asset_url('bg-storm.jpg');
+  background-repeat: no-repeat;
+  box-shadow: 1px 0 white, -1px 0 white, 0 1px 25px white, 0 -1px white;
+  height: 240px;
+
+  select{
+    margin-bottom: 15px;
+  }
+}
+
+.background-image{
+  margin: 0 15px;
+}
+
+.modal-backdrop{
+  opacity: 0.8;
+}
+
+#awaitingChallenger .modal-content{
+  background: no-repeat center center fixed;
+  background-image: asset_url('bg-wars.jpg');
+  background-repeat: no-repeat;
+  box-shadow: 1px 0 white, -1px 0 white, 0 1px 25px white, 0 -1px white;
+  height: 240px;  
+}
+
+.home-container { flex-wrap: nowrap; }
+
+@media (max-width: 992px){
+  .players-awaiting-home .capsule{ width: 100%; }
+  h1 { font-size: 2rem; }
+  .home-container { flex-wrap: wrap-reverse; }
+}
+
+@media (max-width: 576px){
+  .navbar-brand{ font-size: 0.8rem; }
+  .capsule { width: 90%; margin: 0 auto; }
+}

@@ -1,12 +1,23 @@
 .container
   .row
-    h1.col-lg-12
+    h1.col-lg-12.high-text
       | Novo Jogo
 .container
   .row
     #match-details*{ data: { 'match-id': params[:match_id] } }
-      p
-        | Você ainda não tem um oponente. Por favor, aguarde alguns instantes...
+      p.high-text
+        | você ainda não tem um oponente. por favor, aguarde alguns instantes...
+
+        #awaitingChallenger.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+          .modal-dialog.modal-dialog-centered role="document" 
+            .modal-content
+              .modal-header
+                h5#exampleModalLongTitle.modal-title 
+                  label novo jogo
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  &times;
+              .modal-body.high-text
+                | você ainda não tem um oponente. por favor, aguarde alguns instantes...
 
 = content_for(:js) do
   = javascript_include_tag 'cable', 'channels/matches/awaiting_challenge'

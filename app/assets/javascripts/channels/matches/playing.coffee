@@ -10,4 +10,25 @@ App.matches/playing = App.cable.subscriptions.create {
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#game-board-drop-bombs').load data.render_url
+    $('#game-board-drop-bombs').load data.render_url, ->
+      myPlays = $('#my-plays').find('img')
+      console.log(myPlays.length)
+      i = 0
+      while i < myPlays.length
+        droppedRow = $(myPlays[i]).attr('data-dropped-row')
+        droppedColumn = $(myPlays[i]).attr('data-dropped-column')
+        idCell = '#' + droppedRow + '-' + droppedColumn
+        offsetCell = $('#challenger-table').find(idCell).offset()
+        $(myPlays[i]).offset offsetCell
+        i++
+
+      challengerPlays = $('#challenger-plays').find('img')
+      console.log(challengerPlays.length)
+      i = 0
+      while i < challengerPlays.length
+        droppedRow = $(challengerPlays[i]).attr('data-dropped-row')
+        droppedColumn = $(challengerPlays[i]).attr('data-dropped-column')
+        idCell = '#' + droppedRow + '-' + droppedColumn
+        offsetCell = $('.spacecraft-distribution').find(idCell).offset()
+        $(challengerPlays[i]).offset offsetCell
+        i++

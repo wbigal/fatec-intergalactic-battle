@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :matches, only: %i[new create] do
     resources :game_boards, only: %i[show edit update],
                             controller: 'matches/game_boards' do
-      resources :spacecraft_positions, only: %i[new create],
+      resources :spacecraft_positions, only: %i[new create destroy],
                                        controller: 'matches/game_boards/'\
                                                    'spacecraft_positions' do
         collection do

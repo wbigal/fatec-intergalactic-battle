@@ -1,21 +1,14 @@
-- @spacecraft_positions.each_pair do |spacecraft_id, positions|
-  div
-    = "Spacecraft #{spacecraft_id}, positions #{positions.pluck(:row, :column)}"
-    br
-    = image_tag positions.first.spacecraft.image.url
-    hr
+.spacecraft-collection
+  - @spacecraft_positions.each_pair do |spacecraft_id, positions|
+    div.spacecraft
+      = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: positions.pluck(:row).first, column: positions.pluck(:column).first }
 
 - if @spacecrafts.present?
-  = form_for(@spacecraft_form, url: match_game_board_spacecraft_positions_path, remote: true) do |f|
-    .form-group
-      = f.label :spacecrafts
-      = f.collection_select :spacecraft_id, @spacecrafts, :id, :name, {}, class: 'form-control'
-    .form-group
-      = f.label :row
-      = f.text_field :row, class: 'form-control'
-    .form-group
-      = f.label :column
-      = f.text_field :column, class: 'form-control'
-    = f.submit 'Adicionar Nave', class: 'btn btn-primary'
+  - @spacecrafts.each do |spacecraft|
+    .col-12.spacecraft-for-position
+      .row.high-text
+        = spacecraft.name
+      .row
+        = image_tag spacecraft.image.url, id: spacecraft.id, class: 'img-fluid'
 - else
-  = link_to 'Jogar!', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch
+  = link_to 'jogar', match_game_board_ready_path(id: @game_match), class: 'btn btn-primary', method: :patch

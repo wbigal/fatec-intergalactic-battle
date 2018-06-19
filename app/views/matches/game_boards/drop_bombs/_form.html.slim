@@ -1,34 +1,43 @@
-h2.col-lg-12
-  | Jogadas do outro
-- @dropped_bombs_on_me.each do |dropped_bomb|
-  div.col-lg-12
-    = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
-    hr
-h2.col-lg-12
-  | Suas jogadas
-- @dropped_bombs_by_me.each do |dropped_bomb|
-  div.col-lg-12
-    = "position: #{[dropped_bomb.row, dropped_bomb.column]}, acertou: #{dropped_bomb.on_target?}"
-    hr
+#challenger-plays
+  - @dropped_bombs_on_me.each do |dropped_bomb|
+    - if dropped_bomb.on_target?
+      = image_tag asset_url('exp2.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+    - else
+      = image_tag asset_url('err.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+
+#my-plays
+  - @dropped_bombs_by_me.each do |dropped_bomb|
+    - if dropped_bomb.on_target?
+      = image_tag asset_url('exp2.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+    - else
+      = image_tag asset_url('err.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
 
 - if @match.playing?
   strong
-    = @my_turn ? 'MINHA VEZ' : 'VEZ DO OUTRO'
-
-  = form_for(@drop_bomb_form, url: match_game_board_drop_bombs_path, remote: true) do |f|
-    .form-group
-      = f.label :row
-      = f.text_field :row, class: 'form-control'
-    .form-group
-      = f.label :column
-      = f.text_field :column, class: 'form-control'
-    = f.submit 'Lançar Bomba', class: 'btn btn-primary'
+    = @my_turn ? 'minha vez' : 'vez do outro'
 
 - if @match.setting_game_board?
-  strong Aguardando configuração dos campos de batalha
+  strong aguardando configuração dos campos de batalha
 
 - if @match.game_over?
   - if @match.winner == current_player
-    strong Você ganhou!
+    strong voce ganhou
+
+    #winner.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+      .modal-dialog.modal-dialog-centered role="document" 
+        .modal-content
+          h1.high-text 
+            | voce ganhou
+          .div
+            = link_to 'Home', root_path, class: 'nav-link'
+
   - elsif @match.winner != current_player
-    strong Você perdeu!
+    strong voce perdeu
+
+    #lose.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
+      .modal-dialog.modal-dialog-centered role="document" 
+        .modal-content
+          h1.high-text 
+            | voce perdeu
+          .div
+            = link_to 'Home', root_path, class: 'nav-link'
