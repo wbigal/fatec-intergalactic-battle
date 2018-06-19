@@ -9,7 +9,7 @@ module Matches
 
     def spacecraft_positions
       SpacecraftPositionDecorator.decorate_collection(
-        object.spacecraft_positions
+        object.spacecraft_positions.order(:row, :column)
       ).group_by(&:spacecraft_id)
     end
   end
