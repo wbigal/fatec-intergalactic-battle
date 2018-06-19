@@ -19,6 +19,7 @@ $('.battle-field').ready ->
 
   setPosition = (parent, elem) ->
     delay 1000, ->
+      $('.made-plays').show();
       dataRow = parseInt($(elem).attr('data-row'))
       dataColumn = parseInt($(elem).attr('data-column'))
       idCell = '#' + dataRow + '-' + dataColumn
@@ -55,6 +56,7 @@ $('.battle-field').ready ->
 
   setChecks = ->
     delay 1000, ->
+      $('.made-plays').show();
       myPlays = $('#my-plays').find('img')
 
       i = 0

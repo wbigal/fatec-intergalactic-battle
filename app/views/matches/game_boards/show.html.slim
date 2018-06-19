@@ -14,8 +14,10 @@
             tr
               - for j in 0...@game_board.object.columns
                 td id="#{i}-#{j}"
-        - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
-          = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.last.row, column: positions.last.column}
+        .made-plays
+          - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
+            = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.last.row, column: positions.last.column}
+
 
       #challenger-table.col-lg-6
         h2.col-lg-12.high-text
