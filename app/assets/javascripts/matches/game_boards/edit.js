@@ -11,5 +11,6 @@ $(document).ready(function(){
   $('#selectBackground input').click(function(){
     let img = $('#selectBackground').find('img')
     $('body').css('background-image', 'url(' + $(img).attr('src') + ')')
+    $('#selectBackground').modal('hide');  
   });
 });
