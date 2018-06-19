@@ -99,7 +99,6 @@ $(document).ready ->
       dataType: 'script'
     return
 
-
   game_board_element.load "/matches/#{match_id}/game_boards/#{game_board_id}/drop_bombs/new", ->
     $('.background').css 'background-image', 'url(' + $('.background').attr('data-url') + ')'
     getImages()

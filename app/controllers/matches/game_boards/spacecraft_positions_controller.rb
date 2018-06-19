@@ -13,7 +13,7 @@ module Matches
         @spacecraft_form = Matches::GameBoards::SpacecraftForm.new(
           spacecraft_params
         )
-      
+
         if @spacecraft_form.valid?
           create_spacecraft_positions
           render :create, status: :created

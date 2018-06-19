@@ -6,7 +6,6 @@ $(document).ready ->
   match_id = game_board_element.data 'match-id'
   game_board_id = game_board_element.data 'game-board-id'
 
-
   setPosition = (parent, elem) ->
     $(parent).css position: 'relative'
     $(elem).css position: 'absolute'
@@ -27,7 +26,6 @@ $(document).ready ->
       contentType: 'application/json'
       dataType: 'script'
     return
-
 
   getImages = ->
     spacecrafts = $('.spacecraft-collection').find('img')
