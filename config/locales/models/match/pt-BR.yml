@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      match:
+        one: Jogo
+        other: Jogos
+    attributes:
+      match:
+        player: Jogador
+        player_team: Time do gogador
+        challenger: Desafiante
+        challenger_team: Time do desafiante
+        scenery: Cenário
+        winner: Vencedor
+        name: Nome
+        created_at: Criado em
+        updated_at: Atualizado em
