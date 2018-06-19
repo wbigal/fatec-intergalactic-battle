@@ -71,6 +71,8 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'
+  # Uploads Ruby test coverage data to Code Climate
+  gem 'codeclimate-test-reporter', require: false
   # Strategies for cleaning databases in Ruby.
   # Can be used to ensure a clean state for testing.
   gem 'database_cleaner'

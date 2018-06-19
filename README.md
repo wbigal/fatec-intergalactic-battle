@@ -2,6 +2,8 @@
 # Engenharia de Software III - FATEC-SP
 
 [![Build Status](https://semaphoreci.com/api/v1/wbigal/fatec-intergalactic-battle/branches/master/badge.svg)](https://semaphoreci.com/wbigal/fatec-intergalactic-battle)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e0a2183e05269428500e/maintainability)](https://codeclimate.com/github/wbigal/fatec-intergalactic-battle/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e0a2183e05269428500e/test_coverage)](https://codeclimate.com/github/wbigal/fatec-intergalactic-battle/test_coverage)
 
 Jogo: https://fatec-intergalactic-battle.herokuapp.com
 
