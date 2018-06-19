@@ -8,10 +8,9 @@ table{
   position: relative;
 
   td {
-    border: 1px solid yellow; 
+    border: 1px solid yellow;
     height: 50px;
     width: 50px;
-    cursor: pointer;
   }
 }
 
@@ -19,7 +18,7 @@ img{
   z-index: 99;
 }
 
-#my-plays img, 
+#my-plays img,
 #challenger-plays img{
   z-index: 999;
 }
@@ -52,4 +51,14 @@ img{
 .background{
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.ui-draggable {
+  cursor: pointer;
+}
+
+.spacecraft-collection {
+  .spacecraft img {
+    cursor: pointer;
+  }
 }
