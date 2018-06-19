@@ -28,13 +28,13 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new do
-      except %w[SpacecraftShape Team]
+      except %w[Match SpacecraftShape Team]
     end
     # export
     bulk_delete
     show
     edit do
-      except ['SpacecraftShape']
+      except %w[Match SpacecraftShape]
     end
     delete do
       except %w[SpacecraftShape Team]
@@ -46,11 +46,35 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = [Player, PlayerAvatar, Scenery, SceneryBackground,
-                            Spacecraft, SpacecraftShape, Team, User]
+  config.included_models = [Match, Player, PlayerAvatar, Scenery,
+                            SceneryBackground, Spacecraft, SpacecraftShape,
+                            Team, User]
+
+  config.model 'Match' do
+    navigation_label 'Jogos'
+    list do
+      field :player
+      field :challenger
+      field :scenery
+      field :winner
+    end
+
+    show do
+      field :player
+      field :player_team
+      field :challenger
+      field :challenger_team
+      field :scenery
+      field :winner
+      field :status
+      field :created_at
+      field :updated_at
+    end
+  end
 
   config.model 'Player' do
     navigation_label 'Jogadores'
+    object_label_method :nickname
     list do
       sort_by :nickname
       field :nickname
