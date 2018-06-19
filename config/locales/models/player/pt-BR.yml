@@ -12,3 +12,5 @@ pt-BR:
         password: Senha
         created_at: Criado em
         updated_at: Atualizado em
+        password_confirmation: 'Confirmação da nova senha'
+        current_password: 'Senha atual'

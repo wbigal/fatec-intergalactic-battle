@@ -4,13 +4,13 @@ ul
       = link_to "Log in", new_session_path(resource_name)
   - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
     li
-      = link_to "Forgot your password?", new_password_path(resource_name)
+      = link_to "Esqueci minha senha?", new_password_path(resource_name)
   - if devise_mapping.confirmable? && controller_name != 'confirmations'
     li
-      = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+      = link_to "Não recebi as instruções de confirmação?", new_confirmation_path(resource_name)
   - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
     li
-      = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
+      = link_to "Não recebi as instruções de desbloqueio de conta?", new_unlock_path(resource_name)
   - if devise_mapping.omniauthable?
     - resource_class.omniauth_providers.each do |provider|
       li

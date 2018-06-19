@@ -18,17 +18,17 @@
           = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           div
-            | Currently waiting confirmation for:
+            | aguardando confirmação em:
             = resource.unconfirmed_email
         .form-group
           = f.label :password
           = f.password_field :password, autocomplete: 'off', class: 'form-control'
           small.form-text.text-muted
-            | Leave blank if you don't want to change it
+            | deixe em branco se você não deseja alterar a senha
           - if @minimum_password_length
             small.form-text.text-muted
               = @minimum_password_length
-              |  characters minimum
+              |  mínimos de caracteres
         .form-group
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
@@ -36,12 +36,12 @@
           = f.label :current_password
           = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
           small.form-text.text-muted
-            | We need your current password to confirm your changes
+            | você precisa informar a sua senha atual
         = f.submit 'Atualizar', class: 'btn btn-primary'
       hr
       h2.high-text
-        | Cancel my account
+        | cancelar minha conta
       p
-        | Unhappy?
-        = button_to 'Cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
-      = link_to 'Back', :back
+        | Não esta feliz?
+        = button_to 'cancelar minha conta', registration_path(resource_name), data: { confirm: 'tem certeza?' }, method: :delete, class: 'btn btn-danger'
+      = link_to 'Voltar', :back
