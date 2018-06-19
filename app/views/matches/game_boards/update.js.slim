@@ -1,4 +1,2 @@
-- if (success)
-  | console.log('Background alterado com sucesso!');
-- else
+- unless (success)
   | $("#game-board-form").html("#{escape_javascript(render(partial: 'form'))}");

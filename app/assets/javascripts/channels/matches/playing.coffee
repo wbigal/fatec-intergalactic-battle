@@ -12,7 +12,6 @@ App.matches/playing = App.cable.subscriptions.create {
   received: (data) ->
     $('#game-board-drop-bombs').load data.render_url, ->
       myPlays = $('#my-plays').find('img')
-      console.log(myPlays.length)
       i = 0
       while i < myPlays.length
         droppedRow = $(myPlays[i]).attr('data-dropped-row')
@@ -23,7 +22,6 @@ App.matches/playing = App.cable.subscriptions.create {
         i++
 
       challengerPlays = $('#challenger-plays').find('img')
-      console.log(challengerPlays.length)
       i = 0
       while i < challengerPlays.length
         droppedRow = $(challengerPlays[i]).attr('data-dropped-row')

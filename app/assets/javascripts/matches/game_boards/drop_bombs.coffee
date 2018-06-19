@@ -40,20 +40,17 @@ $(document).ready ->
         row: row
         column: column)
       success: (data) ->
-        console.log('success position')
         return
       error: (data) ->
         alert 'Posição invalida'
         return
       complete: (data) ->
-        console.log('complete')
         return
       contentType: 'application/json'
       dataType: 'script'
     return
 
   setChecks = ->
-    console.log 1
     myPlays = $('#my-plays').find('img')
 
     i = 0
@@ -93,7 +90,6 @@ $(document).ready ->
         alert 'Invalido'
         return
       complete: (data) ->
-        console.log('complete')
         return
       contentType: 'application/json'
       dataType: 'script'

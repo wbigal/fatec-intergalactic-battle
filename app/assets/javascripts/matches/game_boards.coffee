@@ -18,7 +18,7 @@ $(document).ready ->
       left: leftCell
       top: topCell
     return
-  
+
   deleteSpace = (row, column) ->
     $.ajax
       type: 'delete'
@@ -34,7 +34,7 @@ $(document).ready ->
       setPosition $('body'), spacecrafts[i]
       i++
     return
-    
+
   createPosition = (spacecraft, row, column) ->
     $.ajax
       type: 'POST'
@@ -51,7 +51,6 @@ $(document).ready ->
         alert 'Posição invalida'
         return
       complete: (data) ->
-        console.log('complete')
         return
       contentType: 'application/json'
       dataType: 'script'
@@ -93,7 +92,7 @@ $(document).ready ->
       deleteSpace row, column
       window.location.reload()
       return
-      
+
   $('#game-board-positions').load "/matches/#{match_id}/game_boards/#{game_board_id}/spacecraft_positions/new", ->
     getImages()
     setDraggable()
