@@ -6,25 +6,25 @@
   #game-board-drop-bombs*{data: {'match-id': params[:match_id], 'game-board-id': params[:id]}}
   .board-game.capsule
     .row
-      h2.col-lg-6.high-text
-        | sua configuração
-        .spacecraft-distribution
-          table
-            - for i in 0...@game_board.object.rows
-              tr
-                - for j in 0...@game_board.object.columns
-                  td id="#{i}-#{j}"
-          - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
-            = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.last.row, column: positions.last.column}
+      .spacecraft-distribution.col-lg-6
+        h2.col-lg-12.high-text
+          | sua configuração
+        table
+          - for i in 0...@game_board.object.rows
+            tr
+              - for j in 0...@game_board.object.columns
+                td id="#{i}-#{j}"
+        - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
+          = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.last.row, column: positions.last.column}
 
-      h2.col-lg-6.high-text.mb-5
-        | tabuleiro do oponente
-        #challenger-table
-          table
-            - for i in 0...@game_board.object.rows
-              tr
-                - for j in 0...@game_board.object.columns
-                  td id="#{i}-#{j}"
+      #challenger-table.col-lg-6
+        h2.col-lg-12.high-text
+          | tabuleiro do oponente
+        table
+          - for i in 0...@game_board.object.rows
+            tr
+              - for j in 0...@game_board.object.columns
+                td id="#{i}-#{j}"
 
   = content_for(:js) do
     = javascript_include_tag 'cable', 'channels/matches/playing', 'matches/game_boards/drop_bombs'
