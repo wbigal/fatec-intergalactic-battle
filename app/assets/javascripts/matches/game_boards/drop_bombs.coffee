@@ -87,7 +87,7 @@ $(document).ready ->
         findWinner()
         return
       error: (data) ->
-        alert 'Invalido'
+        alert 'ops, movimento inválido'
         return
       complete: (data) ->
         return
