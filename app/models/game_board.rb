@@ -19,10 +19,10 @@ class GameBoard < ApplicationRecord
   belongs_to :scenery_background
 
   has_many :spacecraft_positions, class_name: 'GameBoards::SpacecraftPosition',
-                                  dependent: :restrict_with_error
+                                  dependent: :destroy
 
   has_many :dropped_bombs, class_name: 'GameBoards::DroppedBomb',
-                           dependent: :restrict_with_error
+                           dependent: :destroy
 
   before_validation :configure_rows_and_columns, on: :create
   before_validation :configure_scenery_background, on: :create

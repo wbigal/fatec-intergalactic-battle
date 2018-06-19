@@ -16,7 +16,7 @@
                 td id="#{i}-#{j}"
         .made-plays
           - @game_board.spacecraft_positions.each_pair do |spacecraft_id, positions|
-            = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.last.row, column: positions.last.column}
+            = image_tag positions.first.image_url, data: {id: spacecraft_id, row: positions.first.row, column: positions.first.column}
 
 
       #challenger-table.col-lg-6
