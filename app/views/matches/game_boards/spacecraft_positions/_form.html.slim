@@ -1,7 +1,10 @@
 .spacecraft-collection
   - @spacecraft_positions.each_pair do |spacecraft_id, positions|
     div.spacecraft
-      = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: positions.first.row, column: positions.first.column }
+      - row = positions.pluck(:row).first < positions.pluck(:row).last ? positions.pluck(:row).first : positions.pluck(:row).last
+      - column = positions.pluck(:column).first < positions.pluck(:column).last ? positions.pluck(:column).first : positions.pluck(:column).last
+      -
+      = image_tag positions.first.spacecraft.image.url, data: {id: spacecraft_id, row: row, column: column }
 
 - if @spacecrafts.present?
   - @spacecrafts.each do |spacecraft|
