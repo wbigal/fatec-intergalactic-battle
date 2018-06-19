@@ -10,6 +10,12 @@ html[lang="pt-br"]
     = stylesheet_link_tag    'application', media: 'all'
   body
     = render 'layouts/head'
+    - flash.each do |key, value|
+        div[class="#{flash_class(key)} alert-dismissible fade show" role="alert"]
+          = value
+          button.close[type="button" data-dismiss="alert" aria-label="Close"]
+            span[aria-hidden="true"]
+              | ×
     main[role="main"]
       = yield
     = javascript_include_tag 'application'
