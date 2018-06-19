@@ -1,0 +1,15 @@
+.container
+  .row.align-center.justify-content-center.text-center
+    h1.col-lg-12.high-text.col-md-auto
+      | esqueci minha senha
+.container
+  .row
+    .d-flex.justify-content-center.capsule.col-lg-6.offset-lg-3
+      .form.col-lg-10
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control high-text'
+          .form-group
+            = f.submit 'solicitar nova senha', class: 'btn btn-primary'

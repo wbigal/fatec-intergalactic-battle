@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+      errors:
+        messages:
+          required: é requerido
+          record_invalid: 'A validação falhou: %{errors}'
+          restrict_dependent_destroy:
+            has_one: Não é possível excluir o registro pois existe um %{record} dependente
+            has_many: Não é possível excluir o registro pois existem %{record} dependentes

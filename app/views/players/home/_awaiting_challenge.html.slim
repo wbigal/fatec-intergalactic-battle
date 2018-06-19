@@ -1,6 +1,6 @@
 - if @awaiting_challenge.present?
   .row
-    h2.col-lg-12
+    h2.col-lg-12.high-text
       | Meus jogos aguardando oponente
     - @awaiting_challenge.each do |match|
       .col-lg-4
@@ -13,5 +13,5 @@
             dd.col-lg-8
               = match.scenery_description
           .col-lg-12.text-center
-            = link_to 'Voltar ao Jogo', match.match_url, class: 'btn btn-primary btn-sm'
+            = link_to 'voltar ao Jogo', match.match_url, class: 'btn btn-primary btn-sm'
   hr

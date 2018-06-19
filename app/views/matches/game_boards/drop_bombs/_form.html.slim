@@ -1,16 +1,18 @@
 #challenger-plays
-  - @dropped_bombs_on_me.each do |dropped_bomb|
-    - if dropped_bomb.on_target?
-      = image_tag asset_url('exp2.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
-    - else
-      = image_tag asset_url('err.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+  .made-plays
+    - @dropped_bombs_on_me.each do |dropped_bomb|
+      - if dropped_bomb.on_target?
+        = image_tag asset_url('exp2.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+      - else
+        = image_tag asset_url('err.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
 
 #my-plays
-  - @dropped_bombs_by_me.each do |dropped_bomb|
-    - if dropped_bomb.on_target?
-      = image_tag asset_url('exp2.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
-    - else
-      = image_tag asset_url('err.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+  .made-plays
+    - @dropped_bombs_by_me.each do |dropped_bomb|
+      - if dropped_bomb.on_target?
+        = image_tag asset_url('exp2.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+      - else
+        = image_tag asset_url('err.png'), {data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
 
 - if @match.playing?
   strong
@@ -23,10 +25,10 @@
   - if @match.winner == current_player
     strong voce ganhou
 
-    #winner.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
-      .modal-dialog.modal-dialog-centered role="document" 
+    #winner.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1"
+      .modal-dialog.modal-dialog-centered role="document"
         .modal-content
-          h1.high-text 
+          h1.high-text
             | voce ganhou
           .div
             = link_to 'Home', root_path, class: 'nav-link'
@@ -34,10 +36,10 @@
   - elsif @match.winner != current_player
     strong voce perdeu
 
-    #lose.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" 
-      .modal-dialog.modal-dialog-centered role="document" 
+    #lose.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1"
+      .modal-dialog.modal-dialog-centered role="document"
         .modal-content
-          h1.high-text 
+          h1.high-text
             | voce perdeu
           .div
             = link_to 'Home', root_path, class: 'nav-link'

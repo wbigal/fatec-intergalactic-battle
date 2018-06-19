@@ -44,6 +44,7 @@ $(document).ready ->
         row: row
         column: column)
       success: (data) ->
+        setDelete()
         getImages()
         setDraggable()
         return
@@ -85,15 +86,17 @@ $(document).ready ->
           return
       i++
 
-  $('img').dblclick ->
-    row = $(this).attr('data-row')
-    column = $(this).attr('data-column')
-    if confirm('Deletar? ')
-      deleteSpace row, column
-      window.location.reload()
-      return
+  setDelete = ->
+    $('img').dblclick ->
+      row = $(this).attr('data-row')
+      column = $(this).attr('data-column')
+      if confirm('Deletar? ')
+        deleteSpace row, column
+        window.location.reload()
+        return
 
   $('#game-board-positions').load "/matches/#{match_id}/game_boards/#{game_board_id}/spacecraft_positions/new", ->
+    setDelete()
     getImages()
     setDraggable()
   return

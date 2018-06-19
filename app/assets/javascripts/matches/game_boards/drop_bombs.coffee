@@ -1,4 +1,6 @@
-$(document).ready ->
+delay = (ms, func) -> setTimeout func, ms
+
+$('.battle-field').ready ->
   game_board_element = $('#game-board-drop-bombs');
   match_id = game_board_element.data 'match-id'
   game_board_id = game_board_element.data 'game-board-id'
@@ -87,7 +89,7 @@ $(document).ready ->
         findWinner()
         return
       error: (data) ->
-        alert 'Invalido'
+        alert 'ops, movimento inválido'
         return
       complete: (data) ->
         return
@@ -97,6 +99,7 @@ $(document).ready ->
 
   game_board_element.load "/matches/#{match_id}/game_boards/#{game_board_id}/drop_bombs/new", ->
     $('.background').css 'background-image', 'url(' + $('.background').attr('data-url') + ')'
-    getImages()
-    setChecks()
+    delay 1000, ->
+      getImages()
+      setChecks()
   return

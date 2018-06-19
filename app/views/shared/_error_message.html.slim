@@ -1,0 +1,11 @@
+- if model.errors.any?
+  #error_explanation
+    h2
+      i.fa.fa-flag.fa-2x.pull-left
+      = pluralize(model.errors.count, "error")
+      |  prohibited this template from being saved:
+    ul.fa-ul
+      - model.errors.full_messages.each do |message|
+        li
+          i.fa-li.fa.fa-star
+          = message

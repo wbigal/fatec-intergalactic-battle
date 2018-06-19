@@ -7,3 +7,25 @@
 #navbarPlayerDropdown {
   color: $menu-item-font-color;
 }
+
+body {
+  max-width: 1450px;
+  margin: auto;
+}
+
+.made-plays {
+  position: absolute;
+  margin-left: -1000px;
+}
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+  h2 {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  ul {
+    margin-top: 2em;
+  }
+}

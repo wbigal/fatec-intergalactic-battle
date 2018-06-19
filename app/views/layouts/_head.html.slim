@@ -6,9 +6,8 @@ header
       span.navbar-toggler-icon
     #navbarCollapse.collapse.navbar-collapse
       ul.navbar-nav.mr-auto.mt-2.mt-lg-0
-        li.nav-item
-          = link_to 'Home', root_path, class: 'nav-link'
       - if player_signed_in?
+        = link_to 'Novo Jogo', new_match_path, class: 'btn btn-primary'
         .nav-item.dropdown
           a#navbarPlayerDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
             = image_tag current_player.avatar.image.url(:thumb), class: 'img-fluid mr-3', width: '20px'

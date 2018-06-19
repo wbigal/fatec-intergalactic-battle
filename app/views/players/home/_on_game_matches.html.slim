@@ -1,6 +1,6 @@
 - if @on_game_matches.present?
   .row
-    h2.col-lg-12
+    h2.col-lg-12.high-text
       | Meus jogos em andamento
     - @on_game_matches.each do |match|
       .col-lg-4
@@ -8,14 +8,14 @@
           .player-avatar
             = image_tag match.player_avatar_url, class: 'img-fluid'
           .player-nickname.text-center
-            = match.player_nickname
+            = match.player_nickname.downcase
         .col-lg-2.d-inline-block.text-center
-          | X
+          | x
         .col-lg-4.d-inline-block
           .player-avatar
             = image_tag match.challenger_avatar_url, class: 'img-fluid'
           .player-nickname.text-center
-            = match.challenger_nickname
+            = match.challenger_nickname.downcase
         .col-lg-10.text-center
-          = link_to match.action, match.match_url, class: 'btn btn-primary btn-sm'
+          = link_to match.action.downcase, match.match_url, class: 'btn btn-primary btn-sm'
   hr

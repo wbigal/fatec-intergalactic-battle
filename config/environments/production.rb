@@ -54,7 +54,7 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use
   # secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -118,4 +118,21 @@ Rails.application.configure do
 
   Paperclip::Attachment.default_options[:path] =
     '/:class/:attachment/:id/:style.:extension'
+
+  config.action_mailer.default_url_options = Hash[
+    host: 'fatec-intergalactic-battle.herokuapp.com',
+    protocol: 'https'
+  ]
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SMTP_SERVER'],
+    port:                 ENV['SMTP_SERVER_PORT'],
+    domain:               ENV['SMTP_SETTINGS_DOMAIN'],
+    user_name:            ENV['SMTP_SETTINGS_USER_NAME'],
+    password:             ENV['SMTP_SETTINGS_PASSWORD'],
+    authentication:       ENV['SMTP_SETTINGS_AUTHENTICATION'],
+    enable_starttls_auto: true
+  }
 end
