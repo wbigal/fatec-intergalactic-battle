@@ -6,6 +6,7 @@ $(document).ready ->
   match_id = game_board_element.data 'match-id'
   game_board_id = game_board_element.data 'game-board-id'
 
+
   setPosition = (parent, elem) ->
     $(parent).css position: 'relative'
     $(elem).css position: 'absolute'
@@ -18,13 +19,21 @@ $(document).ready ->
       left: leftCell
       top: topCell
     return
+  
+  deleteSpace = (row, column) ->
+    $.ajax
+      type: 'delete'
+      url: '/matches/' + match_id + '/game_boards/' + game_board_id + '/spacecraft_positions/position/row/' + row + '/column/' + column
+      contentType: 'application/json'
+      dataType: 'script'
+    return
+
 
   getImages = ->
     spacecrafts = $('.spacecraft-collection').find('img')
     i = 0
     while i < spacecrafts.length
       setPosition $('body'), spacecrafts[i]
-      console.log(spacecrafts[i])
       i++
     return
     
@@ -79,8 +88,14 @@ $(document).ready ->
           return
       i++
 
-
-
+  $('img').dblclick ->
+    row = $(this).attr('data-row')
+    column = $(this).attr('data-column')
+    if confirm('Deletar? ')
+      deleteSpace row, column
+      window.location.reload()
+      return
+      
   $('#game-board-positions').load "/matches/#{match_id}/game_boards/#{game_board_id}/spacecraft_positions/new", ->
     getImages()
     setDraggable()
