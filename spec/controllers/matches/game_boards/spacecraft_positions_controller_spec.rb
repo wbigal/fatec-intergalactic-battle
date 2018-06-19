@@ -129,4 +129,54 @@ RSpec.describe Matches::GameBoards::SpacecraftPositionsController,
       it { expect(response).to redirect_to(:root) }
     end
   end
+
+  describe 'DELETE destroy' do
+    let(:row) { 0 }
+    let(:column) { 0 }
+
+    context 'when there are not spacecraft_positions' do
+      let(:spacecraft_positions) { [] }
+
+      it do
+        expect do
+          process :destroy, method: :delete, xhr: true, params: {
+            game_board_id: game_board.id,
+            match_id: match.id,
+            row: row,
+            column: column
+          }
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context 'when there are spacecraft_positions' do
+      before do
+        create(:game_boards_spacecraft_position, game_board: game_board,
+                                                 row: row,
+                                                 column: column)
+
+        process :destroy, method: :delete, xhr: true, params: {
+          game_board_id: game_board.id,
+          match_id: match.id,
+          row: row,
+          column: column
+        }
+      end
+
+      it { expect(response).to have_http_status(204) }
+    end
+
+    context 'when is not a request xhr' do
+      before do
+        process :destroy, method: :delete, xhr: false, params: {
+          game_board_id: game_board.id,
+          match_id: match.id,
+          row: row,
+          column: column
+        }
+      end
+
+      it { expect(response).to redirect_to(:root) }
+    end
+  end
 end

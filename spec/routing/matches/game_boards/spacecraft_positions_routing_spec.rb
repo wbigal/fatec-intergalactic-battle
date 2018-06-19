@@ -23,4 +23,19 @@ RSpec.describe Matches::GameBoards::SpacecraftPositionsController,
       )
     end
   end
+
+  describe '#destroy' do
+    it do
+      expect(
+        delete: '/matches/1/game_boards/2/spacecraft_positions/' \
+                'position/row/3/column/4'
+      ).to route_to(
+        'matches/game_boards/spacecraft_positions#destroy',
+        match_id: '1',
+        game_board_id: '2',
+        row: '3',
+        column: '4'
+      )
+    end
+  end
 end

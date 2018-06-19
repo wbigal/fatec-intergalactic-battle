@@ -16,7 +16,12 @@ Rails.application.routes.draw do
                             controller: 'matches/game_boards' do
       resources :spacecraft_positions, only: %i[new create],
                                        controller: 'matches/game_boards/'\
-                                                   'spacecraft_positions'
+                                                   'spacecraft_positions' do
+        collection do
+          match 'position/row/:row/column/:column' =>
+            'matches/game_boards/spacecraft_positions#destroy', via: :delete
+        end
+      end
       resources :drop_bombs, only: %i[new create],
                              controller: 'matches/game_boards/drop_bombs'
       patch :ready
