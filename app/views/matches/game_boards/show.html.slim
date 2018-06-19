@@ -25,15 +25,15 @@
                 - for j in 0...@game_board.object.columns
                   td id="#{i}-#{j}"
 
-      #challenger-plays
-        - if @dropped_bombs_on_me
-          - @dropped_bombs_on_me.each do |dropped_bomb|
-            div.col-lg-12
-              .check-challenger-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
-                - if dropped_bomb.on_target?
-                  | O
-                - else
-                  = image_tag asset_url('ex1.png')
+      / #challenger-plays
+      /   - if @dropped_bombs_on_me
+      /     - @dropped_bombs_on_me.each do |dropped_bomb|
+      /       div.col-lg-12
+      /         .check-challenger-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
+      /           - if dropped_bomb.on_target?
+      /             | o
+      /           - else
+      /             = image_tag asset_url('ex1.png')
 
       #game-board-drop-bombs.form.col-lg-6*{data: {'match-id': params[:match_id], 'game-board-id': params[:id]}}
 

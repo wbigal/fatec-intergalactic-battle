@@ -3,7 +3,7 @@
     div.col-lg-12
       .check-challenger-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
         - if dropped_bomb.on_target?
-          | O
+          | o
         - else
           = image_tag asset_url('ex1.png')
 
@@ -12,9 +12,9 @@
     div.col-lg-12
       .check-my-plays*{data: {'dropped-row': dropped_bomb.row, 'dropped-column': dropped_bomb.column}}
         - if dropped_bomb.on_target?
-          | O
+          | o
         - else
-          | X
+          | x
 
 - if @match.playing?
   strong

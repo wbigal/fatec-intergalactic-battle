@@ -1,13 +1,10 @@
 $(document).ready(function(){
+  var match = $('#spacecraft-position-form').attr('data-match-id')
+  var gameBoard = $('#spacecraft-position-form').attr('data-game-board-id')
 
-setTimeout(function(){  
-  var sizeCell = 0
-  var adjust = 0
   var oldElem;
   var elem;
 
-  var match = $('#spacecraft-position-form').attr('data-match-id')
-  var gameBoard = $('#spacecraft-position-form').attr('data-game-board-id')
 
   var imgDraggable = $('.spacecraft-for-position').find('img') 
 
@@ -39,7 +36,7 @@ setTimeout(function(){
     });
   }
 
-  var setPosition = function(parent, elem){
+  function setPosition(parent, elem){
     $(parent).css({position: 'relative'})
     $(elem).css({position: 'absolute'})
 
@@ -54,17 +51,18 @@ setTimeout(function(){
     $(elem).offset({left: leftCell, top: topCell})
   }
 
-  var getImages = function(){
+  function getImages(){
     var spacecrafts = $('.spacecraft-collection').find('img')
+    console.log(spacecrafts.length)
     for(var i = 0; i < spacecrafts.length; i++){
       setPosition($('body'), spacecrafts[i])
     }
   }
 
-  var createPosition = function(spacecraft, row, column){
+  function createPosition(spacecraft, row, column){
     $.ajax({
       type: 'POST',
-      url: `/matches/${match}/game_boards/${gameBoard}/spacecraft_positions`,
+      url: '/matches/' + match + '/game_boards/' + gameBoard + 'spacecraft_positions',
       data: JSON.stringify({matches_game_boards_spacecraft_form: {spacecraft_id: spacecraft, row: row, column: column}}),
       success: function(data) { 'success' },
       error: function(data) { alert('Posição invalida') },
@@ -75,6 +73,5 @@ setTimeout(function(){
   }
 
   getImages();
-  
-  }, 200)
+    
 })

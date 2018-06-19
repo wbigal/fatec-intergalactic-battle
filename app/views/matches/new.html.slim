@@ -33,8 +33,11 @@
                   span aria-hidden="true"  &times;
               .modal-body
                 .form-group
-                  = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control mb-3'
-                  = f.submit 'Criar Jogo', class: 'btn btn-primary'     
+                  = form_for(@match, url: matches_path) do |f|
+                    = f.text_field :scenery_id, :value => 1
+                    = f.label :player_team
+                    = f.collection_select :player_team_id, @teams, :id, :name, { include_blank: true }, class: 'form-control'
+                    = f.submit 'Criar Jogo', class: 'btn btn-primary'     
 
 
       
