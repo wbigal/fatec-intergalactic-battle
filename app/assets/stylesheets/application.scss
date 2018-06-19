@@ -14,7 +14,8 @@ body {
 }
 
 .made-plays {
-  display: none;
+  position: absolute;
+  margin-left: -1000px;
 }
 
 #error_explanation {

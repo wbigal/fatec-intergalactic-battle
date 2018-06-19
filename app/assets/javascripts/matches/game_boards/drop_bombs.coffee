@@ -18,14 +18,12 @@ $('.battle-field').ready ->
       $('#lose').modal();
 
   setPosition = (parent, elem) ->
-    delay 1000, ->
-      $('.made-plays').show();
-      dataRow = parseInt($(elem).attr('data-row'))
-      dataColumn = parseInt($(elem).attr('data-column'))
-      idCell = '#' + dataRow + '-' + dataColumn
-      offsetCell = $(idCell).offset()
-      $(elem).offset offsetCell
-      return
+    dataRow = parseInt($(elem).attr('data-row'))
+    dataColumn = parseInt($(elem).attr('data-column'))
+    idCell = '#' + dataRow + '-' + dataColumn
+    offsetCell = $(idCell).offset()
+    $(elem).offset offsetCell
+    return
 
   getImages = ->
     spacecrafts = $('.spacecraft-distribution').find('img')
@@ -55,29 +53,27 @@ $('.battle-field').ready ->
     return
 
   setChecks = ->
-    delay 1000, ->
-      $('.made-plays').show();
-      myPlays = $('#my-plays').find('img')
+    myPlays = $('#my-plays').find('img')
 
-      i = 0
-      while i < myPlays.length
-        droppedRow = $(myPlays[i]).attr('data-dropped-row')
-        droppedColumn = $(myPlays[i]).attr('data-dropped-column')
-        idCell = '#' + droppedRow + '-' + droppedColumn
-        offsetCell = $('#challenger-table').find(idCell).offset()
-        $(myPlays[i]).offset offsetCell
-        i++
+    i = 0
+    while i < myPlays.length
+      droppedRow = $(myPlays[i]).attr('data-dropped-row')
+      droppedColumn = $(myPlays[i]).attr('data-dropped-column')
+      idCell = '#' + droppedRow + '-' + droppedColumn
+      offsetCell = $('#challenger-table').find(idCell).offset()
+      $(myPlays[i]).offset offsetCell
+      i++
 
-      challengerPlays = $('#challenger-plays').find('img')
+    challengerPlays = $('#challenger-plays').find('img')
 
-      i = 0
-      while i < challengerPlays.length
-        droppedRow = $(challengerPlays[i]).attr('data-dropped-row')
-        droppedColumn = $(challengerPlays[i]).attr('data-dropped-column')
-        idCell = '#' + droppedRow + '-' + droppedColumn
-        offsetCell = $('.spacecraft-distribution').find(idCell).offset()
-        $(challengerPlays[i]).offset offsetCell
-        i++
+    i = 0
+    while i < challengerPlays.length
+      droppedRow = $(challengerPlays[i]).attr('data-dropped-row')
+      droppedColumn = $(challengerPlays[i]).attr('data-dropped-column')
+      idCell = '#' + droppedRow + '-' + droppedColumn
+      offsetCell = $('.spacecraft-distribution').find(idCell).offset()
+      $(challengerPlays[i]).offset offsetCell
+      i++
 
   $('td').click (event) ->
     row = event.target.id.split('-')[0]
@@ -103,6 +99,7 @@ $('.battle-field').ready ->
 
   game_board_element.load "/matches/#{match_id}/game_boards/#{game_board_id}/drop_bombs/new", ->
     $('.background').css 'background-image', 'url(' + $('.background').attr('data-url') + ')'
-    getImages()
-    setChecks()
+    delay 500, ->
+      getImages()
+      setChecks()
   return
