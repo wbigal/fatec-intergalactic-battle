@@ -34,7 +34,7 @@ gem 'jquery-rails'
 gem 'paperclip', '~> 6.0.0'
 # RailsAdmin is a Rails engine that provides an easy-to-use interface for
 # managing your data
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 1.4'
 # Brings back `assigns` and `assert_template` to your Rails tests
 gem 'rails-controller-testing'
 # Slim is a template language whose goal is reduce the syntax to the essential
